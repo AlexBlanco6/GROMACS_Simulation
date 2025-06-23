@@ -1,0 +1,22 @@
+; to test
+; gmx grompp -f md.mdp -c em.gro -p ligand_GMX.top -o md.tpr
+; gmx mdrun -ntmpi 1 -v -deffnm md
+; define                   = -DPOSRES_LIG
+integrator               = md
+dt                       = 0.002 ; time step 2fs , 300 ns
+nsteps                   = 50000000
+nstxout                  = 50000000
+cutoff-scheme            = verlet
+coulombtype              = PME
+constraints              = h-bonds
+vdwtype                  = cutoff
+vdw-modifier             = force-switch
+rlist                    = 1.0
+rvdw                     = 1.0
+rvdw-switch              = 0.9
+rcoulomb                 = 1.1
+DispCorr                 = EnerPres
+lincs-iter               = 2
+fourierspacing           = 0.25
+gen-vel                  = yes
+; vmd md.gro md.trr
