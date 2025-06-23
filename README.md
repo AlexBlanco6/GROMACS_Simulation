@@ -42,7 +42,7 @@ python main.py
 ```
 
 
-## Bibliography
+## References
 
  - Michele Invernizzi and Michele Parrinello. Rethinking metadynamics: From bias potentials to probability distributions. The Journal of Physical Chemistry Letters, 11(7):2731–2736, 2020. (OPES)
  - A. Laio and M. Parrinello. Escaping free energy minima. Proc. Natl. Acad. Sci. USA, 99:12562–12566, 2002. (METADYNAMICS)
