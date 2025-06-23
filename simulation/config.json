@@ -1,6 +1,6 @@
 {
   "cv": [-0.25, 0, 0.5, 1],
-  "data_dir": "/mnt/lustre/scratch/nlsas/home/empresa/mdu/rga/sim_GMX/data",
+  "data_dir": "all_path_data /data",
   "dir_name": "TEST_4W_100ns",
   "host": "MOL_GMX",
   "ligand": "0GB_GMX",
