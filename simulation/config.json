@@ -13,6 +13,6 @@
   "topol": "topol_GMX",
   "em_file": "minim",
   "prod_file": "md",
-  "environment": "/mnt/netapp2/Store_uni/home/empresa/mdu/rga/conda/envs/myenv/bin/python",
+  "environment": "python",
   "time": "6:00:00"
 }
