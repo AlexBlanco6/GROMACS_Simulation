@@ -28,7 +28,7 @@ This project automates molecular docking simulations using GROMACS,.
 
 1. Edit the config.json
  
- - Change the route from the data directory, whole paths recommended.
+ - Change the route from the data directory and the route environment, you can use "python" but own environment and whole paths are recommended.
  - Ligand, host, topology file are set.
  - You can change minimize and production files if you want, additional files are attached in the mdp_files directory.
  - You can also change he bias and height parameters of opes from the plumed file.
