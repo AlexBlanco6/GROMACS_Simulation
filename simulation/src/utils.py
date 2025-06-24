@@ -114,7 +114,7 @@ srun gmx_mpi mdrun -v -cpi topol.cpt -deffnm topol -multidir {sequence} -plumed 
 fi 
 
 \nif [ -f {int(n_mpi-1)}/topol.gro ]; then
-    /mnt/netapp2/Store_uni/home/empresa/mdu/rga/conda/envs/myenv/bin/python  ../../../src/analysis/make_analysis.py "$(pwd)"
+    {config["environment"]} ../../../src/analysis/make_analysis.py "$(pwd)"
 fi
 """
         
