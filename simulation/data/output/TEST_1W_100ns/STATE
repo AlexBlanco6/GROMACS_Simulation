@@ -1,0 +1,44 @@
+#! FIELDS time axis.proj sigma_axis.proj height
+#! SET action OPES_METAD_state
+#! SET biasfactor                      25
+#! SET epsilon   5.515724517112692e-19
+#! SET kernel_cutoff       9.169679792742315
+#! SET compression_threshold                       1
+#! SET zed       1.993364964245989
+#! SET sum_weights       97.07334040846312
+#! SET sum_weights2       95.25140629268206
+#! SET counter  101
+                    100     0.7060732444724839    0.05226793431880874      193.5025957325548
+#! FIELDS time axis.proj sigma_axis.proj height
+#! SET action OPES_METAD_state
+#! SET biasfactor                      25
+#! SET epsilon   5.515724517112692e-19
+#! SET kernel_cutoff       9.169679792742315
+#! SET compression_threshold                       1
+#! SET zed        2.27959480247699
+#! SET sum_weights       194.3658575724984
+#! SET sum_weights2       190.0010837212332
+#! SET counter  201
+                    200     0.7061222621510573    0.04609800288109911      443.0753987012501
+#! FIELDS time axis.proj sigma_axis.proj height
+#! SET action OPES_METAD_state
+#! SET biasfactor                      25
+#! SET epsilon   5.515724517112692e-19
+#! SET kernel_cutoff       9.169679792742315
+#! SET compression_threshold                       1
+#! SET zed        2.46764353863125
+#! SET sum_weights       291.1032797167043
+#! SET sum_weights2       283.8262177161446
+#! SET counter  301
+                    300     0.7055181841854425    0.04282196368524643      718.3391272672908
+#! FIELDS time axis.proj sigma_axis.proj height
+#! SET action OPES_METAD_state
+#! SET biasfactor                      25
+#! SET epsilon   5.515724517112692e-19
+#! SET kernel_cutoff       9.169679792742315
+#! SET compression_threshold                       1
+#! SET zed       2.610326016489647
+#! SET sum_weights       386.7052153091687
+#! SET sum_weights2       375.6070191405806
+#! SET counter  401
+                    400     0.7054574400646203    0.04075197127766169      1009.426684233754
