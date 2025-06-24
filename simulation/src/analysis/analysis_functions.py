@@ -250,15 +250,14 @@ def delta_PMF(directory):
     colors = sns.color_palette("coolwarm", n_colors=len(files) - 2)
     fig, ax = plt.subplots(1,1 , figsize = (15,10))
 
-    sm_values = []
     for i in range(1, len(files),10):
         data_prev = np.loadtxt(files[i-1], comments=("#"))
         data_curr = np.loadtxt(files[i], comments=("#"))
         col_prev = data_prev[:, 1]
         col_curr = data_curr[:, 1]
         diff_val = np.abs(col_curr - col_prev)
-        ax.scatter(data_prev[:,0], diff_val, color=colors[i - 1], label=f"{files[i-1]} - {files[i]}")
-        sm_values.append(i)
+        ax.plot(data_prev[:,0], diff_val, color=colors[i - 1], label=f"{files[i-1]} - {files[i]}")
+       
 
     sm = plt.cm.ScalarMappable(cmap='coolwarm', norm=plt.Normalize(vmin=0, vmax=len(files)-2))
     cbar = plt.colorbar(sm, ax=ax)
