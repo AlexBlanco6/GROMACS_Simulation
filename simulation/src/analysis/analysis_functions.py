@@ -14,7 +14,7 @@ import os
 
 
 
-def format_pmf_ax(dir,directory, fig, ax, hills):
+def format_pmf_ax(dir,directory, fig, ax, hills, last_fes):
 
     """
     Axes format fro PMF graphs
@@ -34,7 +34,7 @@ def format_pmf_ax(dir,directory, fig, ax, hills):
 
     plt.tight_layout()
 
-    fig.savefig(os.path.join(dir,f"PMF_{directory}.png"))
+    fig.savefig(os.path.join(dir,f"PMF_{last_fes}_{directory}.png"))
 
 
 def format_colvar_ax(dir,directory, fig, ax, w, cv, n):
@@ -100,9 +100,9 @@ def PMF(directory, last_fes = False):
     with open(os.path.join(directory, "config.json"), "r") as f:
         config = json.load(f)
 
-    n_walkers = len(config["cv"])
     method = config["plumed"]["method"]
     dir_name = config ["dir_name"]
+    environment = config["environment"]
 
     os.chdir(directory)
     
@@ -116,7 +116,7 @@ def PMF(directory, last_fes = False):
             
                 HILLS_meta = np.loadtxt(os.path.join(directory, "fes.dat"), comments=("#"))  
                 ax.plot(HILLS_meta[:,0],HILLS_meta[:,1], color = "orangered", alpha =1, linewidth = 3)
-                format_pmf_ax(directory, dir_name, fig, ax, HILLS_meta[:,1])
+                format_pmf_ax(directory, dir_name, fig, ax, HILLS_meta[:,1], last_fes)
             except subprocess.CalledProcessError:
                 print(">>> ERROR CREATING FES FILE")
         else:
@@ -142,38 +142,39 @@ def PMF(directory, last_fes = False):
                         with open("HILLS_tmp", "w") as temp:
                             temp.writelines(script)
 
-                    subprocess.run([f"plumed sum_hills --hills HILLS_tmp --outfile  fes_{i}.dat --mintozero --bin 1000"],
+                    subprocess.run([f"/opt/cesga/2020/software/MPI/gcc/system/openmpi/4.0.5_ft3_cuda/plumed/2.8.0/bin/plumed \
+                                    sum_hills --hills HILLS_tmp --outfile  fes_{i}.dat --mintozero --bin 1000"],
                                     shell=True, executable="/bin/bash")
 
                 files = sorted(glob.glob("fes_*.dat"), key=lambda x: int(x.split("_")[1].split(".")[0]))
                 colors = sns.color_palette("Spectral_r", n_colors=len(files))
                 
                 for i in range(2, len(files)):
-                    data_prev = np.loadtxt(files[i], comments=("#"))
-                    ax.plot(data_prev[:,0], data_prev[:,1], color=colors[i - 1], alpha = 0.9)
+                    HILLS_meta = np.loadtxt(files[i], comments=("#"))
+                    ax.plot(HILLS_meta[:,0], HILLS_meta[:,1], color=colors[i - 1], alpha = 0.9)
 
                 sm = plt.cm.ScalarMappable(cmap='Spectral_r', norm=plt.Normalize(vmin=0, vmax=len(files)))
                 cbar = plt.colorbar(sm, ax=ax)
                 cbar.set_label("FES INDEX")
-                format_pmf_ax(directory, dir_name, fig, ax, HILLS_meta[:,1])
+                format_pmf_ax(directory, dir_name, fig, ax, HILLS_meta[:,1], last_fes)
             except subprocess.CalledProcessError:
                 print(">>> ERROR CREATING FES FILE")
     else:
         f = None
         if last_fes == True:
             try:
-                subprocess.run([f"python ../../../src/analysis/FES_from_State.py \
+                subprocess.run([f"{environment} ../../../src/analysis/FES_from_State.py \
                                 -f STATE --temp 298 --bin 1000"], 
                                 shell=True, executable="/bin/bash")
                 HILLS_opes = np.loadtxt(os.path.join(directory, "fes.dat"), comments=("#"))  
                 ax.plot(HILLS_opes[:,0],HILLS_opes[:,1], color = "orangered", alpha =1, linewidth = 3)
-                format_pmf_ax(directory, dir_name, fig, ax, HILLS_opes[:,1])
+                format_pmf_ax(directory, dir_name, fig, ax, HILLS_opes[:,1], last_fes)
             except subprocess.CalledProcessError:
                     print(">>> ERROR CREATING HILLS FILE")
            
         else:
             try:
-                subprocess.run([f"python ../../../src/analysis/FES_from_State.py \
+                subprocess.run([f"{environment} ../../../src/analysis/FES_from_State.py \
                                 -f STATE --temp 298 --all_stored --bin 1000"], 
                                 shell=True, executable="/bin/bash")
             except subprocess.CalledProcessError:
@@ -181,19 +182,19 @@ def PMF(directory, last_fes = False):
             files = sorted(glob.glob("fes_*.dat"), key=lambda x: int(x.split("_")[1].split(".")[0]))
             colors = sns.color_palette("Spectral_r", n_colors=len(files) - 1)
             
-            sm_values = []
+            
             for i in range(2, len(files)):
-                data_prev = np.loadtxt(files[i], comments=("#"))
+                HILLS_opes = np.loadtxt(files[i], comments=("#"))
                 
                 
-                ax.plot(data_prev[:,0], data_prev[:,1], color=colors[i - 1])
-                sm_values.append(i)
+                ax.plot(HILLS_opes[:,0], HILLS_opes[:,1], color=colors[i - 1])
+                
 
             sm = plt.cm.ScalarMappable(cmap='Spectral_r', norm=plt.Normalize(vmin=0, vmax=len(files)-2))
             cbar = plt.colorbar(sm, ax=ax)
             cbar.set_label("FES INDEX")
 
-            format_pmf_ax((directory, dir_name, fig, ax, HILLS_opes[:,1]))
+            format_pmf_ax((directory, dir_name, fig, ax, HILLS_opes[:,1], last_fes))
     print(f">>> Execution time {time.time()-start}")
 
 
