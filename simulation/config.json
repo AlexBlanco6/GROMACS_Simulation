@@ -8,7 +8,7 @@
         "enabled": true,
         "method": "plumed"
   },
-  "bias": 25,
+  "barrier": 25,
   "height": 0.1,
   "topol": "topol_GMX",
   "em_file": "minim",

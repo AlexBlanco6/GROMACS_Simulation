@@ -17,7 +17,7 @@ def main():
 
     
     last_fes = True
-    PMF(directory, last_fes = last_fes, d = 500)
+    PMF(directory, last_fes = last_fes)
     COLVAR(directory)
 
     if last_fes:

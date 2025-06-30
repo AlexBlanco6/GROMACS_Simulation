@@ -5,6 +5,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 import seaborn as sns
 import subprocess
 import time
@@ -66,7 +67,6 @@ def format_deltapmf_ax(dir,directory, fig, ax):
     ax.set_title(f"{directory} simulation's Absolute Difference Between Consecutive PMFs", fontsize=30)
     ax.set_xlabel(" Distance (nm)", fontsize=26)
     ax.set_ylabel(" ΔPMF (kJ/mol)", fontsize=26)
-    ax.set_xlim(-2.5, 2.5)
     ax.set_ylim(0)
     ax.legend(loc='upper left', fontsize=20)  # You can uncomment bbox_to_anchor if needed
     ax.tick_params(direction='in', axis='both', which='major', length=12, width=1.5, labelsize=22)
@@ -160,7 +160,6 @@ def PMF(directory, last_fes = False):
             except subprocess.CalledProcessError:
                 print(">>> ERROR CREATING FES FILE")
     else:
-        f = None
         if last_fes == True:
             try:
                 subprocess.run([f"{environment} ../../../src/analysis/FES_from_State.py \
@@ -264,4 +263,37 @@ def delta_PMF(directory):
     cbar = plt.colorbar(sm, ax=ax)
     cbar.set_label("File comparison index")
  
+    format_deltapmf_ax(directory, dir_name, fig, ax)
+
+
+def MSE_PMF(directory):
+    
+    os.chdir(directory)
+
+    with open(os.path.join(directory, "config.json"), "r") as f:
+        config = json.load(f)
+    
+    dir_name = config ["dir_name"]
+
+    files = sorted(glob.glob("fes_*.dat"), key=lambda x: int(x.split("_")[1].split(".")[0]))
+    fig, ax = plt.subplots(1,1 , figsize = (15,10))
+    
+
+    a = []
+    diff_val = []
+    for i in range(1, len(files)-50, 50):
+        data_prev = np.loadtxt(files[i-1], comments=("#"))
+        data_curr = np.loadtxt(files[i+49], comments=("#"))
+        col_prev = data_prev[:, 1]
+        col_curr = data_curr[:, 1]
+        
+        if not np.any(np.isnan(col_prev)) and not np.any(np.isnan(col_curr)) and \
+        not np.any(np.isinf(col_prev)) and not np.any(np.isinf(col_curr)):
+            diff_val.append(np.log10(mean_squared_error(col_curr, col_prev)))
+            a.append(f"{int((i-1)*0.2)},{int((i+49)*0.2)}")
+        else:
+            print(f"Invalid data in {directory}, skipping...")
+    # diff_val.append(mean_squared_error(col_curr, col_prev))
+
+    ax.plot(range(1,len(diff_val)-2), diff_val[3:], color= "dodgerblue", marker = ".", markersize = 10)
     format_deltapmf_ax(directory, dir_name, fig, ax)

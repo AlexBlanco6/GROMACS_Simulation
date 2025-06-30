@@ -24,7 +24,7 @@ def add_plumed_file(out, output_dir, config):
         config = json.load(f)
 
     path = os.path.join(config["data_dir"], "files")
-    bias = config["bias"]
+    barrier = config["barrier"]
     height = config["height"]
     meta_file = config["plumed"]["method"]
     file_name = [meta_file + ".dat", meta_file + "restart.dat"]
@@ -36,7 +36,7 @@ def add_plumed_file(out, output_dir, config):
                 "FILE=":         f"FILE={output_path}/HILLS",
                 "STATE_WFILE=":  f"STATE_WFILE={output_path}/STATE",
                 "RESTART=":      f"RESTART={restart_t}",
-                "BIAS=":         f"BIAS={bias}",
+                "BARRIER=":         f"BARRIER={barrier}",
                 "HEIGHT=":       f"HEIGHT={height}",
             }
         script = """"""
