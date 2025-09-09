@@ -18,12 +18,12 @@
  ho       ho          0.00000  0.00000   A     0.00000e+00   0.00000e+00 ; 0.00  0.0000
 
 
-#include "../../../input/MOL_GMX/MOL_GMX.itp"
-#include "../../../input/MOL_GMX/posre_MOL.itp"
-#include "../../../input/0GB_GMX/0GB_GMX.itp"
-#include "../../../input/0GB_GMX/posre_0GB.itp"
-#include "amber99sb-ildn.ff/spce.itp"
-#include "amber99sb-ildn.ff/ions.itp"
+#include "../../../../../input/MOL_GMX/MOL_GMX.itp"
+#include "../../../../../input/MOL_GMX/posre_MOL.itp"
+#include "../../../../../input/0GB_GMX/0GB_GMX.itp"
+#include "../../../../../input/0GB_GMX/posre_0GB.itp"
+#include "../../../../../files/AMBER/opc.itp"
+#include "../../../../../files/AMBER/ions.itp"
 
 [ system ]
 ; Name

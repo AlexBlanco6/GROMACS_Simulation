@@ -22,7 +22,7 @@ def same_waters(out, dir_out_t, n, gro_file, topol_file):
                         file_min = jj
         except FileNotFoundError as e:
             print(f">>> TOPOL FILE NOT FOUND IN  {jj} WALKER, ALL TOPOLOGY FILES MUST HAVE THE SAME NAME")
-
+     #################################33
     # change the number of waters of the rest topols.top to match min_atoms
     for q in range(n):
         file_path = os.path.join(dir_out, f"{q}", topol_file)
@@ -61,7 +61,7 @@ def same_waters(out, dir_out_t, n, gro_file, topol_file):
     # create the new merged_solv_ions2.gro file where we only include the number of waters from the shorter system,
     # the NA atoms are loaded with the coordinates from the previous .gro, not from the shorter system
 
-    num_check = min_atoms + n_ions + 2  # min water atoms + number of ions + number of molecules (host + ligand) must be changed in further ocassion
+    num_check = min_atoms + 1#+ n_ions + 2  # min water atoms + number of ions + number of molecules (host + ligand) must be changed in further ocassion
     for i in range(n):
         file_path = os.path.join(dir_out, f"{i}", gro_file)
         script = " "
@@ -75,7 +75,7 @@ def same_waters(out, dir_out_t, n, gro_file, topol_file):
                 if j == 1:     # change the number of atoms of the system in the second row
                     num_atoms = int(line)
                     if num_atoms != min_atoms:
-                        line = f"{min_atoms * 3 + atoms_ligand_host}"
+                        line = f"{min_atoms * 4 + atoms_ligand_host}"  ### ADDED +4  MUST REVIEW
                     script += line + "\n"
                     continue
 
@@ -110,3 +110,5 @@ def same_waters(out, dir_out_t, n, gro_file, topol_file):
             
             with open(os.path.join(dir_out, f"{i}", "merged_solv_ions2.gro"), "w") as f:
                 f.write(script)
+    
+    return min_atoms * 4 + atoms_ligand_host

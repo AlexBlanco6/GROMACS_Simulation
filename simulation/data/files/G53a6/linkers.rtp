@@ -1,0 +1,1139 @@
+[ BUT ]
+ [ iniend ]
+  C1X   C4X
+ [ atoms ]
+  -C1	CH1      0.143     1	13.019000  ;
+   -O	 OE     -0.454     1	15.999400  ;   OA-->OE con la sustitucion
+  C1X   CH2      0.311     1	14.027000  ;   Aqui empieza la sustitucion
+  C2X   CH2      0.00      2	14.027000  ;
+  C3X   CH2      0.00      2	14.027000  ;
+  C4X   CH2      0.311     3	14.027000  ;
+  +C1	CH1      0.143     3	13.019000  ;
+   +O	 OE     -0.454     3	15.999400  ;  OA-->OE con la sustitucion
+;
+ [ bonds ]
+   C1X     -O      gb_18 ;     CHn  -  OA
+   C2X    C1X      gb_27 ;
+   C3X    C2X      gb_27 ;
+   C4X    C3X      gb_27 ;
+   C4X     +O      gb_18 ;     CHn  -  OA
+;
+ [ pairs ]
+   -C2   C1X
+   -C1   C2X
+    -O   C3X
+   C1X   C4X
+   C2X    +O
+   C3X   +C1
+   C4X   +C2
+
+ [ angles ]
+   C1X     -O    -C1      ga_12 ;
+   C2X    C1X     -O      ga_13 ;
+   C4X    C3X    C2X      ga_15 ;
+   C3X    C2X    C1X      ga_15 ;
+   C4X     +O    +C1      ga_12 ;
+   C3X    C4X     +O      ga_13 ;
+;
+ [ impropers ]
+;
+ [ dihedrals ]
+   C4X    C3X    C2X    C1X      gd_34 ;
+;
+   C3X    C2X    C1X     -O      gd_34 ;
+   C2X    C1X     -O    -C1      gd_23 ;
+   C1X     -O    -C1    -C2      gd_23 ;
+;
+   C2X    C3X    C4X     -O      gd_34 ;
+   C3X    C4X     +O    +C1      gd_23 ;
+   C4X     +O    +C1    +C2      gd_23 ;
+;
+;
+[ OCT ]
+ [ iniend ]
+  C1X   C8X
+ [ atoms ]
+  -C1   CH1      0.143     1    13.019000  ;
+   -O    OE     -0.454     1    15.999400  ;   OA-->OE con la sustitucion
+  C1X   CH2      0.311     1    14.027000  ;   Aqui empieza la sustitucion
+  C2X   CH2      0.00      2    14.027000  ;
+  C3X   CH2      0.00      2    14.027000  ;
+  C4X   CH2      0.00      2    14.027000  ;
+  C5X   CH2      0.00      2    14.027000  ;
+  C6X   CH2      0.00      2    14.027000  ;
+  C7X   CH2      0.00      2    14.027000  ;
+  C8X   CH2      0.311     3    14.027000  ;
+  +C1   CH1      0.143     3    13.019000  ;
+   +O    OE     -0.454     3    15.999400  ;  OA-->OE con la sustitucion
+;
+ [ bonds ]
+   C1X     -O      gb_18 ;     CHn  -  OA
+   C2X    C1X      gb_27 ;
+   C3X    C2X      gb_27 ;
+   C4X    C3X      gb_27 ;
+   C5X    C4X      gb_27 ;
+   C6X    C5X      gb_27 ;
+   C7X    C6X      gb_27 ;
+   C8X    C7X      gb_27 ;
+   C8X     +O      gb_18 ;     CHn  -  OA
+;
+ [ pairs ]
+   -C2   C1X
+   -C1   C2X
+    -O   C3X
+   C1X   C4X
+   C2X   C5X
+   C3X   C6X
+   C4X   C7X
+   C5X   C8X
+   C6X    +O
+   C7X   +C1
+   C8X   +C2
+
+ [ angles ]
+   C1X     -O    -C1      ga_12 ;
+   C2X    C1X     -O      ga_13 ;
+   C4X    C3X    C2X      ga_15 ;
+   C3X    C2X    C1X      ga_15 ;
+   C5X    C4X    C3X      ga_15 ;
+   C6X    C5X    C4X      ga_15 ;
+   C7X    C6X    C5X      ga_15 ;
+   C8X    C7X    C6X      ga_15 ;
+   C8X     +O    +C1      ga_12 ;
+   C7X    C8X     +O      ga_13 ;
+;
+ [ impropers ]
+;
+ [ dihedrals ]
+   C4X    C3X    C2X    C1X      gd_34 ;
+   C5X    C4X    C3X    C2X      gd_34 ;
+   C6X    C5X    C4X    C3X      gd_34 ;
+   C7X    C6X    C5X    C4X      gd_34 ;
+   C8X    C7X    C6X    C5X      gd_34 ;
+
+   C3X    C2X    C1X     -O      gd_34 ;
+   C2X    C1X     -O    -C1      gd_23 ;
+   C1X     -O    -C1    -C2      gd_23 ;
+;
+   C6X    C7X    C8X     +O      gd_34 ;
+   C7X    C8X     +O    +C1      gd_23 ;
+   C8X     +O    +C1    +C2      gd_23 ;
+;
+;
+[ TZL1 ]
+ [ iniend ]
+  C1X   C4X
+
+ [ atoms ]
+  -C1   CH1      0.143     1    13.019000  ;
+   -O    OE     -0.454     1    15.999400  ;
+  C1X   CH2      0.311     1    14.027000  ;
+  C2X   CH2      0.123     2    14.027000  ;
+ Cr1X     C     -0.176     2    12.01100   ;
+ Cr2X   CR1     -0.125     2    13.01900   ;
+ Hr2X    HC      0.219     2    1.00800    ;
+  N1X    NR     -0.178     2    14.00670   ;
+  N2X    NR     -0.006     2    14.00670   ;
+  N3X    NR     -0.089     2    14.00670   ;
+  C3X   CH2      0.232     2    14.027000  ;
+  C4X   CH2      0.311     3    14.027000  ;
+  +C1   CH1      0.143     3    13.019000  ;
+   +O    OE     -0.454     3    15.999400  ;
+;
+ [ bonds ]
+   C1X     -O      gb_18 ;   CHn  -  OA [0.1430      8.1800e+06]
+   C2X    C1X      gb_27 ;   From ATB server it would be gb_26a (CHn  -   CHn (sugar)) [0.1530  7.1500e+06]
+  Cr1X    C2X      gb_21 ;   CHn  -  N, NT, NL, NZ, NE  [0.1470      8.7100e+06]
+  Cr1X   Cr2X      gb_3X ;   ATB parameters [0.1410      6.5389e+06]
+  Cr2X   Hr2X      gb_3  ;   HC  -  C  [0.1090      1.2300e+07]
+   N1X   Cr2X      gb_17 ;   C, CR1, CH2  -  NR (6-ring)  [0.1400      8.5400e+06]
+   N3X   Cr1X      gb_2X ;   ATB parameters  [0.1420      3.2236e+06]
+   N1X    N2X      gb_13 ;   C  -  OA  [0.1360      1.0200e+07]
+   N2X    N3X      gb_44 ;   CUrea  -  OUrea [0.1265      1.3100e+07]
+   C3X    N1X      gb_1X ;   ATB parameters [0.1450      5.2319e+06]
+   C3X    C4X      gb_27 ;   C, CHn  -   C, CHn [0.1530  7.1500e+06]
+   C4X     +O      gb_18 ;   CHn  -  OA [0.1430      8.1800e+06]
+;
+ [ pairs ]
+   -C2   C1X
+   -C1   C2X
+    -O  Cr1X
+   C1X  Cr2X
+   C1X   N3X
+   C2X  Hr2X
+   C2X   N2X
+   C2X   N1X
+  Cr1X   C3X
+  Cr1X   N1X
+  Cr1X   N2X
+  Hr2X   N2X
+  Hr2X   C3X
+  Hr2X   N3X
+  Cr2X   N3X
+  Cr2X   N2X
+  Cr2X   C4X
+   N1X    +O
+   N2X   C4X
+   N3X   C3X
+   C3X   +C1
+   C4X   +C2
+;
+ [ angles ]
+   C1X     -O    -C1      ga_12 ; [109.50      450.00]
+   C2X    C1X     -O      ga_13 ; [109.50      520.00]
+;
+  Cr1X    C2X    C1X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL [111.00      530.00]
+   N3X   Cr1X    C2X      ga_37 ; X(noH)  - 5-ring [126.00      640.00]
+   N2X    N1X   Cr2X      ga_14 ; OM  -  P  -  OA  [109.60          450.00]
+   N1X    N2X    N3X      ga_1X ; from ATB server [110.00          285.00]
+   N2X    N3X   Cr1X      ga_1X ; from ATB server [110.00          285.00]
+   N3X   Cr1X   Cr2X      ga_7  ; NR, C, CR1(5-ring)   [108.00      465.00]
+   C2X   Cr1X   Cr2X      ga_39 ; 5, 6 ring connnection [132.00          760.00]
+   N1X   Cr2X   Cr1X      ga_7  ; NR, C, CR1(5-ring)  [108.00      465.00]
+   N1X   Cr2X   Hr2X      ga_25 ; H - N - CH3, H, HC - 6-ring, H - NT - CHn [120.00          505.00]
+  Cr1X   Cr2X   Hr2X      ga_2X ; from ATB server [134.00         2525.43]
+   C3X    N1X    N2X      ga_34 ; FE  - NR  - CR1 (5-ring)  [125.00          375.00]
+   C3X    N1X   Cr2X      ga_33 ; O  - C  - OA, N, NT, NL   C - NE - CH2 [124.00          730.00]
+   N1X    C3X    C4X      ga_19 ; CHn, C  -  C  -  OA, N, NT, NL [115.00          610.00]
+;
+   C4X     +O    +C1      ga_12 ; [109.50      450.00]
+   C3X    C4X     +O      ga_13 ; [109.50      520.00]
+;
+;
+ [ impropers ]
+   Cr1X    N3X    C2X    Cr2X      gi_1  ; planar groups
+   Cr2X    N1X   Cr1X    Hr2X      gi_1  ; planar groups
+    N1X    C3X    N2X    Cr2X      gi_1  ; planar groups
+;
+ [ dihedrals ]
+   N1X    C3X    C4X     -O     gd_34  ; -CHn,SI-CHn- [0.000       5.92          3]
+   C3X    C4X     +O    +C1     gd_23  ; -CHn-OA(no sugar)-
+   C4X     +O    +C1    +C2     gd_23  ; -CHn-OA(no sugar)-
+;
+   N1X    N2X    N3X   Cr1X     gd_15  ; -C-CR1- (6-ring)  [180.000       41.8          2]
+   N2X    N1X   Cr2X   Cr1X     gd_15  ; -C-CR1- (6-ring)  [180.000       41.8          2]
+   N2X    N3X   Cr1X   Cr2X     gd_15  ; -C-CR1- (6-ring)  [180.000       41.8          2]
+   N3X   Cr1X   Cr2X    N1X     gd_15  ; -C-CR1- (6-ring)  [180.000       41.8          2]
+  Cr2X    N1X    N2X    N3X     gd_15  ; -C-CR1- (6-ring)  [180.000       41.8          2]
+  Cr2X   Cr1X    C2X    C1X     gd_40  ; -CHn-C,NR(ring), CR1-  [0.00            1.00      6]
+   C4X    C3X    N1X   Cr2X     gd_39  ; -CHn-N,NE-    [180.000        1.0          6]
+;
+  Cr1X    C2X    C1X     -O     gd_34  ; -CHn,SI-CHn-
+   C2X    C1X     -O    -C1     gd_23  ; -CHn-OA(no sugar)-
+   C1X     -O    -C1    -C2     gd_23  ; -CHn-OA(no sugar)-
+;
+;
+;
+;
+[ TZ13 ]
+ [ iniend ]
+  C3X   C6X
+;
+ [ atoms ]
+  -C1   CH1      0.143     1    13.019000  ;
+   -O    OE     -0.454     1    15.999400  ;
+  C3X   CH2      0.434     1    14.027000  ;
+ Cr1X     C     -0.176     1    12.01100   ;
+ Cr2X   CR1     -0.125     1    13.01900   ;
+ Hr2X    HC      0.219     1    1.00800    ;
+  N1X    NR     -0.178     1    14.00670   ;
+  N2X    NR     -0.006     1    14.00670   ;
+  N3X    NR     -0.089     1    14.00670   ;
+  C4X   CH2      0.232     1    14.027000  ;
+  C5X   CH2      0.000     2    14.027000  ;
+  C6X   CH2      0.311     3    14.027000  ;
+  +C1   CH1      0.143     3    13.019000  ;
+   +O    OE     -0.454     3    15.999400  ;
+;
+ [ bonds ]
+   C3X     -O      gb_18 ;   CHn  -  OA
+  Cr1X    C3X      gb_21 ;   CHn  -  N, NT, NL, NZ, NE
+  Cr1X   Cr2X      gb_3X ;   ATB parameters
+  Cr2X   Hr2X      gb_3  ;   HC  -  C
+   N1X    N2X      gb_13 ;   C  -  OA
+   N1X   Cr2X      gb_17 ;   C, CR1, CH2  -  NR (6-ring)
+   N2X    N3X      gb_44 ;   CUrea  -  OUrea
+   N3X   Cr1X      gb_2X ;   ATB parameters
+   C4X    N1X      gb_1X ;   ATB parameters
+   C4X    C5X      gb_27 ;   C, CHn  -   C, CHn
+   C5X    C6X      gb_27 ;   C, CHn  -   C, CHn
+   C6X     +O      gb_18 ;   CHn  -  OA
+;define atoms within three atoms of each other
+ [ pairs ]
+   -C2   C3X
+   -C1  Cr1X
+    -O   N3X
+    -O  Cr2X
+   C3X  Hr2X
+   C3X   N2X
+   C3X   N1X
+  Cr1X   C4X
+  Cr1X   N1X
+  Cr1X   N2X
+  Hr2X   N2X
+  Hr2X   C4X
+  Hr2X   N3X
+  Cr2X   N3X
+  Cr2X   N2X
+  Cr2X   C5X
+   N1X   C6X
+   N2X   C5X
+   N3X   C4X
+   C4X    +O
+   C5X   +C1
+   C6X   +C2
+;
+ [ angles ]
+   C3X     -O    -C1      ga_12 ;
+  Cr1X    C3X     -O      ga_13 ;
+;
+   N2X    N1X   Cr2X      ga_14 ; OM  -  P  -  OA
+   N1X    N2X    N3X      ga_1X ; from ATB server
+   N2X    N3X   Cr1X      ga_1X ; from ATB server
+   N3X   Cr1X   Cr2X      ga_7  ; NR, C, CR1(5-ring)
+   N3X   Cr1X    C3X      ga_37 ; X(noH)  - 5-ring
+   C3X   Cr1X   Cr2X      ga_39 ; 5, 6 ring connnection
+   N1X   Cr2X   Cr1X      ga_7  ; NR, C, CR1(5-ring)
+   N1X   Cr2X   Hr2X      ga_25 ; H - N - CH3, H, HC - 6-ring, H - NT - CHn
+  Cr1X   Cr2X   Hr2X      ga_2X ; from ATB server
+   C4X    N1X    N2X      ga_34 ; FE  - NR  - CR1 (5-ring)
+   C4X    N1X   Cr2X      ga_33 ; O  - C  - OA, N, NT, NL   C - NE - CH2
+   N1X    C4X    C5X      ga_19 ; CHn, C  -  C  -  OA, N, NT, NL
+   C4X    C5X    C6X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+;
+   C6X     +O    +C1      ga_12 ;
+   C5X    C6X     +O      ga_13 ;
+;
+;
+ [ impropers ]
+  Cr1X    N3X    C3X   Cr2X    gi_1 ;
+  Cr2X    N1X   Cr1X   Hr2X    gi_1 ;
+   N1X    C4X    N2X   Cr2X    gi_1 ;
+;
+;for this linker, all dihedrals are gathered from the gromacs parameterization, specified by gd_, etc
+ [ dihedrals ]
+   C3X     -O    -C1    -C2     gd_23  ; -CHn-OA(no sugar)- [0.000       1.26          3]
+  Cr1X    C3X     -O    -C1     gd_23  ; -CHn-OA(no sugar)- [0.000       1.26          3]
+  Cr2X   Cr1X    C3X     -O     gd_40  ; ; -CHn-C,NR(ring), CR1- [0.000        1.0          6]
+;
+   N1X    C4X    C5X    C6X     gd_34  ; -CHn,SI-CHn-  [0.000       5.92          3]
+   N1X    N2X    N3X   Cr1X     gd_15  ; -C-CR1- (6-ring) [180.000       41.8          2]
+   N2X    N1X   Cr2X   Cr1X     gd_15  ; -C-CR1- (6-ring) [180.000       41.8          2]
+   N2X    N3X   Cr1X   Cr2X     gd_15  ; -C-CR1- (6-ring) [180.000       41.8          2]
+   N3X   Cr1X   Cr2X    N1X     gd_15  ; -C-CR1- (6-ring) [180.000       41.8          2]
+  Cr2X    N1X    N2X    N3X     gd_15  ; -C-CR1- (6-ring) [180.000       41.8          2]
+   C5X    C4X    N1X   Cr2X     gd_39  ; -CHn-N,NE-    [180.000        1.0          6]
+;
+   C4X    C5X    C6X     +O     gd_34  ; -CHn,SI-CHn-
+   C5X    C6X     +O    +C1     gd_23  ; -CHn-OA(no sugar)-
+   C6X     +O    +C1    +C2     gd_23  ;
+;
+;
+;
+;
+[ TZL2 ]
+ [ iniend ]
+  C1X   C6X
+;
+ [ atoms ]
+  -C1   CH1      0.143     1    13.019000  ;
+   -O    OE     -0.454     1    15.999400  ;
+  C1X   CH2      0.311     1    14.027000  ;
+  C2X   CH2      0.000     2    14.027000  ;
+  C3X   CH2      0.123     3    14.027000  ;
+ Cr1X     C     -0.176     3    12.01100   ;
+ Cr2X   CR1     -0.125     3    13.01900   ;
+ Hr2X    HC      0.219     3    1.00800    ;
+  N1X    NR     -0.178     3    14.00670   ;
+  N2X    NR     -0.006     3    14.00670   ;
+  N3X    NR     -0.089     3    14.00670   ;
+  C4X   CH2      0.232     3    14.027000  ;
+  C5X   CH2      0.000     4    14.027000  ;
+  C6X   CH2      0.311     5    14.027000  ;
+  +C1   CH1      0.143     5    13.019000  ;
+   +O    OE     -0.454     5    15.999400  ;
+;
+ [ bonds ]
+   C1X     -O      gb_18 ;   CHn  -  OA
+   C2X    C1X      gb_27 ;   C, CHn  -   C, CHn
+   C2X    C3X      gb_27 ;   C, CHn  -   C, CHn
+  Cr1X    C3X      gb_21 ;   CHn  -  N, NT, NL, NZ, NE
+  Cr1X   Cr2X      gb_3X ;   ATB parameters
+  Cr2X   Hr2X      gb_3  ;   HC  -  C
+   N1X    N2X      gb_13 ;   C  -  OA
+   N1X   Cr2X      gb_17 ;   C, CR1, CH2  -  NR (6-ring)
+   N2X    N3X      gb_44 ;   CUrea  -  OUrea
+   N3X   Cr1X      gb_2X ;   ATB parameters
+   C4X    N1X      gb_1X ;   ATB parameters
+   C4X    C5X      gb_27 ;   C, CHn  -   C, CHn
+   C5X    C6X      gb_27 ;   C, CHn  -   C, CHn
+   C6X     +O      gb_18 ;   CHn  -  OA
+;
+ [ pairs ]
+   -C2   C1X
+   -C1   C2X
+    -O   C3X
+   C1X  Cr1X
+   C2X  Cr2X
+   C2X   N3X
+   C3X  Hr2X
+   C3X   N2X
+   C3X   N1X
+  Cr1X   C4X
+  Cr1X   N1X
+  Cr1X   N2X
+  Hr2X   N2X
+  Hr2X   C4X
+  Hr2X   N3X
+  Cr2X   N3X
+  Cr2X   N2X
+  Cr2X   C5X
+   N1X   C6X
+   N2X   C5X
+   N3X   C4X
+   C4X    +O
+   C5X   +C1
+   C6X   +C2
+;
+ [ angles ]
+   C1X     -O    -C1      ga_12 ;
+   C2X    C1X     -O      ga_13 ;
+;
+   C3X    C2X    C1X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+  Cr1X    C3X    C2X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   N2X    N1X   Cr2X      ga_14 ; OM  -  P  -  OA
+   N1X    N2X    N3X      ga_1X ; from ATB server
+   N2X    N3X   Cr1X      ga_1X ; from ATB server
+   N3X   Cr1X   Cr2X      ga_7  ; NR, C, CR1(5-ring)
+   N3X   Cr1X    C3X      ga_37 ; X(noH)  - 5-ring
+   C3X   Cr1X   Cr2X      ga_39 ; 5, 6 ring connnection
+   N1X   Cr2X   Cr1X      ga_7  ; NR, C, CR1(5-ring)
+   N1X   Cr2X   Hr2X      ga_25 ; H - N - CH3, H, HC - 6-ring, H - NT - CHn
+  Cr1X   Cr2X   Hr2X      ga_2X ; from ATB server
+   C4X    N1X    N2X      ga_34 ; FE  - NR  - CR1 (5-ring)
+   C4X    N1X   Cr2X      ga_33 ; O  - C  - OA, N, NT, NL   C - NE - CH2
+   N1X    C4X    C5X      ga_19 ; CHn, C  -  C  -  OA, N, NT, NL
+   C4X    C5X    C6X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+;
+   C6X     +O    +C1      ga_12 ;
+   C5X    C6X     +O      ga_13 ;
+;
+;
+ [ impropers ]
+  Cr1X    N3X    C3X   Cr2X    gi_1 ;
+  Cr2X    N1X   Cr1X   Hr2X    gi_1 ;
+   N1X    C4X    N2X   Cr2X    gi_1 ;
+;
+;
+ [ dihedrals ]
+   C1X     -O    -C1    -C2     gd_23  ; -CHn-OA(no sugar)- [0.000       1.26          3]
+   C2X    C1X     -O    -C1     gd_23  ; -CHn-OA(no sugar)- [0.000       1.26          3]
+   C3X    C2X    C1X     -O     gd_34  ; -CHn,SI-CHn-  [0.000       5.92          3]
+;
+  Cr1X    C3X    C2X    C1X     gd_34  ; -CHn,SI-CHn-  [0.000       5.92          3]
+  Cr2X   Cr1X    C3X    C2X     gd_40  ; ; -CHn-C,NR(ring), CR1- [0.000        1.0          6]
+   N1X    C4X    C5X    C6X     gd_34  ; -CHn,SI-CHn-  [0.000       5.92          3]
+   N1X    N2X    N3X   Cr1X     gd_15  ; -C-CR1- (6-ring) [180.000       41.8          2]
+   N2X    N1X   Cr2X   Cr1X     gd_15  ; -C-CR1- (6-ring) [180.000       41.8          2]
+   N2X    N3X   Cr1X   Cr2X     gd_15  ; -C-CR1- (6-ring) [180.000       41.8          2]
+   N3X   Cr1X   Cr2X    N1X     gd_15  ; -C-CR1- (6-ring) [180.000       41.8          2]
+  Cr2X    N1X    N2X    N3X     gd_15  ; -C-CR1- (6-ring) [180.000       41.8          2]
+   C5X    C4X    N1X   Cr2X     gd_39  ; -CHn-N,NE-    [180.000        1.0          6]
+;
+   C4X    C5X    C6X     +O     gd_34  ; -CHn,SI-CHn-
+   C5X    C6X     +O    +C1     gd_23  ; -CHn-OA(no sugar)-
+   C6X     +O    +C1    +C2     gd_23  ;
+;
+;
+;
+;
+[ TZL3 ]
+ [ iniend ]
+  C1X   C8X
+;
+ [ atoms ]
+  -C1   CH1      0.143     1    13.019000  ;
+   -O    OE     -0.454     1    15.999400  ;
+  C1X   CH2      0.311     1    14.027000  ;
+  C2X   CH2      0.000     2    14.027000  ;
+  C3X   CH2      0.000     3    14.027000  ;
+  C4X   CH2      0.123     4    14.027000  ;
+ Cr1X     C     -0.176     4    12.01100   ;
+ Cr2X   CR1     -0.125     4    13.01900   ;
+ Hr2X    HC      0.219     4    1.00800    ;
+  N1X    NR     -0.178     4    14.00670   ;
+  N2X    NR     -0.006     4    14.00670   ;
+  N3X    NR     -0.089     4    14.00670   ;
+  C5X   CH2      0.232     4    14.027000  ;
+  C6X   CH2      0.000     5    14.027000  ;
+  C7X   CH2      0.000     6    14.027000  ;
+  C8X   CH2      0.311     7    14.027000  ;
+  +C1   CH1      0.143     7    13.019000  ;
+   +O    OE     -0.454     7    15.999400  ;
+;
+ [ bonds ]
+   C1X     -O      gb_18 ;   CHn  -  OA
+   C2X    C1X      gb_27 ;   C, CHn  -   C, CHn
+   C2X    C3X      gb_27 ;   C, CHn  -   C, CHn
+   C3X    C4X      gb_27 ;   C, CHn  -   C, CHn
+  Cr1X    C4X      gb_21 ;   CHn  -  N, NT, NL, NZ, NE
+  Cr1X   Cr2X      gb_3X ;   ATB parameters
+  Cr2X   Hr2X      gb_3  ;   HC  -  C
+   N1X   Cr2X      gb_17 ;   C, CR1, CH2  -  NR (6-ring)
+   N3X   Cr1X      gb_2X ;   ATB parameters
+   N1X    N2X      gb_13 ;   C  -  OA
+   N2X    N3X      gb_44 ;   CUrea  -  OUrea
+   C5X    N1X      gb_1X ;   ATB parameters
+   C5X    C6X      gb_27 ;   C, CHn  -   C, CHn
+   C6X    C7X      gb_27 ;   C, CHn  -   C, CHn
+   C7X    C8X      gb_27 ;   C, CHn  -   C, CHn
+   C8X     +O      gb_18 ;   CHn  -  OA
+;
+ [ pairs ]
+   -C2   C1X
+   -C1   C2X
+    -O   C3X
+   C1X   C4X
+   C2X  Cr1X
+   C3X  Cr2X
+   C3X   N3X
+   C4X  Hr2X
+   C4X   N2X
+   C4X   N1X
+  Cr1X   C5X
+  Cr1X   N1X
+  Cr1X   N2X
+  Hr2X   N2X
+  Hr2X   C5X
+  Hr2X   N3X
+  Cr2X   N3X
+  Cr2X   N2X
+  Cr2X   C6X
+   N1X   C7X
+   N2X   C6X
+   N3X   C5X
+   C5X   C8X
+   C6X    +O
+   C7X   +C1
+   C8X   +C2
+;
+;
+ [ angles ]
+   C1X     -O    -C1      ga_12 ;
+   C2X    C1X     -O      ga_13 ;
+;
+   C3X    C2X    C1X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C4X    C3X    C2X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+  Cr1X    C4X    C3X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   N2X    N1X   Cr2X      ga_14 ; OM  -  P  -  OA
+   N1X    N2X    N3X      ga_1X ; from ATB server
+   N2X    N3X   Cr1X      ga_1X ; from ATB server
+   N3X   Cr1X   Cr2X      ga_7  ; NR, C, CR1(5-ring)
+   N3X   Cr1X    C4X      ga_37 ; X(noH)  - 5-ring
+   C4X   Cr1X   Cr2X      ga_39 ; 5, 6 ring connnection
+   N1X   Cr2X   Cr1X      ga_7  ; NR, C, CR1(5-ring)
+   N1X   Cr2X   Hr2X      ga_25 ; H - N - CH3, H, HC - 6-ring, H - NT - CHn
+  Cr1X   Cr2X   Hr2X      ga_2X ; from ATB server
+   C5X    N1X    N2X      ga_34 ; FE  - NR  - CR1 (5-ring)
+   C5X    N1X   Cr2X      ga_33 ; O  - C  - OA, N, NT, NL   C - NE - CH2
+   N1X    C5X    C6X      ga_19 ; CHn, C  -  C  -  OA, N, NT, NL
+   C5X    C6X    C7X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C6X    C7X    C8X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+;
+   C8X     +O    +C1      ga_12 ;
+   C7X    C8X     +O      ga_13 ;
+;
+;
+ [ impropers ]
+  Cr1X    N3X    C4X   Cr2X      gi_1  ;
+  Cr2X    N1X   Cr1X   Hr2X      gi_1  ;
+   N1X    C5X    N2X   Cr2X      gi_1  ;
+;
+ [ dihedrals ]
+   C1X     -O    -C1    -C2     gd_23  ;
+   C2X    C1X     -O    -C1     gd_23  ;
+   C3X    C2X    C1X     -O     gd_34  ; -CHn,SI-CHn-
+;
+   C5X    C6X    C7X    C8X     gd_34  ; -CHn,SI-CHn- [0.00            5.92      3]
+   N1X    C5X    C6X    C7X     gd_34  ; -CHn,SI-CHn- [0.00            5.92      3]
+   N1X    N2X    N3X   Cr1X     gd_15  ; -C-CR1- (6-ring) [180.00           41.80      2]
+   N2X    N1X   Cr2X   Cr1X     gd_15  ; -C-CR1- (6-ring) [180.00           41.80      2]
+   N2X    N3X   Cr1X   Cr2X     gd_15  ; -C-CR1- (6-ring) [180.00           41.80      2]
+   N3X   Cr1X   Cr2X    N1X     gd_15  ; -C-CR1- (6-ring) [180.00           41.80      2]
+  Cr2X    N1X    N2X    N3X     gd_15  ; -C-CR1- (6-ring) [180.00           41.80      2]
+  Cr1X    C4X    C3X    C2X     gd_34  ; -CHn,SI-CHn-  [0.00            5.92      3]
+   C4X    C3X    C2X    C1X     gd_34  ; -CHn,SI-CHn-  [0.00            5.92      3]
+  Cr2X   Cr1X    C4X    C3X     gd_39  ; -CHn-N,NE- [180.00            1.00      6 ]
+   C6X    C5X    N1X   Cr2X     gd_39  ; -CHn-N,NE- [180.00            1.00      6 ]
+;
+   C6X    C7X    C8X     +O     gd_34  ; -CHn,SI-CHn-
+   C7X    C8X     +O    +C1     gd_23  ; -CHn-OA(no sugar)-
+   C8X     +O    +C1    +C2     gd_23  ;
+;
+;
+;
+;
+[ TZL4 ]
+ [ iniend ]
+  C1X   C10X
+;
+ [ atoms ]
+  -C1   CH1      0.143     1    13.019000  ;
+   -O    OE     -0.454     1    15.999400  ;
+  C1X   CH2      0.311     1    14.027000  ;
+  C2X   CH2      0.000     2    14.027000  ;
+  C3X   CH2      0.000     3    14.027000  ;
+  C4X   CH2      0.000     4    14.027000  ;
+  C5X   CH2      0.123     5    14.027000  ;
+ Cr1X     C     -0.176     5    12.01100   ;
+ Cr2X   CR1     -0.125     5    13.01900   ;
+ Hr2X    HC      0.219     5    1.00800    ;
+  N1X    NR     -0.178     5    14.00670   ;
+  N2X    NR     -0.006     5    14.00670   ;
+  N3X    NR     -0.089     5    14.00670   ;
+  C6X   CH2      0.232     5    14.027000  ;
+  C7X   CH2      0.000     6    14.027000  ;
+  C8X   CH2      0.000     7    14.027000  ;
+  C9X   CH2      0.000     8    14.027000  ;
+ C10X   CH2      0.311     9    14.027000  ;
+  +C1   CH1      0.143     9    13.019000  ;
+   +O    OE     -0.454     9    15.999400  ;
+;
+ [ bonds ]
+   C1X     -O      gb_18 ;   CHn  -  OA
+   C2X    C1X      gb_27 ;   C, CHn  -   C, CHn
+   C2X    C3X      gb_27 ;   C, CHn  -   C, CHn
+   C3X    C4X      gb_27 ;   C, CHn  -   C, CHn
+   C4X    C5X      gb_27 ;   C, CHn  -   C, CHn
+  Cr1X    C5X      gb_21 ;   CHn  -  N, NT, NL, NZ, NE
+  Cr1X   Cr2X      gb_3X ;   ATB parameters
+  Cr2X   Hr2X      gb_3  ;   HC  -  C
+   N1X    N2X      gb_13 ;   C  -  OA
+   N1X   Cr2X      gb_17 ;   C, CR1, CH2  -  NR (6-ring)
+   N2X    N3X      gb_44 ;   CUrea  -  OUrea
+   N3X   Cr1X      gb_2X ;   ATB parameters
+   C6X    N1X      gb_1X ;   ATB parameters
+   C6X    C7X      gb_27 ;   C, CHn  -   C, CHn
+   C7X    C8X      gb_27 ;   C, CHn  -   C, CHn
+   C8X    C9X      gb_27 ;   C, CHn  -   C, CHn
+   C9X   C10X      gb_27 ;   C, CHn  -   C, CHn
+  C10X     +O      gb_18 ;   CHn  -  OA
+;
+ [ pairs ]
+   -C2   C1X
+   -C1   C2X
+    -O   C3X
+   C1X   C4X
+   C2X   C5X
+   C3X  Cr1X
+   C4X  Cr2X
+   C4X   N3X
+   C5X  Hr2X
+   C5X   N2X
+   C5X   N1X
+  Cr1X   C6X
+  Cr1X   N1X
+  Cr1X   N2X
+  Hr2X   N2X
+  Hr2X   C6X
+  Hr2X   N3X
+  Cr2X   N3X
+  Cr2X   N2X
+  Cr2X   C7X
+   N1X   C8X
+   N2X   C7X
+   N3X   C6X
+   C6X   C9X
+   C7X  C10X
+   C8X    +O
+   C9X   +C1
+  C10X   +C2
+;
+ [ angles ]
+   C1X     -O    -C1      ga_12 ;
+   C2X    C1X     -O      ga_13 ;
+;
+   C3X    C2X    C1X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C4X    C3X    C2X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C5X    C4X    C3X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+  Cr1X    C5X    C4X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   N2X    N1X   Cr2X      ga_14 ; OM  -  P  -  OA
+   N1X    N2X    N3X      ga_1X ; from ATB server
+   N2X    N3X   Cr1X      ga_1X ; from ATB server
+   N3X   Cr1X   Cr2X      ga_7  ; NR, C, CR1(5-ring)
+   N3X   Cr1X    C5X      ga_37 ; X(noH)  - 5-ring
+   C5X   Cr1X   Cr2X      ga_39 ; 5, 6 ring connnection
+   N1X   Cr2X   Cr1X      ga_7  ; NR, C, CR1(5-ring)
+   N1X   Cr2X   Hr2X      ga_25 ; H - N - CH3, H, HC - 6-ring, H - NT - CHn
+  Cr1X   Cr2X   Hr2X      ga_2X ; from ATB server
+   C6X    N1X    N2X      ga_34 ; FE  - NR  - CR1 (5-ring)
+   C6X    N1X   Cr2X      ga_33 ; O  - C  - OA, N, NT, NL   C - NE - CH2
+   N1X    C6X    C7X      ga_19 ; CHn, C  -  C  -  OA, N, NT, NL
+   C6X    C7X    C8X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C7X    C8X    C9X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C8X    C9X   C10X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+;
+   C9X     +O    +C1      ga_12 ;
+   C9X   C10X     +O      ga_13 ;
+;
+;
+ [ impropers ]
+  Cr1X    N3X    C5X   Cr2X   gi_1
+  Cr2X    N1X   Cr1X   Hr2X   gi_1
+   N1X    C6X    N2X   Cr2X   gi_1
+;
+;
+ [ dihedrals ]
+   C1X     -O    -C1    -C2     gd_23  ;
+   C2X    C1X     -O    -C1     gd_23  ;
+   C3X    C2X    C1X     -O     gd_34  ; -CHn,SI-CHn-
+;
+   C6X    C7X    C8X    C9X     gd_34  ; -CHn,SI-CHn-   [0.00            5.92      3]
+   N1X    C6X    C7X    C8X     gd_34  ; -CHn,SI-CHn-   [0.00            5.92      3]
+   N1X    N2X    N3X   Cr1X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+   N2X    N1X   Cr2X   Cr1X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+   N2X    N3X   Cr1X   Cr2X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+   N3X   Cr1X   Cr2X    N1X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+  Cr1X    C5X    C4X    C3X     gd_34  ; -CHn,SI-CHn-      [0.00            5.92      3]
+   C5X    C4X    C3X    C2X     gd_34  ; -CHn,SI-CHn-      [0.00            5.92      3]
+   C4X    C3X    C2X    C1X     gd_34  ; -CHn,SI-CHn-      [0.00            5.92      3]
+  Cr2X    N1X    N2X    N3X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+  Cr2X   Cr1X    C5X    C4X     gd_39  ; -CHn-N,NE-  [180.00            1.00      6]
+   C7X    C6X    N1X   Cr2X     gd_39  ; -CHn-N,NE-  [180.00            1.00      6]
+   C7X    C8X    C9X   C10X     gd_39 ; ATB gave [180.00            1.00      3 ]
+;
+   C8X    C9X   C10X     +O     gd_34  ; -CHn,SI-CHn-
+   C9X   C10X     +O    +C1     gd_23  ; -CHn-OA(no sugar)-
+  C10X     +O    +C1    +C2     gd_23  ;
+;
+;
+;
+[ TZL5 ]
+ [ iniend ]
+  C1X   C12X
+;
+ [ atoms ]
+  -C1   CH1      0.143     1    13.019000  ;
+   -O    OE     -0.454     1    15.999400  ;
+  C1X   CH2      0.311     1    14.027000  ;
+  C2X   CH2      0.000     2    14.027000  ;
+  C3X   CH2      0.000     3    14.027000  ;
+  C4X   CH2      0.000     4    14.027000  ;
+  C5X   CH2      0.000     5    14.027000  ;
+  C6X   CH2      0.123     6    14.027000  ;
+ Cr1X     C     -0.176     6    12.01100   ;
+ Cr2X   CR1     -0.125     6    13.01900   ;
+ Hr2X    HC      0.219     6    1.00800    ;
+  N1X    NR     -0.178     6    14.00670   ;
+  N2X    NR     -0.006     6    14.00670   ;
+  N3X    NR     -0.089     6    14.00670   ;
+  C7X   CH2      0.232     6    14.027000  ;
+  C8X   CH2      0.000     7    14.027000  ;
+  C9X   CH2      0.000     8    14.027000  ;
+  C10X  CH2      0.000     9    14.027000  ;
+  C11X  CH2      0.000    10    14.027000  ;
+  C12X  CH2      0.311    11    14.027000  ;
+  +C1   CH1      0.143    11    13.019000  ;
+   +O    OE     -0.454    11    15.999400  ;
+;
+ [ bonds ]
+   C1X     -O      gb_18 ;   CHn  -  OA
+   C2X    C1X      gb_27 ;   C, CHn  -   C, CHn
+   C2X    C3X      gb_27 ;   C, CHn  -   C, CHn
+   C3X    C4X      gb_27 ;   C, CHn  -   C, CHn
+   C4X    C5X      gb_27 ;   C, CHn  -   C, CHn
+   C5X    C6X      gb_27 ;   C, CHn  -   C, CHn
+  Cr1X    C6X      gb_21 ;   CHn  -  N, NT, NL, NZ, NE
+  Cr1X   Cr2X      gb_3X ;   ATB parameters
+  Cr2X   Hr2X      gb_3  ;   HC  -  C
+   N1X    N2X      gb_13 ;   C  -  OA
+   N1X   Cr2X      gb_17 ;   C, CR1, CH2  -  NR (6-ring)
+   N2X    N3X      gb_44 ;   CUrea  -  OUrea
+   N3X   Cr1X      gb_2X ;   ATB parameters
+   C7X    N1X      gb_1X ;   ATB parameters
+   C7X    C8X      gb_27 ;   C, CHn  -   C, CHn
+   C8X    C9X      gb_27 ;   C, CHn  -   C, CHn
+   C9X   C10X      gb_27 ;   C, CHn  -   C, CHn
+  C10X   C11X      gb_27 ;   C, CHn  -   C, CHn
+  C11X   C12X      gb_27 ;   C, CHn  -   C, CHn
+  C12X     +O      gb_18 ;   CHn  -  OA
+;
+ [ pairs ]
+   -C2   C1X
+   -C1   C2X
+    -O   C3X
+   C1X   C4X
+   C2X   C5X
+   C3X   C6X
+   C4X  Cr1X
+   C5X  Cr2X
+   C5X   N3X
+   C6X  Hr2X
+   C6X   N2X
+   C6X   N1X
+  Cr1X   C7X
+  Cr1X   N1X
+  Cr1X   N2X
+  Hr2X   N2X
+  Hr2X   C7X
+  Hr2X   N3X
+  Cr2X   N3X
+  Cr2X   N2X
+  Cr2X   C8X
+   N1X   C9X
+   N2X   C8X
+   N3X   C7X
+   C7X  C10X
+   C8X  C11X
+   C9X  C12X
+  C10X    +O
+  C11X   +C1
+  C12X   +C2
+;
+ [ angles ]
+   C1X     -O    -C1      ga_12 ;
+   C2X    C1X     -O      ga_13 ;
+;
+   C3X    C2X    C1X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C4X    C3X    C2X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C5X    C4X    C3X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C6X    C5X    C4X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+  Cr1X    C6X    C5X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   N2X    N1X   Cr2X      ga_14 ; OM  -  P  -  OA
+   N1X    N2X    N3X      ga_1X ; from ATB server
+   N2X    N3X   Cr1X      ga_1X ; from ATB server
+   N3X   Cr1X   Cr2X      ga_7  ; NR, C, CR1(5-ring)
+   N3X   Cr1X    C6X      ga_37 ; X(noH)  - 5-ring
+   C6X   Cr1X   Cr2X      ga_39 ; 5, 6 ring connection
+   N1X   Cr2X   Cr1X      ga_7  ; NR, C, CR1(5-ring)
+   N1X   Cr2X   Hr2X      ga_25 ; H - N - CH3, H, HC - 6-ring, H - NT - CHn
+  Cr1X   Cr2X   Hr2X      ga_2X ; from ATB server
+   C7X    N1X    N2X      ga_34 ; FE  - NR  - CR1 (5-ring)
+   C7X    N1X   Cr2X      ga_33 ; O  - C  - OA, N, NT, NL   C - NE - CH2
+   N1X    C7X    C8X      ga_19 ; CHn, C  -  C  -  OA, N, NT, NL
+   C7X    C8X    C9X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C8X    C9X   C10X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C9X   C10X   C11X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C10X  C11X   C12X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+;
+   C11X     +O    +C1      ga_12 ;
+   C11X   C12X     +O      ga_13 ;
+;
+;
+ [ impropers ]
+  Cr1X    N3X    C6X   Cr2X   gi_1
+  Cr2X    N1X   Cr1X   Hr2X   gi_1
+   N1X    C7X    N2X   Cr2X   gi_1
+;
+;
+ [ dihedrals ]
+   C1X     -O    -C1    -C2     gd_23  ;
+   C2X    C1X     -O    -C1     gd_23  ;
+   C3X    C2X    C1X     -O     gd_34  ; -CHn,SI-CHn-
+;
+   C4X    C3X    C2X    C1X     gd_34  ; -CHn,SI-CHn-
+   C7X    C8X    C9X   C10X     gd_34  ; -CHn,SI-CHn-   [0.00            5.92      3]
+   N1X    C7X    C8X    C9X     gd_34  ; -CHn,SI-CHn-   [0.00            5.92      3]
+   N1X    N2X    N3X   Cr1X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+   N2X    N1X   Cr2X   Cr1X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+   N2X    N3X   Cr1X   Cr2X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+   N3X   Cr1X   Cr2X    N1X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+  Cr1X    C6X    C5X    C4X     gd_34  ; -CHn,SI-CHn-      [0.00            5.92      3]
+   C6X    C5X    C4X    C3X     gd_34  ; -CHn,SI-CHn-      [0.00            5.92      3]
+   C5X    C4X    C3X    C2X     gd_34  ; -CHn,SI-CHn-      [0.00            5.92      3]
+  Cr2X    N1X    N2X    N3X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+  Cr2X   Cr1X    C6X    C5X     gd_39  ; -CHn-N,NE-  [180.00            1.00      6]
+   C8X    C7X    N1X   Cr2X     gd_39  ; -CHn-N,NE-  [180.00            1.00      6]
+   C8X    C9X   C10X   C11X     gd_34  ; -CHn,SI-CHn-      [0.00            5.92      3]
+   C9X    C10X  C11X   C12X     gd_39 ; ATB gave [180.00            1.00      3 ]
+;
+   C10X   C11X   C12X    +O     gd_34  ; -CHn,SI-CHn-
+   C11X   C12X     +O   +C1     gd_23  ; -CHn-OA(no sugar)-
+   C12X     +O    +C1   +C2     gd_23  ;
+;
+;
+;
+[ TZL6 ]
+ [ iniend ]
+  C1X   C14X
+;
+ [ atoms ]
+  -C1   CH1      0.143     1    13.019000  ;
+   -O    OE     -0.454     1    15.999400  ;
+  C1X   CH2      0.311     1    14.027000  ;
+  C2X   CH2      0.000     2    14.027000  ;
+  C3X   CH2      0.000     3    14.027000  ;
+  C4X   CH2      0.000     4    14.027000  ;
+  C5X   CH2      0.000     4    14.027000  ;
+  C6X   CH2      0.000     5    14.027000  ;
+  C7X   CH2      0.123     6    14.027000  ;
+ Cr1X     C     -0.176     7    12.01100   ;
+ Cr2X   CR1     -0.125     7    13.01900   ;
+ Hr2X    HC      0.219     7    1.00800    ;
+  N1X    NR     -0.178     7    14.00670   ;
+  N2X    NR     -0.006     7    14.00670   ;
+  N3X    NR     -0.089     7    14.00670   ;
+  C8X   CH2      0.232     7    14.027000  ;
+  C9X   CH2      0.000     8    14.027000  ;
+  C10X  CH2      0.000     9    14.027000  ;
+  C11X  CH2      0.000    10    14.027000  ;
+  C12X  CH2      0.000    11    14.027000  ;
+  C13X  CH2      0.000    12    14.027000  ;
+  C14X  CH2      0.311    13    14.027000  ;
+  +C1   CH1      0.143    13    13.019000  ;
+   +O    OE     -0.454    13    15.999400  ;
+;
+ [ bonds ]
+   C1X     -O      gb_18 ;   CHn  -  OA
+   C2X    C1X      gb_27 ;   C, CHn  -   C, CHn
+   C2X    C3X      gb_27 ;   C, CHn  -   C, CHn
+   C3X    C4X      gb_27 ;   C, CHn  -   C, CHn
+   C4X    C5X      gb_27 ;   C, CHn  -   C, CHn
+   C5X    C6X      gb_27 ;   C, CHn  -   C, CHn
+   C6X    C7X      gb_27 ;   C, CHn  -   C, CHn
+  Cr1X    C7X      gb_21 ;   CHn  -  N, NT, NL, NZ, NE
+  Cr1X   Cr2X      gb_3X ;   ATB parameters
+  Cr2X   Hr2X      gb_3  ;   HC  -  C
+   N1X    N2X      gb_13 ;   C  -  OA
+   N1X   Cr2X      gb_17 ;   C, CR1, CH2  -  NR (6-ring)
+   N2X    N3X      gb_44 ;   CUrea  -  OUrea
+   N3X   Cr1X      gb_2X ;   ATB parameters
+   C8X    N1X      gb_1X ;   ATB parameters
+   C8X    C9X      gb_27 ;   C, CHn  -   C, CHn
+   C9X   C10X      gb_27 ;   C, CHn  -   C, CHn
+  C10X   C11X      gb_27 ;   C, CHn  -   C, CHn
+  C11X   C12X      gb_27 ;   C, CHn  -   C, CHn
+  C12X   C13X      gb_27 ;   C, CHn  -   C, CHn
+  C13X   C14X      gb_27 ;   C, CHn  -   C, CHn
+  C14X     +O      gb_18 ;   CHn  -  OA
+;
+ [ pairs ]
+   -C2   C1X
+   -C1   C2X
+    -O   C3X
+   C1X   C4X
+   C2X   C5X
+   C3X   C6X
+   C4X   C7X
+   C5X  Cr1X
+   C6X  Cr2X
+   C6X   N3X
+   C7X  Hr2X
+   C7X   N2X
+   C7X   N1X
+  Cr1X   C8X
+  Cr1X   N1X
+  Cr1X   N2X
+  Hr2X   N2X
+  Hr2X   C8X
+  Hr2X   N3X
+  Cr2X   N3X
+  Cr2X   N2X
+  Cr2X   C9X
+   N1X  C10X
+   N2X   C9X
+   N3X   C8X
+   C8X  C11X
+   C9X  C12X
+  C10X  C13X
+  C11X  C14X
+  C12X    +O
+  C13X   +C1
+  C14X   +C2
+;
+ [ angles ]
+   C1X     -O    -C1      ga_12 ;
+   C2X    C1X     -O      ga_13 ;
+;
+   C3X    C2X    C1X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C4X    C3X    C2X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C5X    C4X    C3X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C6X    C5X    C4X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C7X    C6X    C5X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+  Cr1X    C7X    C6X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   N2X    N1X   Cr2X      ga_14 ; OM  -  P  -  OA
+   N1X    N2X    N3X      ga_1X ; from ATB server
+   N2X    N3X   Cr1X      ga_1X ; from ATB server
+   N3X   Cr1X   Cr2X      ga_7  ; NR, C, CR1(5-ring)
+   N3X   Cr1X    C7X      ga_37 ; X(noH)  - 5-ring
+   C7X   Cr1X   Cr2X      ga_39 ; 5, 6 ring connection
+   N1X   Cr2X   Cr1X      ga_7  ; NR, C, CR1(5-ring)
+   N1X   Cr2X   Hr2X      ga_25 ; H - N - CH3, H, HC - 6-ring, H - NT - CHn
+  Cr1X   Cr2X   Hr2X      ga_2X ; from ATB server
+   C8X    N1X    N2X      ga_34 ; FE  - NR  - CR1 (5-ring)
+   C8X    N1X   Cr2X      ga_33 ; O  - C  - OA, N, NT, NL   C - NE - CH2
+   N1X    C8X    C9X      ga_19 ; CHn, C  -  C  -  OA, N, NT, NL
+   C8X    C9X   C10X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C9X   C10X   C11X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C10X  C11X   C12X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C11X  C12X   C13X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C12X  C13X   C14X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+;
+   C13X     +O    +C1      ga_12 ;
+   C13X   C12X     +O      ga_13 ;
+;
+;
+ [ impropers ]
+  Cr1X    N3X    C7X   Cr2X   gi_1
+  Cr2X    N1X   Cr1X   Hr2X   gi_1
+   N1X    C8X    N2X   Cr2X   gi_1
+;
+;
+ [ dihedrals ]
+   C1X     -O    -C1    -C2     gd_23  ;
+   C2X    C1X     -O    -C1     gd_23  ;
+   C3X    C2X    C1X     -O     gd_34  ; -CHn,SI-CHn-
+;
+   C4X    C3X    C2X    C1X     gd_34  ; -CHn,SI-CHn-
+   C8X    C9X   C10X   C11X     gd_34  ; -CHn,SI-CHn-   [0.00            5.92      3]
+   N1X    C8X    C9X   C10X     gd_34  ; -CHn,SI-CHn-   [0.00            5.92      3]
+   N1X    N2X    N3X   Cr1X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+   N2X    N1X   Cr2X   Cr1X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+   N2X    N3X   Cr1X   Cr2X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+   N3X   Cr1X   Cr2X    N1X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+  Cr1X    C7X    C6X    C5X     gd_34  ; -CHn,SI-CHn-      [0.00            5.92      3]
+   C6X    C5X    C4X    C3X     gd_34  ; -CHn,SI-CHn-      [0.00            5.92      3]
+   C5X    C4X    C3X    C2X     gd_34  ; -CHn,SI-CHn-      [0.00            5.92      3]
+   C7X    C6X    C5X    C4X     gd_34  ; -CHn,SI-CHn-      [0.00            5.92      3]
+  Cr2X    N1X    N2X    N3X     gd_15  ; -C-CR1- (6-ring)  [180.00           41.80      2]
+  Cr2X   Cr1X    C6X    C5X     gd_39  ; -CHn-N,NE-  [180.00            1.00      6]
+   C8X    C7X    N1X   Cr2X     gd_39  ; -CHn-N,NE-  [180.00            1.00      6]
+   C8X    C9X   C10X   C11X     gd_34  ; -CHn,SI-CHn-      [0.00            5.92      3]
+   C9X    C10X  C11X   C12X     gd_34  ; -CHn,SI-CHn-      [0.00            5.92      3]
+   C11X   C12X  C13X   C14X     gd_39  ; ATB gave [180.00            1.00      3 ]
+;
+   C12X   C13X   C14X    +O     gd_34  ; -CHn,SI-CHn-
+   C13X   C14X     +O   +C1     gd_23  ; -CHn-OA(no sugar)-
+   C14X     +O    +C1   +C2     gd_23  ;
+;
+;
+;
+[ C4OH ]
+ [ iniend ]
+  C1X   C4X
+ [ atoms ]
+  -C1   CH1      0.143     1    13.019000  ;
+   -O    OE     -0.454     1    15.999400  ;
+  C1X   CH2      0.311     1    14.027000  ;
+  C2X   CH2      0.00      2    14.027000  ;
+  C3X   CH1      0.232     3    13.019000  ;
+  O3X    OA     -0.642     3    15.999400  ;
+  H3X     H      0.410     3    1.0080000  ;
+  C4X   CH2      0.311     4    14.027000  ;
+  +C1   CH1      0.143     4    13.019000  ;
+   +O    OE     -0.454     4    15.999400  ;
+;
+ [ bonds ]
+   C1X     -O      gb_18 ;
+   C4X    C3X      gb_27 ;
+   C3X    O3X      gb_18 ;
+   C3X    C2X      gb_26 ;
+   O3X    H3X      gb_1  ;
+   C2X    C1X      gb_26 ;
+   C4X     +O      gb_18 ;
+;
+ [ pairs ]
+   -C2   C1X
+   -C1   C2X
+    -O   C3X
+   C1X   C4X
+   C1X   O3X
+   O3X    +O
+   H3X   C2X
+   H3X   C4X
+   C2X    +O
+   C3X   +C1
+   C4X   +C2
+
+ [ angles ]
+   C1X     -O    -C1      ga_12 ;
+   C2X    C1X     -O      ga_13 ;
+   C4X    C3X    O3X      ga_15 ;
+   C4X    C3X    C2X      ga_15 ;
+   O3X    C3X    C2X      ga_15 ;
+   C3X    O3X    H3X      ga_12 ;
+   C3X    C2X    C1X      ga_15 ;
+   C4X     +O    +C1      ga_12 ;
+   C3X    C4X     +O      ga_13 ;
+;
+ [ impropers ]
+   C3X    C2X    C4X    O3X      gi_2 ; tetrahedral centres
+;
+ [ dihedrals ]
+   C4X    C3X    C2X    C1X      gd_34 ;
+   C2X    C3X    O3X    H3X      gd_23 ;
+
+;
+   C3X    C2X    C1X     -O      gd_34 ;
+   C2X    C1X     -O    -C1      gd_23 ;
+   C1X     -O    -C1    -C2      gd_23 ;
+;
+   C2X    C3X    C4X     -O      gd_34 ;
+   C3X    C4X     +O    +C1      gd_23 ;
+   C4X     +O    +C1    +C2      gd_23 ;
+;
+;
+;
+[ C3NH ]
+ [ iniend ]
+  C1X   H3X
+
+ [ atoms ]
+  -C1       C    0.104        1  13.019000 ;
+   -O      OE   -0.280        1  15.999400 ;
+  C1X     CH2    0.324        1  14.027000 ;
+  N1X       N   -0.357        1  14.00670  ;
+  H1X       H    0.209        1  1.00800   ;
+  C2X       C   -0.021        2  12.01100  ;
+  H2X      HC    0.178        2  1.00800   ;
+  C3X       C   -0.175        2  12.01100  ;
+  H3X      HC    0.142        2  1.00800   ;
+   +O      OE   -0.208        2  15.999400 ;
+  +C1     CH2    0.084        2  13.019000 ;
+;
+ [ bonds ]
+   C1X     -O      gb_18 ;  CHn  -  OA
+   C1X    N1X      gb_4X ;  from ATB server
+   N1X    H1X      gb_2  ;  H  -  N (all)
+   N1X    C2X      gb_14 ;  C  -  NR (heme)
+   C2X    H2X      gb_5X ; from ATB server
+   C2X    C3X      gb_6X ; from ATB server
+   C3X    H3X      gb_3  ; HC  -  C
+   C3X     +O      gb_15 ;
+;
+[ pairs ]
+   -C2   C1X
+   -C1   N1X
+    -O   H1X
+    -O   C2X
+   C1X   C3X
+   C1X   H2X
+   N1X   H3X
+   N1X   +O
+   C2X   +C1
+   C3X   +C2
+;
+ [ angles ]
+   C1X     -O    -C1      ga_12 ;
+    -O    C1X    N1X      ga_15 ; CHn  -  CHn  -  C, CHn, OA, NR, NT, NL
+   C1X    N1X    H1X      ga_20 ; H  -  NE  -  CH2
+   C1X    N1X    C2X      ga_27 ; N, C, CR1 (6-ring, no H)
+   H1X    N1X    C2X      ga_20 ; H  -  NE  -  CH2
+   N1X    C2X    H2X      ga_25 ; H - N - CH3, H, HC - 6-ring, H - NT - CHn
+   N1X    C2X    C3X      ga_37 ; X(noH)  - 5-ring
+   H2X    C2X    C3X      ga_25 ; H - N - CH3, H, HC - 6-ring, H - NT - CHn
+   C2X    C3X     +O      ga_27 ; N, C, CR1 (6-ring, no H)
+   C2X    C3X    H3X      ga_36 ; H, HC  - 5-ring
+    +O    C3X    H3X      ga_3X ; from ATB
+   C3X     +O    +C1      ga_12 ; X  -  OA, SI  -  X
+;
+ [ impropers ]
+   C3X    C2X   +O    H3X      gi_1  ;
+   C2X    N1X  H2X    C3X      gi_1  ;
+;
+ [ dihedrals ]
+  -C1  -O    C1X    N1X       gd_23 ; CHn-OA(no sugar)-
+  -O    C1X    N1X    C2X     gd_41 ; -CHn-NT-
+   C1X    N1X    C2X    C3X   gd_14 ; ; -C-N,NT,NE,NZ,NR-
+   N1X    C2X    C3X   +O     gd_10 ; ; -C-C-
+   C2X    C3X    +O    +C1    gd_17 ; O-CH1-CHn-no O

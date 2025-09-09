@@ -1,0 +1,97 @@
+HEADER    UNCLASSIFIED                            23-Oct-21
+TITLE     UNITED ATOM STRUCTURE FOR MOLECULE ZIN
+AUTHOR    GROMOS AUTOMATIC TOPOLOGY BUILDER REVISION 2021-05-20 12:41:00
+AUTHOR   2  http://compbio.biosci.uq.edu.au/atb
+HETATM    1  O25  ROC    0       7.914  -2.138   1.348  1.00  0.00           O
+HETATM    2  C24  ROC    0       8.154  -0.742   1.205  1.00  0.00           C
+HETATM    3  C23  ROC    0       7.410  -0.157   0.008  1.00  0.00           C
+HETATM    4  N22  ROC    0       5.956  -0.371   0.130  1.00  0.00           N
+HETATM    5  C27  ROC    0       5.740  -1.820   0.267  1.00  0.00           C
+HETATM    6  C26  ROC    0       6.514  -2.375   1.461  1.00  0.00           C
+HETATM    7  C20  ROC    0       5.216   0.217  -1.017  1.00  0.00           C
+HETATM    8  H21  ROC    0       5.682  -0.141  -1.955  1.00  0.00           H
+HETATM    9  C17  ROC    0       5.335   1.760  -1.030  1.00  0.00           C
+HETATM   10  H18  ROC    0       6.372   2.065  -0.850  1.00  0.00           H
+HETATM   11  O19  ROC    0       4.974   2.159  -2.364  1.00  0.00           O
+HETATM   12  H60  ROC    0       5.009   3.129  -2.393  1.00  0.00           H
+HETATM   13  C16  ROC    0       4.433   2.415   0.024  1.00  0.00           C
+HETATM   14  C14  ROC    0       2.960   2.034  -0.177  1.00  0.00           C
+HETATM   15  C13  ROC    0       1.997   2.818   0.724  1.00  0.00           C
+HETATM   16  C12  ROC    0       0.537   2.516   0.356  1.00  0.00           C
+HETATM   17  C10  ROC    0       0.221   1.007   0.321  1.00  0.00           C
+HETATM   18   C8  ROC    0      -1.184   0.743  -0.242  1.00  0.00           C
+HETATM   19   C7  ROC    0      -2.405   1.437   0.388  1.00  0.00           C
+HETATM   20   C5  ROC    0      -3.569   0.761  -0.376  1.00  0.00           C
+HETATM   21   H6  ROC    0      -3.758   1.347  -1.278  1.00  0.00           H
+HETATM   22   N4  ROC    0      -4.938   0.813   0.327  1.00  0.00           N
+HETATM   23   C3  ROC    0      -4.925   0.036   1.656  1.00  0.00           C
+HETATM   24   C2  ROC    0      -6.218   0.016   2.417  1.00  0.00           C
+HETATM   25  H49  ROC    0      -6.556   0.953   2.855  1.00  0.00           H
+HETATM   26   C1  ROC    0      -6.891  -1.111   2.661  1.00  0.00           C
+HETATM   27  H47  ROC    0      -7.786  -1.113   3.276  1.00  0.00           H
+HETATM   28  H48  ROC    0      -6.565  -2.074   2.272  1.00  0.00           H
+HETATM   29  C43  ROC    0      -6.044   0.307  -0.609  1.00  0.00           C
+HETATM   30  C44  ROC    0      -7.307   1.121  -0.298  1.00  0.00           C
+HETATM   31  C45  ROC    0      -6.830   2.405   0.427  1.00  0.00           C
+HETATM   32  C46  ROC    0      -5.305   2.288   0.556  1.00  0.00           C
+HETATM   33  C37  ROC    0      -3.011  -0.639  -0.868  1.00  0.00           C
+HETATM   34  H38  ROC    0      -2.934  -0.591  -1.956  1.00  0.00           H
+HETATM   35  O39  ROC    0      -3.885  -1.739  -0.552  1.00  0.00           O
+HETATM   36  C40  ROC    0      -3.984  -2.751  -1.469  1.00  0.00           C
+HETATM   37  O42  ROC    0      -3.370  -2.762  -2.512  1.00  0.00           O
+HETATM   38  C41  ROC    0      -4.966  -3.797  -1.011  1.00  0.00           C
+HETATM   39  C35  ROC    0      -1.580  -0.758  -0.274  1.00  0.00           C
+HETATM   40  C36  ROC    0      -1.616  -1.420   1.118  1.00  0.00           C
+HETATM   41  C34  ROC    0      -0.572  -1.489  -1.181  1.00  0.00           C
+HETATM   42  C33  ROC    0       0.878  -1.263  -0.706  1.00  0.00           C
+HETATM   43  C31  ROC    0       1.253   0.232  -0.557  1.00  0.00           C
+HETATM   44  C29  ROC    0       2.734   0.492  -0.097  1.00  0.00           C
+HETATM   45  C28  ROC    0       3.714  -0.169  -1.111  1.00  0.00           C
+HETATM   46  C30  ROC    0       2.974  -0.057   1.328  1.00  0.00           C
+CONECT    1    2    6
+CONECT    2    1    3
+CONECT    3    2    4
+CONECT    4    3    5    7
+CONECT    5    4    6
+CONECT    6    1    5
+CONECT    7    4    8    9   45
+CONECT    8    7
+CONECT    9    7   10   11   13
+CONECT   10    9
+CONECT   11    9   12
+CONECT   12   11
+CONECT   13    9   14
+CONECT   14   13   15   44
+CONECT   15   14   16
+CONECT   16   15   17
+CONECT   17   16   18   43
+CONECT   18   17   19   39
+CONECT   19   18   20
+CONECT   20   19   21   22   33
+CONECT   21   20
+CONECT   22   20   23   29   32
+CONECT   23   22   24
+CONECT   24   23   25   26
+CONECT   25   24
+CONECT   26   24   27   28
+CONECT   27   26
+CONECT   28   26
+CONECT   29   22   30
+CONECT   30   29   31
+CONECT   31   30   32
+CONECT   32   22   31
+CONECT   33   20   34   35   39
+CONECT   34   33
+CONECT   35   33   36
+CONECT   36   35   37   38
+CONECT   37   36
+CONECT   38   36
+CONECT   39   18   33   40   41
+CONECT   40   39
+CONECT   41   39   42
+CONECT   42   41   43
+CONECT   43   17   42   44
+CONECT   44   14   43   45   46
+CONECT   45    7   44
+CONECT   46   44
+END

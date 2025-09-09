@@ -1,0 +1,26 @@
+# Simulation outputs
+*.xtc
+*.trr
+*.edr
+*.cpt
+*.log
+*.tpr
+*.ndx
+*.gro
+*.top
+*.tpr
+*.gro
+*.pdb
+
+# Checkpoint & backup files
+*.bak
+*.out
+*.err
+*.chk
+*.tmp
+
+# Exclude all files in any directory named 'up'
+**/up/*
+
+# Exclude all files in any directory named 'down'  
+**/down/*

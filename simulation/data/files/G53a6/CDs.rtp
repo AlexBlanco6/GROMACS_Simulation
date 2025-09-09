@@ -1,0 +1,4384 @@
+[ bondedtypes ]
+; Column 1 : default bondtype
+; Column 2 : default angletype
+; Column 3 : default proper dihedraltype
+; Column 4 : default improper dihedraltype
+; Column 5 : This controls the generation of dihedrals from the bonding.
+;            All possible dihedrals are generated automatically. A value of
+;            1 here means that all these are retained. A value of
+;            0 here requires generated dihedrals be removed if
+;              * there are any dihedrals on the same central atoms
+;                specified in the residue topology, or
+;              * there are other identical generated dihedrals
+;                sharing the same central atoms, or
+;              * there are other generated dihedrals sharing the
+;                same central bond that have fewer hydrogen atoms
+; Column 6 : number of neighbors to exclude from non-bonded interactions
+; Column 7 : 1 = generate 1,4 interactions between pairs of hydrogen atoms
+;            0 = do not generate such
+; Column 8 : 1 = remove proper dihedrals if found centered on the same
+;                bond as an improper dihedral
+;            0 = do not generate such
+; bonds  angles  dihedrals  impropers
+    2       2          1          2
+
+[ GPU ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5  OA     -0.480     0	 ; 2
+   C5 CH1      0.376     0	 ; 3
+   C4 CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+ [ bonds ]
+   C2    C3  gb_26 ;    6    9
+   C2    C1  gb_26 ;    6    1
+   C2    O2  gb_20 ;    6    7
+   O2    H2  gb_1  ;    7    8
+   C3    O3  gb_20 ;    9   10
+   C3    C4  gb_26 ;    9    4
+   O3    H3  gb_1  ;   10   11
+   C4    O4  gb_20 ;    4    5
+   C4    C5  gb_26 ;    4    3
+   C6    C5  gb_26 ;   12    3
+   C6    O6  gb_20 ;   12   13
+   O6    H6  gb_1  ;   13   14
+   C5    O5  gb_20 ;    3    2
+   O5    C1  gb_20 ;    2    1
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+ [ angles ]
+   C6    O6    H6  ga_12;   12   13   14
+   O6    C6    C5  ga_9 ;   13   12    3
+   C6    C5    O5  ga_9 ;   12    3    2
+   C6    C5    C4  ga_8 ;   12    3    4
+   C5    O5    C1  ga_10;    3    2    1
+   O4    C4    C5  ga_9 ;    5    4    3
+   C3    C4    C5  ga_8 ;    9    4    3
+   C2    C3    C4  ga_8 ;    6    9    4
+   O3    C3    C4  ga_9 ;   10    9    4
+   C3    C4    O4  ga_9 ;    9    4    5
+   C3    O3    H3  ga_12;    9   10   11
+   C3    C2    C1  ga_8 ;    9    6    1
+   C3    C2    O2  ga_9 ;    9    6    7
+   C2    C1    O5  ga_9 ;    6    1    2
+   C2    C3    O3  ga_9 ;    6    9   10
+   C4    C5    O5  ga_9 ;    4    3    2
+   C2    O2    H2  ga_12;    6    7    8
+   C1    C2    O2  ga_9 ;    1    6    7
+;
+  +O5   +C1    O4  ga_9 ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9 ;   20  15    5
+ [ impropers ]
+;  ai    aj    ak    al   gromos type
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+ [ dihedrals ]
+;  ai    aj    ak    al   gromos type
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+
+[ CPTS5 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5  OA     -0.480     0	 ; 2
+   C5  CH1     0.376     0	 ; 3
+   C4 CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.143     3	 ; 12
+   O6	 OE     -0.454     3	 ; 13 ; OA-->OE con la sustitucion
+;
+  C1X   CH2   0.311       3	;     14
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.00        4	;     16
+  C4X   CH2   0.00        4	;     17
+   SX SDmso   0.842       5	;     18
+  O1X    OM  -0.614       5	;     19
+  O2X    OM  -0.614       5	;     20
+  O3X    OM  -0.614       5	;     21
+;
+ [ bonds ]
+   C2    C3  gb_26 ;    6    9
+   C2    C1  gb_26 ;    6    1
+   C2    O2  gb_20 ;    6    7
+   O2    H2  gb_1  ;    7    8
+   C3    O3  gb_20 ;    9   10
+   C3    C4  gb_26 ;    9    4
+   O3    H3  gb_1  ;   10   11
+   C4    O4  gb_20 ;    4    5
+   C4    C5  gb_26 ;    4    3
+   C6    C5  gb_26 ;   12    3
+   C6    O6  gb_20 ;   12   13
+;  O6    H6  gb_1  ;   13   14
+   C5    O5  gb_20 ;    3    2
+   O5    C1  gb_20 ;    2    1
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+   SX   O1X  gb_25 ;   19   18
+   SX   O2X  gb_25 ;   18   20
+   SX   O3X  gb_25 ;   18   21
+   SX   C4X  gb_32 ;   18   17
+  C4X   C3X  gb_27 ;   17   16
+  C3X   C2X  gb_27 ;   16   15
+  C2X   C1X  gb_27 ;   15   14
+  C1X    O6  gb_18 ;   14   13 ;CHn  -  OA
+;
+ [ angles ]
+;   C6    O6    H6  ga_12;   12   13   14
+   O6    C6    C5  ga_9  ;    13   12    3
+   C6    C5    O5  ga_9  ;   12    3    2
+   C6    C5    C4  ga_8 ;   12    3    4
+   C5    O5    C1  ga_10 ;    3    2    1
+   O4    C4    C5  ga_9  ;    5    4    3
+   C3    C4    C5  ga_8  ;    9    4    3
+   C2    C3    C4  ga_8  ;    6    9    4
+   O3    C3    C4  ga_9  ;   10    9    4
+   C3    C4    O4  ga_9  ;    9    4    5
+   C3    O3    H3  ga_12 ;    9   10   11
+   C3    C2    C1  ga_8  ;    9    6    1
+   C3    C2    O2  ga_9  ;    9    6    7
+   C2    C1    O5  ga_9  ;    6    1    2
+   C2    C3    O3  ga_9  ;    6    9   10
+   C4    C5    O5  ga_9  ;    4    3    2
+   C2    O2    H2  ga_12 ;    6    7    8
+   C1    C2    O2  ga_9  ;    1    6    7
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+  O1X    SX   O2X  ga_16 ;   19  18   20
+  O1X    SX   O3X  ga_16 ;   19  18   21
+  O2X    SX   O3X  ga_16 ;   20  18   21
+  O1X    SX   C4X  ga_100 ;     19     18     17 ; anhadido a ffbonded.itp en gromos53a6_captisol.ff
+  O2X    SX   C4X  ga_100 ;     20     18     17 ; anhadido a ffbonded.itp en gromos53a6_captisol.ff
+  O3X    SX   C4X  ga_100 ;     21     18     17 ; anhadido a ffbonded.itp en gromos53a6_captisol.ff
+   SX   C4X   C3X  ga_16 ;  18  17   16
+  C4X   C3X   C2X  ga_15 ;  17  16   15
+  C3X   C2X   C1X  ga_15 ;  16  15   14
+  C2X   C1X    O6  ga_13 ;  15  14   13
+  C1X    O6    C6  ga_12 ;  14  13   12
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+;   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   O2X     SX    C4X    C3X      gd_26 ;     20     18     17     16
+    SX    C4X    C3X    C2X      gd_34 ;     18     17     16     15
+   C4X    C3X    C2X    C1X      gd_34 ;     17     16     15     14
+   C3X    C2X    C1X     O6      gd_34 ;     16     15     14     13
+   C2X    C1X     O6     C6      gd_23 ;     15     14     13     12
+   C1X     O6     C6     C5      gd_23 ;     14     13     12      3
+
+[ CPTS2 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.143     1	 ; 6
+   O2	 OE     -0.454     1	 ; 7 ; OA-->OE con la sustitucion
+  C1X   CH2      0.311     1	 ; 8 ; Aqui empieza la sustitucion
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.00        4	;     16
+  C4X   CH2   0.00        4	;     17
+   SX SDmso   0.842       5	;     18
+  O1X    OM  -0.614       5	;     19
+  O2X    OM  -0.614       5	;     20
+  O3X    OM  -0.614       5	;     21
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O2      gb_18 ;      8      7 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O3     H3      gb_1  ;     10     11
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+    SX    O1X      gb_25 ;     19     18
+    SX    O2X      gb_25 ;     18     20
+    SX    O3X      gb_25 ;     18     21
+    SX    C4X      gb_32 ;     18     17
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+   C4X    C3X      gb_27 ;     17     16
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C3     O3     H3      ga_12 ;      9     10     11
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O2     C2      ga_12 ;      8      7      6
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   O1X     SX    O2X      ga_16 ;     19     18     20
+   O1X     SX    O3X      ga_16 ;     19     18     21
+   O2X     SX    O3X      ga_16 ;     20     18     21
+  O1X    SX   C4X  ga_100 ;     19     18     17 ; anhadido a ffbonded.itp en gromos53a6_captisol.ff
+  O2X    SX   C4X  ga_100 ;     20     18     17 ; anhadido a ffbonded.itp en gromos53a6_captisol.ff
+  O3X    SX   C4X  ga_100 ;     21     18     17 ; anhadido a ffbonded.itp en gromos53a6_captisol.ff
+    SX    C4X    C3X      ga_16 ;     18     17     16
+   C4X    C3X    C2X      ga_15 ;     17     16     15
+   C3X    C2X    C1X      ga_15 ;     16     15      8
+   C2X    C1X     O2      ga_13 ;     15      8      7
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+;   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   O2X     SX    C4X    C3X      gd_26 ;
+    SX    C4X    C3X    C2X      gd_34 ;
+   C4X    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O2      gd_34 ;
+   C2X    C1X     O2     C2      gd_23 ;
+   C1X     O2     C2     C1      gd_23 ;
+
+[ CPTS3 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.143     2	 ; 9
+   O3	 OE     -0.454     2	 ; 10 ; OA-->OE con la sustitucion
+  C1X   CH2      0.311     2	 ; 11 ; Aqui empieza la sustitucion
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.00        4	;     16
+  C4X   CH2   0.00        4	;     17
+   SX SDmso   0.842       5	;     18
+  O1X    OM  -0.614       5	;     19
+  O2X    OM  -0.614       5	;     20
+  O3X    OM  -0.614       5	;     21
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O3      gb_18 ;     11     10 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O2     H2      gb_1  ;      7      8
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+    SX    O1X      gb_25 ;     19     18
+    SX    O2X      gb_25 ;     18     20
+    SX    O3X      gb_25 ;     18     21
+    SX    C4X      gb_32 ;     18     17
+   C2X    C1X      gb_27 ;     15     11
+   C3X    C2X      gb_27 ;     16     15
+   C4X    C3X      gb_27 ;     17     16
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C2     O2     H2      ga_12 ;      6      7      8
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O3     C3      ga_12 ;     11     10     9
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   O1X     SX    O2X      ga_16 ;     19     18     20
+   O1X     SX    O3X      ga_16 ;     19     18     21
+   O2X     SX    O3X      ga_16 ;     20     18     21
+  O1X    SX   C4X  ga_100 ;     19     18     17 ; anhadido a ffbonded.itp en gromos53a6_captisol.ff
+  O2X    SX   C4X  ga_100 ;     20     18     17 ; anhadido a ffbonded.itp en gromos53a6_captisol.ff
+  O3X    SX   C4X  ga_100 ;     21     18     17 ; anhadido a ffbonded.itp en gromos53a6_captisol.ff
+    SX    C4X    C3X      ga_16 ;     18     17     16
+   C4X    C3X    C2X      ga_15 ;     17     16     15
+   C3X    C2X    C1X      ga_15 ;     16     15     11
+   C2X    C1X     O3      ga_13 ;     15     11     10
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+;   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   O2X     SX    C4X    C3X      gd_26 ;
+    SX    C4X    C3X    C2X      gd_34 ;
+   C4X    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O3      gd_34 ;
+   C2X    C1X     O3     C3      gd_23 ;
+   C1X     O3     C3     C2      gd_23 ;
+
+
+
+
+[ HP2 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.143     1	 ; 6
+   O2	 OE     -0.454     1	 ; 7 ; OA-->OE con la sustitucion
+  C1X   CH2      0.311     1	 ; 8 ; Aqui empieza la sustitucion
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X	CH1	 0.444	   4	 ; 15
+  C3X	CH3	-0.142	   4	 ; 16
+  O1X	 OA	-0.71	   4	 ; 17
+  H1X	  H	 0.408	   4	 ; 18
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O2      gb_18 ;      8      7 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O3     H3      gb_1  ;     10     11
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+   C1X    C2X      gb_27 ;      8     15
+   C2X    O1X      gb_18 ;     15     17
+   C2X    C3X      gb_27 ;     15     16
+   O1X    H1X      gb_1  ;     17     18
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C3     O3     H3      ga_12 ;      9     10     11
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O2     C2      ga_12 ;      8      7      6
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+    O2    C1X    C2X      ga_13 ;      7      8     15
+   C1X    C2X    O1X      ga_13 ;      8     15     17
+   C1X    C2X    C3X      ga_15 ;      8     15     16
+   O1X    C2X    C3X      ga_13 ;     17     15     16
+   C2X    O1X    H1X      ga_12 ;     15     17     18
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  C2X   C3X   C1X   O1X  gi_2 ;  15   16    8   17
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+;   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C3X    C2X    C1X     O2      gd_34 ; 16  15   8   7
+   C2X    C1X     O2     C2      gd_23 ; 15   8   7   6
+   C1X     O2     C2     C1      gd_23 ;  8  15   6   1
+   C1X    C2X    O1X    H1X      gd_23 ;  8  15  17  18
+    C3     C2     O2    C1X      gd_23 ;  9   6   7   8
+
+
+[ HP3 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.143     2	 ; 9
+   O3	 OE     -0.454     2	 ; 10 ; OA-->OE con la sustitucion
+  C1X   CH2      0.311     2	 ; 11 ; Aqui empieza la sustitucion
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X	CH1	 0.444	   4	 ; 15
+  C3X	CH3	-0.142	   4	 ; 16
+  O1X	 OA	-0.71	   4	 ; 17
+  H1X	  H	 0.408	   4	 ; 18
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O3      gb_18 ;     11     10 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O2     H2      gb_1  ;      7      8
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+   C1X    C2X      gb_27 ;     11     15
+   C2X    O1X      gb_18 ;     15     17
+   C2X    C3X      gb_27 ;     15     16
+   O1X    H1X      gb_1  ;     17     18
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C2     O2     H2      ga_12 ;      6      7      8
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O3     C3      ga_12 ;     11     10     9
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+    O3    C1X    C2X      ga_13 ;    10     11     15
+   C1X    C2X    O1X      ga_13 ;    11     15     17
+   C1X    C2X    C3X      ga_15 ;    11     15     16
+   O1X    C2X    C3X      ga_13 ;    17     15     16
+   C2X    O1X    H1X      ga_12 ;    15     17     18
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  C2X   C3X   C1X   O1X  gi_2 ;  15   16    11   17
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+;   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C3X    C2X    C1X     O3      gd_34 ; 16  15   11   10
+   C2X    C1X     O3     C3      gd_23 ; 15   11   10   9
+   C1X     O3     C3     C2      gd_23 ;  11  10   9   6
+   C1X    C2X    O1X    H1X      gd_23 ;  11  15  17  18
+    C4     C3     O3    C1X      gd_23 ;  4   9   10   11
+
+
+[ HP6 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.143     3	 ; 12
+   O6	 OE     -0.454     3	 ; 13 ; OA-->OE con la sustitucion
+;
+  C1X   CH2      0.311     3	 ; 14
+  C2X	CH1	 0.444	   4	 ; 15
+  C3X	CH3	-0.142	   4	 ; 16
+  O1X	 OA	-0.71	   4	 ; 17
+  H1X	  H	 0.408	   4	 ; 18
+;
+ [ bonds ]
+   C2    C3  gb_26 ;    6    9
+   C2    C1  gb_26 ;    6    1
+   C2    O2  gb_20 ;    6    7
+   O2    H2  gb_1  ;    7    8
+   C3    O3  gb_20 ;    9   10
+   C3    C4  gb_26 ;    9    4
+   O3    H3  gb_1  ;   10   11
+   C4    O4  gb_20 ;    4    5
+   C4    C5  gb_26 ;    4    3
+   C6    C5  gb_26 ;   12    3
+   C6    O6  gb_20 ;   12   13
+   C5    O5  gb_20 ;    3    2
+   O5    C1  gb_20 ;    2    1
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+   C1X    C2X      gb_27 ;     14     15
+   C2X    O1X      gb_18 ;     15     17
+   C2X    C3X      gb_27 ;     15     16
+   O1X    H1X      gb_1  ;     17     18
+   C1X    O6       gb_18 ;     14     13 ;CHn  -  OA
+;
+ [ angles ]
+   O6    C6    C5  ga_9  ;    13   12    3
+   C6    C5    O5  ga_9  ;   12    3    2
+   C6    C5    C4  ga_8 ;   12    3    4
+   C5    O5    C1  ga_10 ;    3    2    1
+   O4    C4    C5  ga_9  ;    5    4    3
+   C3    C4    C5  ga_8  ;    9    4    3
+   C2    C3    C4  ga_8  ;    6    9    4
+   O3    C3    C4  ga_9  ;   10    9    4
+   C3    C4    O4  ga_9  ;    9    4    5
+   C3    O3    H3  ga_12 ;    9   10   11
+   C3    C2    C1  ga_8  ;    9    6    1
+   C3    C2    O2  ga_9  ;    9    6    7
+   C2    C1    O5  ga_9  ;    6    1    2
+   C2    C3    O3  ga_9  ;    6    9   10
+   C4    C5    O5  ga_9  ;    4    3    2
+   C2    O2    H2  ga_12 ;    6    7    8
+   C1    C2    O2  ga_9  ;    1    6    7
+   C1X   O6    C6  ga_12 ;   14   13   12
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+    O6    C1X    C2X      ga_13 ;     13     14     15
+   C1X    C2X    O1X      ga_13 ;     14     15     17
+   C1X    C2X    C3X      ga_15 ;     14     15     16
+   O1X    C2X    C3X      ga_13 ;     17     15     16
+   C2X    O1X    H1X      ga_12 ;     15     17     18
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  C2X   C3X   C1X   O1X  gi_2 ;  15   16   14   17
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+;   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C3X    C2X    C1X     O6      gd_34 ; 16  15   8   7
+   C2X    C1X     O6     C6      gd_23 ; 15   8   7   6
+   C1X     O6     C6     C5      gd_23 ;  11  10   9   62
+   C1X    C2X    O1X    H1X      gd_23 ;  8  15  17  18
+
+
+[ BUT2 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.143     1	 ; 6
+   O2	 OE     -0.454     1	 ; 7 ; OA-->OE con la sustitucion
+  C1X   CH2      0.311     1	 ; 8 ; Aqui empieza la sustitucion
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.00        4	;     16
+  C4X   CH3   0.00        4	;     17
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O2      gb_18 ;      8      7 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O3     H3      gb_1  ;     10     11
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+   C4X    C3X      gb_27 ;     17     16
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C3     O3     H3      ga_12 ;      9     10     11
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O2     C2      ga_12 ;      8      7      6
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C4X    C3X    C2X      ga_15 ;     17     16     15
+   C3X    C2X    C1X      ga_15 ;     16     15      8
+   C2X    C1X     O2      ga_13 ;     15      8      7
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+;   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C4X    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O2      gd_34 ;
+   C2X    C1X     O2     C2      gd_23 ;
+   C1X     O2     C2     C1      gd_23 ;
+
+[ BUT3 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.143     2	 ; 9
+   O3	 OE     -0.454     2	 ; 10 ; OA-->OE con la sustitucion
+  C1X   CH2      0.311     2	 ; 11 ; Aqui empieza la sustitucion
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.00        4	;     16
+  C4X   CH3   0.00        4	;     17
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O3      gb_18 ;     11     10 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O2     H2      gb_1  ;      7      8
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15     11
+   C3X    C2X      gb_27 ;     16     15
+   C4X    C3X      gb_27 ;     17     16
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C2     O2     H2      ga_12 ;      6      7      8
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O3     C3      ga_12 ;     11     10     9
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C4X    C3X    C2X      ga_15 ;     17     16     15
+   C3X    C2X    C1X      ga_15 ;     16     15     11
+   C2X    C1X     O3      ga_13 ;     15     11     10
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+;   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C4X    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O3      gd_34 ;
+   C2X    C1X     O3     C3      gd_23 ;
+   C1X     O3     C3     C2      gd_23 ;
+
+
+[ BUT6 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.143     3	 ; 12
+   O6	 OE     -0.454     3	 ; 13 ; OA-->OE con la sustitucion
+;
+  C1X   CH2   0.311       3	;     14
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.00        4	;     16
+  C4X   CH3   0.00        4	;     17
+;
+ [ bonds ]
+   C2    C3  gb_26 ;    6    9
+   C2    C1  gb_26 ;    6    1
+   C2    O2  gb_20 ;    6    7
+   O2    H2  gb_1  ;    7    8
+   C3    O3  gb_20 ;    9   10
+   C3    C4  gb_26 ;    9    4
+   O3    H3  gb_1  ;   10   11
+   C4    O4  gb_20 ;    4    5
+   C4    C5  gb_26 ;    4    3
+   C6    C5  gb_26 ;   12    3
+   C6    O6  gb_20 ;   12   13
+;   O6    H6  gb_1  ;   13   14
+   C5    O5  gb_20 ;    3    2
+   O5    C1  gb_20 ;    2    1
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+  C4X   C3X  gb_27 ;   17   16
+  C3X   C2X  gb_27 ;   16   15
+  C2X   C1X  gb_27 ;   15   14
+  C1X    O6  gb_18 ;   14   13 ;CHn  -  OA
+;
+ [ angles ]
+;   C6    O6    H6  ga_12;   12   13   14
+   O6    C6    C5  ga_9  ;    13   12    3
+   C6    C5    O5  ga_9  ;   12    3    2
+   C6    C5    C4  ga_8 ;   12    3    4
+   C5    O5    C1  ga_10 ;    3    2    1
+   O4    C4    C5  ga_9  ;    5    4    3
+   C3    C4    C5  ga_8  ;    9    4    3
+   C2    C3    C4  ga_8  ;    6    9    4
+   O3    C3    C4  ga_9  ;   10    9    4
+   C3    C4    O4  ga_9  ;    9    4    5
+   C3    O3    H3  ga_12 ;    9   10   11
+   C3    C2    C1  ga_8  ;    9    6    1
+   C3    C2    O2  ga_9  ;    9    6    7
+   C2    C1    O5  ga_9  ;    6    1    2
+   C2    C3    O3  ga_9  ;    6    9   10
+   C4    C5    O5  ga_9  ;    4    3    2
+   C2    O2    H2  ga_12 ;    6    7    8
+   C1    C2    O2  ga_9  ;    1    6    7
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+  C4X   C3X   C2X  ga_15 ;  17  16   15
+  C3X   C2X   C1X  ga_15 ;  16  15   14
+  C2X   C1X    O6  ga_13 ;  15  14   13
+  C1X    O6    C6  ga_12 ;  14  13   12
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+;   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C4X    C3X    C2X    C1X      gd_34 ;     17     16     15     14
+   C3X    C2X    C1X     O6      gd_34 ;     16     15     14     13
+   C2X    C1X     O6     C6      gd_23 ;     15     14     13     12
+   C1X     O6     C6     C5      gd_23 ;     14     13     12      3
+
+[ PRP2 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.143     1	 ; 6
+   O2	 OE     -0.454     1	 ; 7 ; OA-->OE con la sustitucion
+  C1X   CH2      0.311     1	 ; 8 ; Aqui empieza la sustitucion
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH3   0.00        4	;     16
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O2      gb_18 ;      8      7 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O3     H3      gb_1  ;     10     11
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C3     O3     H3      ga_12 ;      9     10     11
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O2     C2      ga_12 ;      8      7      6
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C3X    C2X    C1X      ga_15 ;     16     15      8
+   C2X    C1X     O2      ga_13 ;     15      8      7
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+;   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C3X    C2X    C1X     O2      gd_34 ;
+   C2X    C1X     O2     C2      gd_23 ;
+   C1X     O2     C2     C1      gd_23 ;
+
+[ PRP3 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.143     2	 ; 9
+   O3	 OE     -0.454     2	 ; 10 ; OA-->OE con la sustitucion
+  C1X   CH2      0.311     2	 ; 11 ; Aqui empieza la sustitucion
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH3   0.00        4	;     16
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O3      gb_18 ;     11     10 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O2     H2      gb_1  ;      7      8
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15     11
+   C3X    C2X      gb_27 ;     16     15
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C2     O2     H2      ga_12 ;      6      7      8
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O3     C3      ga_12 ;     11     10     9
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C3X    C2X    C1X      ga_15 ;     16     15     11
+   C2X    C1X     O3      ga_13 ;     15     11     10
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+;   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C3X    C2X    C1X     O3      gd_34 ;
+   C2X    C1X     O3     C3      gd_23 ;
+   C1X     O3     C3     C2      gd_23 ;
+;
+[ PRP6 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.143     3	 ; 12
+   O6	 OE     -0.454     3	 ; 13 ; OA-->OE con la sustitucion
+;
+  C1X   CH2   0.311       3	;     14
+  C2X   CH2   0.00        4	;     15
+  C3X   CH3   0.00        4	;     16
+;
+ [ bonds ]
+   C2    C3  gb_26 ;    6    9
+   C2    C1  gb_26 ;    6    1
+   C2    O2  gb_20 ;    6    7
+   O2    H2  gb_1  ;    7    8
+   C3    O3  gb_20 ;    9   10
+   C3    C4  gb_26 ;    9    4
+   O3    H3  gb_1  ;   10   11
+   C4    O4  gb_20 ;    4    5
+   C4    C5  gb_26 ;    4    3
+   C6    C5  gb_26 ;   12    3
+   C6    O6  gb_20 ;   12   13
+;   O6    H6  gb_1  ;   13   14
+   C5    O5  gb_20 ;    3    2
+   O5    C1  gb_20 ;    2    1
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+  C3X   C2X  gb_27 ;   16   15
+  C2X   C1X  gb_27 ;   15   14
+  C1X    O6  gb_18 ;   14   13 ;CHn  -  OA
+;
+ [ angles ]
+;   C6    O6    H6  ga_12;   12   13   14
+   O6    C6    C5  ga_9  ;    13   12    3
+   C6    C5    O5  ga_9  ;   12    3    2
+   C6    C5    C4  ga_8 ;   12    3    4
+   C5    O5    C1  ga_10 ;    3    2    1
+   O4    C4    C5  ga_9  ;    5    4    3
+   C3    C4    C5  ga_8  ;    9    4    3
+   C2    C3    C4  ga_8  ;    6    9    4
+   O3    C3    C4  ga_9  ;   10    9    4
+   C3    C4    O4  ga_9  ;    9    4    5
+   C3    O3    H3  ga_12 ;    9   10   11
+   C3    C2    C1  ga_8  ;    9    6    1
+   C3    C2    O2  ga_9  ;    9    6    7
+   C2    C1    O5  ga_9  ;    6    1    2
+   C2    C3    O3  ga_9  ;    6    9   10
+   C4    C5    O5  ga_9  ;    4    3    2
+   C2    O2    H2  ga_12 ;    6    7    8
+   C1    C2    O2  ga_9  ;    1    6    7
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+  C3X   C2X   C1X  ga_15 ;  16  15   14
+  C2X   C1X    O6  ga_13 ;  15  14   13
+  C1X    O6    C6  ga_12 ;  14  13   12
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+;   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C3X    C2X    C1X     O6      gd_34 ;     16     15     14     13
+   C2X    C1X     O6     C6      gd_23 ;     15     14     13     12
+   C1X     O6     C6     C5      gd_23 ;     14     13     12      3
+
+
+
+[ ETH2 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.143     1	 ; 6
+   O2	 OE     -0.454     1	 ; 7 ; OA-->OE con la sustitucion
+  C1X   CH2      0.311     1	 ; 8 ; Aqui empieza la sustitucion
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH3   0.00        4	;     15
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O2      gb_18 ;      8      7 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O3     H3      gb_1  ;     10     11
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15      8
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C3     O3     H3      ga_12 ;      9     10     11
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O2     C2      ga_12 ;      8      7      6
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C2X    C1X     O2      ga_13 ;     15      8      7
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+;   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C2X    C1X     O2     C2      gd_23 ;
+   C1X     O2     C2     C1      gd_23 ;
+
+[ ETH3 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.143     2	 ; 9
+   O3	 OE     -0.454     2	 ; 10 ; OA-->OE con la sustitucion
+  C1X   CH2      0.311     2	 ; 11 ; Aqui empieza la sustitucion
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH3   0.00        4	;     15
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O3      gb_18 ;     11     10 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O2     H2      gb_1  ;      7      8
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15     11
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C2     O2     H2      ga_12 ;      6      7      8
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O3     C3      ga_12 ;     11     10     9
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C2X    C1X     O3      ga_13 ;     15     11     10
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+;   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C2X    C1X     O3     C3      gd_23 ;
+   C1X     O3     C3     C2      gd_23 ;
+
+
+[ ETH6 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.143     3	 ; 12
+   O6	 OE     -0.454     3	 ; 13 ; OA-->OE con la sustitucion
+;
+  C1X   CH2   0.311       3	;     14
+  C2X   CH3   0.00        4	;     15
+;
+ [ bonds ]
+   C2    C3  gb_26 ;    6    9
+   C2    C1  gb_26 ;    6    1
+   C2    O2  gb_20 ;    6    7
+   O2    H2  gb_1  ;    7    8
+   C3    O3  gb_20 ;    9   10
+   C3    C4  gb_26 ;    9    4
+   O3    H3  gb_1  ;   10   11
+   C4    O4  gb_20 ;    4    5
+   C4    C5  gb_26 ;    4    3
+   C6    C5  gb_26 ;   12    3
+   C6    O6  gb_20 ;   12   13
+;   O6    H6  gb_1  ;   13   14
+   C5    O5  gb_20 ;    3    2
+   O5    C1  gb_20 ;    2    1
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+  C2X   C1X  gb_27 ;   15   14
+  C1X    O6  gb_18 ;   14   13 ;CHn  -  OA
+;
+ [ angles ]
+;   C6    O6    H6  ga_12;   12   13   14
+   O6    C6    C5  ga_9  ;    13   12    3
+   C6    C5    O5  ga_9  ;   12    3    2
+   C6    C5    C4  ga_8 ;   12    3    4
+   C5    O5    C1  ga_10 ;    3    2    1
+   O4    C4    C5  ga_9  ;    5    4    3
+   C3    C4    C5  ga_8  ;    9    4    3
+   C2    C3    C4  ga_8  ;    6    9    4
+   O3    C3    C4  ga_9  ;   10    9    4
+   C3    C4    O4  ga_9  ;    9    4    5
+   C3    O3    H3  ga_12 ;    9   10   11
+   C3    C2    C1  ga_8  ;    9    6    1
+   C3    C2    O2  ga_9  ;    9    6    7
+   C2    C1    O5  ga_9  ;    6    1    2
+   C2    C3    O3  ga_9  ;    6    9   10
+   C4    C5    O5  ga_9  ;    4    3    2
+   C2    O2    H2  ga_12 ;    6    7    8
+   C1    C2    O2  ga_9  ;    1    6    7
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+  C2X   C1X    O6  ga_13 ;  15  14   13
+  C1X    O6    C6  ga_12 ;  14  13   12
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+;   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C2X    C1X     O6     C6      gd_23 ;     15     14     13     12
+   C1X     O6     C6     C5      gd_23 ;     14     13     12      3
+
+
+[ MET2 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.143     1	 ; 6
+   O2	 OE     -0.454     1	 ; 7 ; OA-->OE con la sustitucion
+  C1X   CH3      0.311     1	 ; 8 ; Aqui empieza la sustitucion
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O2      gb_18 ;      8      7 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O3     H3      gb_1  ;     10     11
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C3     O3     H3      ga_12 ;      9     10     11
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O2     C2      ga_12 ;      8      7      6
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+;   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C1X     O2     C2     C1      gd_23 ;
+
+[ MET3 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.143     2	 ; 9
+   O3	 OE     -0.454     2	 ; 10 ; OA-->OE con la sustitucion
+  C1X   CH3      0.311     2	 ; 11 ; Aqui empieza la sustitucion
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O3      gb_18 ;     11     10 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O2     H2      gb_1  ;      7      8
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C2     O2     H2      ga_12 ;      6      7      8
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O3     C3      ga_12 ;     11     10     9
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+;   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C1X     O3     C3     C2      gd_23 ;
+
+
+[ MET6 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.143     3	 ; 12
+   O6	 OE     -0.454     3	 ; 13 ; OA-->OE con la sustitucion
+;
+  C1X   CH3   0.311       3	;     14
+;
+ [ bonds ]
+   C2    C3  gb_26 ;    6    9
+   C2    C1  gb_26 ;    6    1
+   C2    O2  gb_20 ;    6    7
+   O2    H2  gb_1  ;    7    8
+   C3    O3  gb_20 ;    9   10
+   C3    C4  gb_26 ;    9    4
+   O3    H3  gb_1  ;   10   11
+   C4    O4  gb_20 ;    4    5
+   C4    C5  gb_26 ;    4    3
+   C6    C5  gb_26 ;   12    3
+   C6    O6  gb_20 ;   12   13
+;   O6    H6  gb_1  ;   13   14
+   C5    O5  gb_20 ;    3    2
+   O5    C1  gb_20 ;    2    1
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+  C1X    O6  gb_18 ;   14   13 ;CHn  -  OA
+;
+ [ angles ]
+;   C6    O6    H6  ga_12;   12   13   14
+   O6    C6    C5  ga_9  ;    13   12    3
+   C6    C5    O5  ga_9  ;   12    3    2
+   C6    C5    C4  ga_8 ;   12    3    4
+   C5    O5    C1  ga_10 ;    3    2    1
+   O4    C4    C5  ga_9  ;    5    4    3
+   C3    C4    C5  ga_8  ;    9    4    3
+   C2    C3    C4  ga_8  ;    6    9    4
+   O3    C3    C4  ga_9  ;   10    9    4
+   C3    C4    O4  ga_9  ;    9    4    5
+   C3    O3    H3  ga_12 ;    9   10   11
+   C3    C2    C1  ga_8  ;    9    6    1
+   C3    C2    O2  ga_9  ;    9    6    7
+   C2    C1    O5  ga_9  ;    6    1    2
+   C2    C3    O3  ga_9  ;    6    9   10
+   C4    C5    O5  ga_9  ;    4    3    2
+   C2    O2    H2  ga_12 ;    6    7    8
+   C1    C2    O2  ga_9  ;    1    6    7
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+  C1X    O6    C6  ga_12 ;  14  13   12
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+;   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C1X     O6     C6     C5      gd_23 ;     14     13     12      3
+
+
+[ SBE2 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.143     1	 ; 6
+   O2	 OE     -0.454     1	 ; 7 ; OA-->OE
+  C1X   CH2      0.311     1	 ; 8 ;
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.00        4	;     16
+  C4X   CH2   0.00        4	;     17
+   SX SDmso   0.842       5	;     18
+  O1X    OM  -0.614       5	;     19
+  O2X    OM  -0.614       5	;     20
+  O3X    OM  -0.614       5	;     21
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O2      gb_18 ;      8      7 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O3     H3      gb_1  ;     10     11
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+    SX    O1X      gb_25 ;     19     18
+    SX    O2X      gb_25 ;     18     20
+    SX    O3X      gb_25 ;     18     21
+    SX    C4X      gb_32 ;     18     17
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+   C4X    C3X      gb_27 ;     17     16
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C3     O3     H3      ga_12 ;      9     10     11
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O2     C2      ga_12 ;      8      7      6
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   O1X     SX    O2X      ga_16 ;     19     18     20
+   O1X     SX    O3X      ga_16 ;     19     18     21
+   O2X     SX    O3X      ga_16 ;     20     18     21
+  O1X    SX   C4X  ga_100 ;     19     18     17 ; added to ffbonded.itp in gromos53a6_captisol.ff
+  O2X    SX   C4X  ga_100 ;     20     18     17 ; added to ffbonded.itp in gromos53a6_captisol.ff
+  O3X    SX   C4X  ga_100 ;     21     18     17 ; added to ffbonded.itp in gromos53a6_captisol.ff
+    SX    C4X    C3X      ga_16 ;     18     17     16
+   C4X    C3X    C2X      ga_15 ;     17     16     15
+   C3X    C2X    C1X      ga_15 ;     16     15      8
+   C2X    C1X     O2      ga_13 ;     15      8      7
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+;   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   O2X     SX    C4X    C3X      gd_26 ;
+    SX    C4X    C3X    C2X      gd_34 ;
+   C4X    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O2      gd_34 ;
+   C2X    C1X     O2     C2      gd_23 ;
+   C1X     O2     C2     C1      gd_23 ;
+
+[ SBE3 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.143     2	 ; 9
+   O3	 OE     -0.454     2	 ; 10 ; OA-->OE
+  C1X   CH2      0.311     2	 ; 11 ;
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.00        4	;     16
+  C4X   CH2   0.00        4	;     17
+   SX SDmso   0.842       5	;     18
+  O1X    OM  -0.614       5	;     19
+  O2X    OM  -0.614       5	;     20
+  O3X    OM  -0.614       5	;     21
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O3      gb_18 ;     11     10 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O2     H2      gb_1  ;      7      8
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+    SX    O1X      gb_25 ;     19     18
+    SX    O2X      gb_25 ;     18     20
+    SX    O3X      gb_25 ;     18     21
+    SX    C4X      gb_32 ;     18     17
+   C2X    C1X      gb_27 ;     15     11
+   C3X    C2X      gb_27 ;     16     15
+   C4X    C3X      gb_27 ;     17     16
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C2     O2     H2      ga_12 ;      6      7      8
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O3     C3      ga_12 ;     11     10     9
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   O1X     SX    O2X      ga_16 ;     19     18     20
+   O1X     SX    O3X      ga_16 ;     19     18     21
+   O2X     SX    O3X      ga_16 ;     20     18     21
+  O1X    SX   C4X  ga_100 ;     19     18     17 ; added to ffbonded.itp in gromos53a6_captisol.ff
+  O2X    SX   C4X  ga_100 ;     20     18     17 ; added to ffbonded.itp in gromos53a6_captisol.ff
+  O3X    SX   C4X  ga_100 ;     21     18     17 ; added to ffbonded.itp in gromos53a6_captisol.ff
+    SX    C4X    C3X      ga_16 ;     18     17     16
+   C4X    C3X    C2X      ga_15 ;     17     16     15
+   C3X    C2X    C1X      ga_15 ;     16     15     11
+   C2X    C1X     O3      ga_13 ;     15     11     10
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+;   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   O2X     SX    C4X    C3X      gd_26 ;
+    SX    C4X    C3X    C2X      gd_34 ;
+   C4X    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O3      gd_34 ;
+   C2X    C1X     O3     C3      gd_23 ;
+   C1X     O3     C3     C2      gd_23 ;
+
+[ SBE6 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.143     3	 ; 12
+   O6	 OE     -0.454     3	 ; 13 ; OA-->OE
+;
+  C1X   CH2   0.311       3	;     14
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.00        4	;     16
+  C4X   CH2   0.00        4	;     17
+   SX SDmso   0.842       5	;     18
+  O1X    OM  -0.614       5	;     19
+  O2X    OM  -0.614       5	;     20
+  O3X    OM  -0.614       5	;     21
+;
+ [ bonds ]
+   C2    C3  gb_26 ;    6    9
+   C2    C1  gb_26 ;    6    1
+   C2    O2  gb_20 ;    6    7
+   O2    H2  gb_1  ;    7    8
+   C3    O3  gb_20 ;    9   10
+   C3    C4  gb_26 ;    9    4
+   O3    H3  gb_1  ;   10   11
+   C4    O4  gb_20 ;    4    5
+   C4    C5  gb_26 ;    4    3
+   C6    C5  gb_26 ;   12    3
+   C6    O6  gb_20 ;   12   13
+;   O6    H6  gb_1  ;   13   14
+   C5    O5  gb_20 ;    3    2
+   O5    C1  gb_20 ;    2    1
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+   SX   O1X  gb_25 ;   19   18
+   SX   O2X  gb_25 ;   18   20
+   SX   O3X  gb_25 ;   18   21
+   SX   C4X  gb_32 ;   18   17
+  C4X   C3X  gb_27 ;   17   16
+  C3X   C2X  gb_27 ;   16   15
+  C2X   C1X  gb_27 ;   15   14
+  C1X    O6  gb_18 ;   14   13 ;CHn  -  OA
+;
+ [ angles ]
+;   C6    O6    H6  ga_12;   12   13   14
+   O6    C6    C5  ga_9  ;    13   12    3
+   C6    C5    O5  ga_9  ;   12    3    2
+   C6    C5    C4  ga_8 ;   12    3    4
+   C5    O5    C1  ga_10 ;    3    2    1
+   O4    C4    C5  ga_9  ;    5    4    3
+   C3    C4    C5  ga_8  ;    9    4    3
+   C2    C3    C4  ga_8  ;    6    9    4
+   O3    C3    C4  ga_9  ;   10    9    4
+   C3    C4    O4  ga_9  ;    9    4    5
+   C3    O3    H3  ga_12 ;    9   10   11
+   C3    C2    C1  ga_8  ;    9    6    1
+   C3    C2    O2  ga_9  ;    9    6    7
+   C2    C1    O5  ga_9  ;    6    1    2
+   C2    C3    O3  ga_9  ;    6    9   10
+   C4    C5    O5  ga_9  ;    4    3    2
+   C2    O2    H2  ga_12 ;    6    7    8
+   C1    C2    O2  ga_9  ;    1    6    7
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+  O1X    SX   O2X  ga_16 ;   19  18   20
+  O1X    SX   O3X  ga_16 ;   19  18   21
+  O2X    SX   O3X  ga_16 ;   20  18   21
+  O1X    SX   C4X  ga_100 ;     19     18     17 ; added to ffbonded.itp in gromos53a6_captisol.ff
+  O2X    SX   C4X  ga_100 ;     20     18     17 ; added to ffbonded.itp in gromos53a6_captisol.ff
+  O3X    SX   C4X  ga_100 ;     21     18     17 ; added to ffbonded.itp in gromos53a6_captisol.ff
+   SX   C4X   C3X  ga_16 ;  18  17   16
+  C4X   C3X   C2X  ga_15 ;  17  16   15
+  C3X   C2X   C1X  ga_15 ;  16  15   14
+  C2X   C1X    O6  ga_13 ;  15  14   13
+  C1X    O6    C6  ga_12 ;  14  13   12
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+;   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   O2X     SX    C4X    C3X      gd_26 ;     20     18     17     16
+    SX    C4X    C3X    C2X      gd_34 ;     18     17     16     15
+   C4X    C3X    C2X    C1X      gd_34 ;     17     16     15     14
+   C3X    C2X    C1X     O6      gd_34 ;     16     15     14     13
+   C2X    C1X     O6     C6      gd_23 ;     15     14     13     12
+   C1X     O6     C6     C5      gd_23 ;     14     13     12      3
+
+
+
+[ NHP2 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.143     1	 ; 6
+   O2	 OE     -0.454     1	 ; 7 ; OA-->OE con la sustitucion
+  C1X   CH2      0.311     1	 ; 8 ; Aqui empieza la sustitucion
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X	CH1	 0.431	   4	 ; 15
+  C3X	CH2	 0.175	   4	 ; 16
+  O1X	OA	-0.731	   4	 ; 17
+  H1X	H	 0.396	   4	 ; 18
+  N1X	NL	 0.036	   4	 ; 19
+  CN1X	CH3	 0.231	   4	 ; 20
+  CN2X	CH3	 0.231	   4	 ; 21
+  CN3X	CH3	 0.231	   4	 ; 22
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O2      gb_18 ;      8      7 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O3     H3      gb_1  ;     10     11
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+   C1X    C2X      gb_27 ;      8     15
+   C2X    O1X      gb_18 ;     15     17
+   C2X    C3X      gb_27 ;     15     16
+   O1X    H1X      gb_1  ;     17     18
+;
+   N1X    C3X      gb_21 ;     19     16
+   N1X   CN1X      gb_21 ;     19     20
+   N1X   CN2X      gb_21 ;     19     21
+   N1X   CN3X      gb_21 ;     19     22
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C3     O3     H3      ga_12 ;      9     10     11
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O2     C2      ga_12 ;      8      7      6
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+    O2    C1X    C2X      ga_13 ;      7      8     15
+   C1X    C2X    O1X      ga_13 ;      8     15     17
+   C1X    C2X    C3X      ga_15 ;      8     15     16
+   O1X    C2X    C3X      ga_13 ;     17     15     16
+   C2X    O1X    H1X      ga_12 ;     15     17     18
+;
+   N1X    C3X    C2X      ga_19 ;     19     16     15
+
+  CN3X    N1X   CN1X      ga_4X ;     22     19     20 ; new
+  CN3X    N1X   CN2X      ga_4X ;     22     19     21 ; new
+  CN1X    N1X   CN2X      ga_4X ;     20     19     21 ; new
+;
+  CN1X    N1X    C3X      ga_22 ;     20     19     16
+  CN2X    N1X    C3X      ga_22 ;     21     19     16
+  CN3X    N1X    C3X      ga_22 ;     22     19     16
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  C2X   C3X   C1X   O1X  gi_2 ;  15   16    8   17
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+;   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C3X    C2X    C1X     O2      gd_34 ; 16  15   8   7
+   C2X    C1X     O2     C2      gd_23 ; 15   8   7   6
+   C1X     O2     C2     C1      gd_23 ;  8  15   6   1
+   C1X    C2X    O1X    H1X      gd_23 ;  8  15  17  18
+    C3     C2     O2    C1X      gd_23 ;  9   6   7   8
+;
+   N1X    C3X    C2X    C1X      gd_34 ; 19  16  15   8
+  CN1X    N1X    C3X    C2X      gd_22 ; 20  19  16  15
+
+
+[ NHP3 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.143     2	 ; 9
+   O3	 OE     -0.454     2	 ; 10 ; OA-->OE con la sustitucion
+  C1X   CH2      0.311     2	 ; 11 ; Aqui empieza la sustitucion
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X	CH1	 0.431	   4	 ; 15
+  C3X	CH2	 0.175	   4	 ; 16
+  O1X	OA	-0.731	   4	 ; 17
+  H1X	H	 0.396	   4	 ; 18
+  N1X	NL	 0.036	   4	 ; 19
+  CN1X	CH3	 0.231	   4	 ; 20
+  CN2X	CH3	 0.231	   4	 ; 21
+  CN3X	CH3	 0.231	   4	 ; 22
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O3      gb_18 ;     11     10 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O2     H2      gb_1  ;      7      8
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+   C1X    C2X      gb_27 ;     11     15
+   C2X    O1X      gb_18 ;     15     17
+   C2X    C3X      gb_27 ;     15     16
+   O1X    H1X      gb_1  ;     17     18
+;
+   N1X    C3X      gb_21 ;     19     16
+   N1X   CN1X      gb_21 ;     19     20
+   N1X   CN2X      gb_21 ;     19     21
+   N1X   CN3X      gb_21 ;     19     22
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C2     O2     H2      ga_12 ;      6      7      8
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O3     C3      ga_12 ;     11     10     9
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+    O3    C1X    C2X      ga_13 ;    10     11     15
+   C1X    C2X    O1X      ga_13 ;    11     15     17
+   C1X    C2X    C3X      ga_15 ;    11     15     16
+   O1X    C2X    C3X      ga_13 ;    17     15     16
+   C2X    O1X    H1X      ga_12 ;    15     17     18
+;
+   N1X    C3X    C2X      ga_19 ;     19     16     15
+
+  CN3X    N1X   CN1X      ga_4X ;     22     19     20 ; new
+  CN3X    N1X   CN2X      ga_4X ;     22     19     21 ; new
+  CN1X    N1X   CN2X      ga_4X ;     20     19     21 ; new
+;
+  CN1X    N1X    C3X      ga_22 ;     20     19     16
+  CN2X    N1X    C3X      ga_22 ;     21     19     16
+  CN3X    N1X    C3X      ga_22 ;     22     19     16
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  C2X   C3X   C1X   O1X  gi_2 ;  15   16    11   17
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+;   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C3X    C2X    C1X     O3      gd_34 ; 16  15   11   10
+   C2X    C1X     O3     C3      gd_23 ; 15   11   10   9
+   C1X     O3     C3     C2      gd_23 ;  11  10   9   6
+   C1X    C2X    O1X    H1X      gd_23 ;  11  15  17  18
+    C4     C3     O3    C1X      gd_23 ;  4   9   10   11
+;
+   N1X    C3X    C2X    C1X      gd_34 ; 19  16  15   8
+  CN1X    N1X    C3X    C2X      gd_22 ; 20  19  16  15
+
+
+
+[ NHP6 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.143     3	 ; 12
+   O6	 OE     -0.454     3	 ; 13 ; OA-->OE con la sustitucion
+;
+  C1X   CH2      0.311     3	 ; 14
+  C2X	CH1	 0.431	   4	 ; 15
+  C3X	CH2	 0.175	   4	 ; 16
+  O1X	OA	-0.731	   4	 ; 17
+  H1X	H	 0.396	   4	 ; 18
+  N1X	NL	 0.036	   4	 ; 19
+  CN1X	CH3	 0.231	   4	 ; 20
+  CN2X	CH3	 0.231	   4	 ; 21
+  CN3X	CH3	 0.231	   4	 ; 22
+;
+ [ bonds ]
+   C2    C3  gb_26 ;    6    9
+   C2    C1  gb_26 ;    6    1
+   C2    O2  gb_20 ;    6    7
+   O2    H2  gb_1  ;    7    8
+   C3    O3  gb_20 ;    9   10
+   C3    C4  gb_26 ;    9    4
+   O3    H3  gb_1  ;   10   11
+   C4    O4  gb_20 ;    4    5
+   C4    C5  gb_26 ;    4    3
+   C6    C5  gb_26 ;   12    3
+   C6    O6  gb_20 ;   12   13
+   C5    O5  gb_20 ;    3    2
+   O5    C1  gb_20 ;    2    1
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+   C1X    C2X      gb_27 ;     14     15
+   C2X    O1X      gb_18 ;     15     17
+   C2X    C3X      gb_27 ;     15     16
+   O1X    H1X      gb_1  ;     17     18
+   C1X    O6       gb_18 ;     14     13 ;CHn  -  OA
+;
+   N1X    C3X      gb_21 ;     19     16
+   N1X   CN1X      gb_21 ;     19     20
+   N1X   CN2X      gb_21 ;     19     21
+   N1X   CN3X      gb_21 ;     19     22
+;
+ [ angles ]
+   O6    C6    C5  ga_9  ;    13   12    3
+   C6    C5    O5  ga_9  ;   12    3    2
+   C6    C5    C4  ga_8 ;   12    3    4
+   C5    O5    C1  ga_10 ;    3    2    1
+   O4    C4    C5  ga_9  ;    5    4    3
+   C3    C4    C5  ga_8  ;    9    4    3
+   C2    C3    C4  ga_8  ;    6    9    4
+   O3    C3    C4  ga_9  ;   10    9    4
+   C3    C4    O4  ga_9  ;    9    4    5
+   C3    O3    H3  ga_12 ;    9   10   11
+   C3    C2    C1  ga_8  ;    9    6    1
+   C3    C2    O2  ga_9  ;    9    6    7
+   C2    C1    O5  ga_9  ;    6    1    2
+   C2    C3    O3  ga_9  ;    6    9   10
+   C4    C5    O5  ga_9  ;    4    3    2
+   C2    O2    H2  ga_12 ;    6    7    8
+   C1    C2    O2  ga_9  ;    1    6    7
+   C1X   O6    C6  ga_12 ;   14   13   12
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+    O6    C1X    C2X      ga_13 ;     13     14     15
+   C1X    C2X    O1X      ga_13 ;     14     15     17
+   C1X    C2X    C3X      ga_15 ;     14     15     16
+   O1X    C2X    C3X      ga_13 ;     17     15     16
+   C2X    O1X    H1X      ga_12 ;     15     17     18
+;
+   N1X    C3X    C2X      ga_19 ;     19     16     15
+;
+  CN3X    N1X   CN1X      ga_4X ;     22     19     20 ; new
+  CN3X    N1X   CN2X      ga_4X ;     22     19     21 ; new
+  CN1X    N1X   CN2X      ga_4X ;     20     19     21 ; new
+;
+  CN1X    N1X    C3X      ga_22 ;     20     19     16
+  CN2X    N1X    C3X      ga_22 ;     21     19     16
+  CN3X    N1X    C3X      ga_22 ;     22     19     16
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  C2X   C3X   C1X   O1X  gi_2 ;  15   16   14   17
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+;   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C3X    C2X    C1X     O6      gd_34 ; 16  15   8   7
+   C2X    C1X     O6     C6      gd_23 ; 15   8   7   6
+   C1X     O6     C6     C5      gd_23 ;  11  10   9   6
+   C1X    C2X    O1X    H1X      gd_23 ;  8  15  17  18
+;
+   N1X    C3X    C2X    C1X      gd_34 ; 19  16  15   8
+  CN1X    N1X    C3X    C2X      gd_22 ; 20  19  16  15
+;
+[ NH22 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.143     1	 ; 6
+   O2	 OE     -0.454     1	 ; 7 ; OA-->OE
+  C1X   CH2      0.311     1	 ; 8 ;
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2  -0.24        5	;     16
+   NX    NT  -0.64        5	;     17
+  H2X     H   0.44        5	;     18
+  H1X     H   0.44        5	;     19
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O2      gb_18 ;      8      7 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O3     H3      gb_1  ;     10     11
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+    NX    C3X      gb_21 ;     17     16
+    NX    H1X      gb_2  ;     17     18
+    NX    H2X      gb_2  ;     17     19
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C3     O3     H3      ga_12 ;      9     10     11
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O2     C2      ga_12 ;      8      7      6
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C2X    C1X     O2      ga_13 ;     15      8      7
+   C3X    C2X    C1X      ga_15 ;     16     15      8
+    NX    C3X    C2X      ga_15 ;     17     16     15
+   H2X     NX    C3X      ga_11 ;     18     17     16
+   H1X     NX    C3X      ga_11 ;     19     17     16
+   H1X     NX    H2X      ga_10 ;     19     17     18
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+;   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   H2X     NX    C3X    C2X      gd_29 ;
+    NX    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O2      gd_34 ;
+   C2X    C1X     O2     C2      gd_23 ;
+   C1X     O2     C2     C1      gd_23 ;
+;
+[ NH23 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.143     2	 ; 9
+   O3	 OE     -0.454     2	 ; 10 ; OA-->OE
+  C1X   CH2      0.311     2	 ; 11 ;
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2  -0.24        5	;     16
+   NX    NT  -0.64        5	;     17
+  H2X     H   0.44        5	;     18
+  H1X     H   0.44        5	;     19
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O3      gb_18 ;     11     10 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O2     H2      gb_1  ;      7      8
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+    NX    C3X      gb_21 ;     17     16
+    NX    H1X      gb_2  ;     17     18
+    NX    H2X      gb_2  ;     17     19
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C2     O2     H2      ga_12 ;      6      7      8
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O3     C3      ga_12 ;     11     10     9
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C2X    C1X     O3      ga_13 ;     15      8      7
+   C3X    C2X    C1X      ga_15 ;     16     15      8
+    NX    C3X    C2X      ga_15 ;     17     16     15
+   H2X     NX    C3X      ga_11 ;     18     17     16
+   H1X     NX    C3X      ga_11 ;     19     17     16
+   H1X     NX    H2X      ga_10 ;     19     17     18
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+;   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   H2X     NX    C3X    C2X      gd_29 ;
+    NX    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O3      gd_34 ;
+   C2X    C1X     O3     C3      gd_23 ;
+   C1X     O3     C3     C2      gd_23 ;
+;
+[ NH26 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.143     3	 ; 12
+   O6	 OE     -0.454     3	 ; 13 ; OA-->OE
+;
+  C1X   CH2   0.311       3	;     14
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2  -0.24        5	;     16
+   NX    NT  -0.64        5	;     17
+  H2X     H   0.44        5	;     18
+  H1X     H   0.44        5	;     19
+;
+ [ bonds ]
+   C2    C3  gb_26 ;    6    9
+   C2    C1  gb_26 ;    6    1
+   C2    O2  gb_20 ;    6    7
+   O2    H2  gb_1  ;    7    8
+   C3    O3  gb_20 ;    9   10
+   C3    C4  gb_26 ;    9    4
+   O3    H3  gb_1  ;   10   11
+   C4    O4  gb_20 ;    4    5
+   C4    C5  gb_26 ;    4    3
+   C6    C5  gb_26 ;   12    3
+   C6    O6  gb_20 ;   12   13
+;   O6    H6  gb_1  ;   13   14
+   C5    O5  gb_20 ;    3    2
+   O5    C1  gb_20 ;    2    1
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+    NX    C3X      gb_21 ;     17     16
+    NX    H1X      gb_2  ;     17     18
+    NX    H2X      gb_2  ;     17     19
+   C1X    O6       gb_18 ;     14     13 ;CHn  -  OA
+;
+ [ angles ]
+;   C6    O6    H6  ga_12;   12   13   14
+   O6    C6    C5  ga_9  ;    13   12    3
+   C6    C5    O5  ga_9  ;   12    3    2
+   C6    C5    C4  ga_8 ;   12    3    4
+   C5    O5    C1  ga_10 ;    3    2    1
+   O4    C4    C5  ga_9  ;    5    4    3
+   C3    C4    C5  ga_8  ;    9    4    3
+   C2    C3    C4  ga_8  ;    6    9    4
+   O3    C3    C4  ga_9  ;   10    9    4
+   C3    C4    O4  ga_9  ;    9    4    5
+   C3    O3    H3  ga_12 ;    9   10   11
+   C3    C2    C1  ga_8  ;    9    6    1
+   C3    C2    O2  ga_9  ;    9    6    7
+   C2    C1    O5  ga_9  ;    6    1    2
+   C2    C3    O3  ga_9  ;    6    9   10
+   C4    C5    O5  ga_9  ;    4    3    2
+   C2    O2    H2  ga_12 ;    6    7    8
+   C1    C2    O2  ga_9  ;    1    6    7
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C1X     O6     C6      ga_12 ;     14     13     12
+   C2X    C1X     O6      ga_13 ;     15      8      7
+   C3X    C2X    C1X      ga_15 ;     16     15      8
+    NX    C3X    C2X      ga_15 ;     17     16     15
+   H2X     NX    C3X      ga_11 ;     18     17     16
+   H1X     NX    C3X      ga_11 ;     19     17     16
+   H1X     NX    H2X      ga_10 ;     19     17     18
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+;   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   H2X     NX    C3X    C2X      gd_29 ;     18     17     16     15
+    NX    C3X    C2X    C1X      gd_34 ;     17     16     15     14
+   C3X    C2X    C1X     O6      gd_34 ;     16     15     14     13
+   C2X    C1X     O6     C6      gd_23 ;     15     14     13     12
+   C1X     O6     C6     C5      gd_23 ;     14     13     12      3
+;
+;
+[ SC2 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.143     1	 ; 6
+   O2	 OE     -0.454     1	 ; 7 ; OA-->OE
+  C1X   CH2      0.311     1	 ; 8 ;
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.241       5	;     16
+   SX     S  -0.482       5	;     17
+  C4X   CH3   0.241       5	;     18
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O2      gb_18 ;      8      7 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O3     H3      gb_1  ;     10     11
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+    SX    C3X      gb_32 ;     17     16
+    SX    C4X      gb_31 ;     17     18
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C3     O3     H3      ga_12 ;      9     10     11
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O2     C2      ga_12 ;      8      7      6
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C2X    C1X     O2      ga_13 ;     15      8      7
+   C3X    C2X    C1X      ga_15 ;     16     15      8
+    SX    C3X    C2X      ga_16 ;     17     16     15
+   C4X     SX    C3X      ga_4  ;     18     17     16
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+;   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C4X     SX    C3X    C2X      gd_26 ;
+    SX    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O2      gd_34 ;
+   C2X    C1X     O2     C2      gd_23 ;
+   C1X     O2     C2     C1      gd_23 ;
+;
+[ SC3 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.143     2	 ; 9
+   O3	 OE     -0.454     2	 ; 10 ; OA-->OE
+  C1X   CH2      0.311     2	 ; 11 ;
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.241       5	;     16
+   SX     S  -0.482       5	;     17
+  C4X   CH3   0.241       5	;     18
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O3      gb_18 ;     11     10 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O2     H2      gb_1  ;      7      8
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+    SX    C3X      gb_32 ;     17     16
+    SX    C4X      gb_31 ;     17     18
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C2     O2     H2      ga_12 ;      6      7      8
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O3     C3      ga_12 ;     11     10     9
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C2X    C1X     O3      ga_13 ;     15      8      7
+   C3X    C2X    C1X      ga_15 ;     16     15      8
+    SX    C3X    C2X      ga_16 ;     17     16     15
+   C4X     SX    C3X      ga_4  ;     18     17     16
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+;   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C4X     SX    C3X    C2X      gd_26 ;
+    SX    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O3      gd_34 ;
+   C2X    C1X     O3     C3      gd_23 ;
+   C1X     O3     C3     C2      gd_23 ;
+;
+[ SC6 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.143     3	 ; 12
+   O6	 OE     -0.454     3	 ; 13 ; OA-->OE
+;
+  C1X   CH2      0.311     3	 ; 14 ;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.241       5	;     16
+   SX     S  -0.482       5	;     17
+  C4X   CH3   0.241       5	;     18
+;
+ [ bonds ]
+   C2    C3  gb_26 ;    6    9
+   C2    C1  gb_26 ;    6    1
+   C2    O2  gb_20 ;    6    7
+   O2    H2  gb_1  ;    7    8
+   C3    O3  gb_20 ;    9   10
+   C3    C4  gb_26 ;    9    4
+   O3    H3  gb_1  ;   10   11
+   C4    O4  gb_20 ;    4    5
+   C4    C5  gb_26 ;    4    3
+   C6    C5  gb_26 ;   12    3
+   C6    O6  gb_20 ;   12   13
+;   O6    H6  gb_1  ;   13   14
+   C5    O5  gb_20 ;    3    2
+   O5    C1  gb_20 ;    2    1
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+   C1X     O6      gb_18 ;     11     10 ;CHn  -  OA
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+    SX    C3X      gb_32 ;     17     16
+    SX    C4X      gb_31 ;     17     18
+;
+ [ angles ]
+;   C6    O6    H6  ga_12;   12   13   14
+   O6    C6    C5  ga_9  ;    13   12    3
+   C6    C5    O5  ga_9  ;   12    3    2
+   C6    C5    C4  ga_8 ;   12    3    4
+   C5    O5    C1  ga_10 ;    3    2    1
+   O4    C4    C5  ga_9  ;    5    4    3
+   C3    C4    C5  ga_8  ;    9    4    3
+   C2    C3    C4  ga_8  ;    6    9    4
+   O3    C3    C4  ga_9  ;   10    9    4
+   C3    C4    O4  ga_9  ;    9    4    5
+   C3    O3    H3  ga_12 ;    9   10   11
+   C3    C2    C1  ga_8  ;    9    6    1
+   C3    C2    O2  ga_9  ;    9    6    7
+   C2    C1    O5  ga_9  ;    6    1    2
+   C2    C3    O3  ga_9  ;    6    9   10
+   C4    C5    O5  ga_9  ;    4    3    2
+   C2    O2    H2  ga_12 ;    6    7    8
+   C1    C2    O2  ga_9  ;    1    6    7
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C1X    O6      C6      ga_12 ;  14  13   12
+   C2X    C1X     O6      ga_13 ;     15      8      7
+   C3X    C2X    C1X      ga_15 ;     16     15      8
+    SX    C3X    C2X      ga_16 ;     17     16     15
+   C4X     SX    C3X      ga_4  ;     18     17     16
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+;   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   C4X     SX    C3X    C2X      gd_26 ;     18     17     16     15
+    SX    C3X    C2X    C1X      gd_34 ;     17     16     15     14
+   C3X    C2X    C1X     O6      gd_34 ;     16     15     14     13
+   C2X    C1X     O6     C6      gd_23 ;     15     14     13     12
+   C1X     O6     C6     C5      gd_23 ;     14     13     12      3
+;
+[ ON2 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.143     1	 ; 6
+   O2	 OE     -0.454     1	 ; 7 ; OA-->OE
+  C1X   CH2      0.311     1	 ; 8 ;
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.25        5	;     16
+   OX    OE  -0.3         5	;     17
+   NX    NT  -0.75        5	;     18
+  H1X    OM   0.4         5	;     19
+  H2X    OM   0.4         5	;     20
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O2      gb_18 ;      8      7 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O3     H3      gb_1  ;     10     11
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+    OX    C3X      gb_18 ;     17     16
+    NX     OX      gb_21 ;     18     17  ??
+    NX    H1X      gb_2  ;     19     18
+    NX    H2X      gb_2  ;     18     20
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C3     O3     H3      ga_12 ;      9     10     11
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O2     C2      ga_12 ;      8      7      6
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+  H1X    NX    H2X      ga_10  ;     19     18     20
+  H1X    NX     OX      ga_5   ;     19     18     17
+  H2X    NX     OX      ga_5   ;     20     18     17
+   NX    OX    C3X      ga_12  ;     18     17     16
+   OX   C3X    C2X      ga_19  ;     17     16     15
+  C3X   C2X    C1X      ga_15  ;     16     15      8
+  C2X   C1X     O2      ga_13  ;     15      8      7
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+;   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   H2X     NX     OX    C3X      gd_17 ;
+    NX     OX    C3X    C2X      gd_23 ;
+    OX    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O2      gd_34 ;
+   C2X    C1X     O2     C2      gd_23 ;
+   C1X     O2     C2     C1      gd_23 ;
+;
+[ ON3 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.143     2	 ; 9
+   O3	 OE     -0.454     2	 ; 10 ; OA-->OE
+  C1X   CH2      0.311     2	 ; 11 ;
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.25        5	;     16
+   OX    OE  -0.3         5	;     17
+   NX    NT  -0.75        5	;     18
+  H1X    OM   0.4         5	;     19
+  H2X    OM   0.4         5	;     20
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O3      gb_18 ;     11     10 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O2     H2      gb_1  ;      7      8
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+    OX    C3X      gb_18 ;     17     16
+    NX     OX      gb_21 ;     18     17  ??
+    NX    H1X      gb_2  ;     19     18
+    NX    H2X      gb_2  ;     18     20
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C2     O2     H2      ga_12 ;      6      7      8
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O3     C3      ga_12 ;     11     10     9
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+  H1X    NX    H2X      ga_10  ;     19     18     20
+  H1X    NX     OX      ga_5   ;     19     18     17
+  H2X    NX     OX      ga_5   ;     20     18     17
+   NX    OX    C3X      ga_12  ;     18     17     16
+   OX   C3X    C2X      ga_19  ;     17     16     15
+  C3X   C2X    C1X      ga_15  ;     16     15      8
+  C2X   C1X     O3      ga_13  ;     15      8      7
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+;   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   H2X     NX     OX    C3X      gd_17 ;
+    NX     OX    C3X    C2X      gd_23 ;
+    OX    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O3      gd_34 ;
+   C2X    C1X     O3     C2      gd_23 ;
+   C1X     O3     C2     C1      gd_23 ;
+;
+[ ON6 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.143     3	 ; 12
+   O6	 OE     -0.454     3	 ; 13 ; OA-->OE
+;
+  C1X   CH2      0.311     3	 ; 14 ;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.25        5	;     16
+   OX    OE  -0.3         5	;     17
+   NX    NT  -0.75        5	;     18
+  H1X    OM   0.4         5	;     19
+  H2X    OM   0.4         5	;     20
+;
+ [ bonds ]
+   C2    C3  gb_26 ;    6    9
+   C2    C1  gb_26 ;    6    1
+   C2    O2  gb_20 ;    6    7
+   O2    H2  gb_1  ;    7    8
+   C3    O3  gb_20 ;    9   10
+   C3    C4  gb_26 ;    9    4
+   O3    H3  gb_1  ;   10   11
+   C4    O4  gb_20 ;    4    5
+   C4    C5  gb_26 ;    4    3
+   C6    C5  gb_26 ;   12    3
+   C6    O6  gb_20 ;   12   13
+;   O6    H6  gb_1  ;   13   14
+   C5    O5  gb_20 ;    3    2
+   O5    C1  gb_20 ;    2    1
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+    OX    C3X      gb_18 ;     17     16
+    NX     OX      gb_21 ;     18     17  ??
+    NX    H1X      gb_2  ;     19     18
+    NX    H2X      gb_2  ;     18     20
+   C1X    O6       gb_18 ;     14     13 ;CHn  -  OA
+;
+ [ angles ]
+;   C6    O6    H6  ga_12;   12   13   14
+   O6    C6    C5  ga_9  ;    13   12    3
+   C6    C5    O5  ga_9  ;   12    3    2
+   C6    C5    C4  ga_8 ;   12    3    4
+   C5    O5    C1  ga_10 ;    3    2    1
+   O4    C4    C5  ga_9  ;    5    4    3
+   C3    C4    C5  ga_8  ;    9    4    3
+   C2    C3    C4  ga_8  ;    6    9    4
+   O3    C3    C4  ga_9  ;   10    9    4
+   C3    C4    O4  ga_9  ;    9    4    5
+   C3    O3    H3  ga_12 ;    9   10   11
+   C3    C2    C1  ga_8  ;    9    6    1
+   C3    C2    O2  ga_9  ;    9    6    7
+   C2    C1    O5  ga_9  ;    6    1    2
+   C2    C3    O3  ga_9  ;    6    9   10
+   C4    C5    O5  ga_9  ;    4    3    2
+   C2    O2    H2  ga_12 ;    6    7    8
+   C1    C2    O2  ga_9  ;    1    6    7
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+  H1X    NX    H2X      ga_10  ;     19     18     20
+  H1X    NX     OX      ga_5   ;     19     18     17
+  H2X    NX     OX      ga_5   ;     20     18     17
+   NX    OX    C3X      ga_12  ;     18     17     16
+   OX   C3X    C2X      ga_19  ;     17     16     15
+  C3X   C2X    C1X      ga_15  ;     16     15      8
+  C2X   C1X     O6      ga_13  ;     15      8      7
+  C1X    O6    C6  ga_12 ;  14  13   12
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+;   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+   H2X     NX     OX    C3X      gd_17 ;     20     18     17     16
+    NX     OX    C3X    C2X      gd_23 ;     18     17     16     15
+    OX    C3X    C2X    C1X      gd_34 ;     17     16     15     14
+   C3X    C2X    C1X     O6      gd_34 ;     16     15     14     13
+   C2X    C1X     O6     C6      gd_23 ;     15     14     13     12
+   C1X     O6     C6     C5      gd_23 ;     14     13     12      3
+;
+;
+[ SH2 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.143     1	 ; 6
+   O2	 OE     -0.454     1	 ; 7 ; OA-->OE
+  C1X   CH2      0.311     1	 ; 8 ;
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.15        5	;     16
+   SX     S  -0.37        5	;     17
+   HX     H   0.22        5	;     18
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O2      gb_18 ;      8      7 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O3     H3      gb_1  ;     10     11
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+    SX    C3X      gb_32 ;     17     16
+    SX     HX      gb_8  ;     17     18
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C3     O3     H3      ga_12 ;      9     10     11
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O2     C2      ga_12 ;      8      7      6
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C2X    C1X     O2      ga_13 ;     15      8      7
+   C3X    C2X    C1X      ga_15 ;     16     15      8
+    SX    C3X    C2X      ga_16 ;     17     16     15
+    HX     SX    C3X      ga_3  ;     18     17     16
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+;   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+    HX     SX    C3X    C2X      gd_26 ;
+    SX    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O2      gd_34 ;
+   C2X    C1X     O2     C2      gd_23 ;
+   C1X     O2     C2     C1      gd_23 ;
+;
+
+[ SH3 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.143     2	 ; 9
+   O3	 OE     -0.454     2	 ; 10 ; OA-->OE
+  C1X   CH2      0.311     2	 ; 11 ;
+   C6	CH2      0.232     3	 ; 12
+   O6	 OA     -0.642     3	 ; 13
+   H6	  H      0.410     3	 ; 14
+;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.15        5	;     16
+   SX     S  -0.37        5	;     17
+   HX     H   0.22        5	;     18
+;
+ [ bonds ]
+    C2     C3      gb_26 ;      6      9
+    C2     C1      gb_26 ;      6      1
+    O2     C2      gb_20 ;      7      6
+   C1X     O3      gb_18 ;     11     10 ;CHn  -  OA
+    C3     O3      gb_20 ;      9     10
+    C4     C3      gb_26 ;      4      9
+    O2     H2      gb_1  ;      7      8
+    C4     O4      gb_20 ;      4      5
+    C5     C4      gb_26 ;      3      4
+    C5     C6      gb_26 ;      3     12
+    C6     O6      gb_20 ;     12     13
+    O6     H6      gb_1  ;     13     14
+    O5     C5      gb_20 ;      2      3
+    C1     O5      gb_20 ;      1      2
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+    SX    C3X      gb_32 ;     17     16
+    SX     HX      gb_8  ;     17     18
+;
+ [ angles ]
+    C6     O6     H6      ga_12 ;     12     13     14
+    C5     C6     O6      ga_9 ;      3     12     13
+    O5     C5     C6      ga_9 ;      2      3     12
+    C6     C5     C4      ga_8 ;     12      3      4
+    C1     O5     C5      ga_10 ;      1      2      3
+    C5     C4     O4      ga_9 ;      3      4      5
+    C5     C4     C3      ga_8 ;      3      4      9
+    C2     C3     C4      ga_8 ;      6      9      4
+    C4     C3     O3      ga_9 ;      4      9     10
+    O4     C4     C3      ga_9 ;      5      4      9
+    C2     O2     H2      ga_12 ;      6      7      8
+    C1     C2     C3      ga_8 ;      1      6      9
+    O2     C2     C3      ga_9 ;      7      6      9
+    C2     C1     O5      ga_9 ;      6      1      2
+    C2     C3     O3      ga_9 ;      6      9     10
+    O5     C5     C4      ga_9 ;      2      3      4
+   C1X     O3     C3      ga_12 ;     11     10     9
+    O2     C2     C1      ga_9 ;      7      6      1
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C2X    C1X     O3      ga_13 ;     15      8      7
+   C3X    C2X    C1X      ga_15 ;     16     15      8
+    SX    C3X    C2X      ga_16 ;     17     16     15
+    HX     SX    C3X      ga_3  ;     18     17     16
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+;   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+    HX     SX    C3X    C2X      gd_26 ;
+    SX    C3X    C2X    C1X      gd_34 ;
+   C3X    C2X    C1X     O3      gd_34 ;
+   C2X    C1X     O3     C3      gd_23 ;
+   C1X     O3     C3     C2      gd_23 ;
+;
+[ SH6 ]
+ [ atoms ]
+   C1	CH1      0.232     0	 ; 1
+   O5 	 OA     -0.480     0	 ; 2
+   C5 	CH1      0.376     0	 ; 3
+   C4 	CH1      0.232     0	 ; 4
+   O4	 OA     -0.360     0	 ; 5
+   C2	CH1      0.232     1	 ; 6
+   O2	 OA     -0.642     1	 ; 7
+   H2	  H      0.410     1	 ; 8
+   C3	CH1      0.232     2	 ; 9
+   O3	 OA     -0.642     2	 ; 10
+   H3	  H      0.410     2	 ; 11
+   C6	CH2      0.143     3	 ; 12
+   O6	 OE     -0.454     3	 ; 13 ; OA-->OE
+;
+  C1X   CH2      0.311     3	 ; 14 ;
+  C2X   CH2   0.00        4	;     15
+  C3X   CH2   0.15        5	;     16
+   SX     S  -0.37        5	;     17
+   HX     H   0.22        5	;     18
+;
+ [ bonds ]
+   C2    C3  gb_26 ;    6    9
+   C2    C1  gb_26 ;    6    1
+   C2    O2  gb_20 ;    6    7
+   O2    H2  gb_1  ;    7    8
+   C3    O3  gb_20 ;    9   10
+   C3    C4  gb_26 ;    9    4
+   O3    H3  gb_1  ;   10   11
+   C4    O4  gb_20 ;    4    5
+   C4    C5  gb_26 ;    4    3
+   C6    C5  gb_26 ;   12    3
+   C6    O6  gb_20 ;   12   13
+;   O6    H6  gb_1  ;   13   14
+   C5    O5  gb_20 ;    3    2
+   O5    C1  gb_20 ;    2    1
+  +C1    O4  gb_20 ;   15    5	paste GLCB to GLCA
+;
+   C1X     O6      gb_18 ;     11     10 ;CHn  -  OA
+   C2X    C1X      gb_27 ;     15      8
+   C3X    C2X      gb_27 ;     16     15
+    SX    C3X      gb_32 ;     17     16
+    SX     HX      gb_8  ;     17     18
+;
+ [ angles ]
+;   C6    O6    H6  ga_12;   12   13   14
+   O6    C6    C5  ga_9  ;    13   12    3
+   C6    C5    O5  ga_9  ;   12    3    2
+   C6    C5    C4  ga_8 ;   12    3    4
+   C5    O5    C1  ga_10 ;    3    2    1
+   O4    C4    C5  ga_9  ;    5    4    3
+   C3    C4    C5  ga_8  ;    9    4    3
+   C2    C3    C4  ga_8  ;    6    9    4
+   O3    C3    C4  ga_9  ;   10    9    4
+   C3    C4    O4  ga_9  ;    9    4    5
+   C3    O3    H3  ga_12 ;    9   10   11
+   C3    C2    C1  ga_8  ;    9    6    1
+   C3    C2    O2  ga_9  ;    9    6    7
+   C2    C1    O5  ga_9  ;    6    1    2
+   C2    C3    O3  ga_9  ;    6    9   10
+   C4    C5    O5  ga_9  ;    4    3    2
+   C2    O2    H2  ga_12 ;    6    7    8
+   C1    C2    O2  ga_9  ;    1    6    7
+;
+  +O5   +C1    O4  ga_9  ;   16  15    5   GLC2 with GLC1
+  +C1    O4    C4  ga_10 ;   15   5    4   ga_11
+  +C2   +C1    O4  ga_9  ;   20  15    5
+;
+   C1X    O6      C6      ga_12 ;  14  13   12
+   C2X    C1X     O6      ga_13 ;     15      8      7
+   C3X    C2X    C1X      ga_15 ;     16     15      8
+    SX    C3X    C2X      ga_16 ;     17     16     15
+    HX     SX    C3X      ga_3  ;     18     17     16
+;
+ [ impropers ]
+   C5    O5    C6    C4  gi_2 ;   3    2   12    4
+   C3    O3    C2    C4  gi_2 ;   9   10    6    4
+   C4    C3    O4    C5  gi_2 ;   4    9    5    3
+   C2    O2    C3    C1  gi_2 ;   6    7    9    1
+;
+  +C1   +O5    O4   +C2  gi_2 ;  15   16    5   20
+;
+ [ dihedrals ]
+   C2    C1    O5    C5  gd_29 ;    6    1    2    3
+   O5    C1    C2    C3  gd_17 ;    2    1    6    9  **
+   C1    O5    C5    C4  gd_29 ;    1    2    3    4
+   C1    C2    C3    O3  gd_17 ;    1    6    9   10  **
+   C1    C2    C3    C4  gd_34 ;    1    6    9    4  **
+   C2    C3    C4    C5  gd_34 ;    6    9    4    3  *
+   O3    C3    C4    C5  gd_17 ;   10    9    4    3
+   O3    C3    C4    O4  gd_18 ;   10    9    4    5
+   C3    C4    C5    O5  gd_17 ;    9    4    3    2
+   C3    C4    C5    C6  gd_34 ;    9    4    3   12  *
+   O4    C4    C5    C6  gd_17 ;    5    4    3   12
+   O4    C4    C3    C2  gd_34 ;    5    4    9    6
+   O4    C4    C3    C2  gd_17 ;    5    4    9    6
+   C2    C3    O3    H3  gd_30 ;    6    9   10   11  *
+   C1    C2    O2    H2  gd_30 ;    1    6    7    8  *
+   O5    C5    C6    O6  gd_5  ;    2    3   12   13  *
+   O5    C5    C6    O6  gd_37 ;    2    3   12   13
+;   C5    C6    O6    H6  gd_30 ;    3   12   13   14
+;**********  GLC B-GLC A  **************
+   O4   +C1   +C2   +C3  gd_34 ;    5   15   20   23
+   O4   +C1   +C2   +C3  gd_17 ;    5   15   20   23
+  +C2   +C1    O4    C4  gd_29 ;   20   15    5    4
+  +O5   +C1    O4    C4  gd_28 ;   16   15    5    4
+  +O5   +C1    O4    C4  gd_6  ;   16   15    5    4
+  +O2   +C2   +C1    O4  gd_18 ;   21   20   15    5
+  +C1    O4    C4    C3  gd_29 ;   15    5    4    9
+  +C1    O4    C4    C5  gd_29 ;   15    5    4    3
+;
+    HX     SX    C3X    C2X      gd_26 ;     18     17     16     15
+    SX    C3X    C2X    C1X      gd_34 ;     17     16     15     14
+   C3X    C2X    C1X     O6      gd_34 ;     16     15     14     13
+   C2X    C1X     O6     C6      gd_23 ;     15     14     13     12
+   C1X     O6     C6     C5      gd_23 ;     14     13     12      3
+;

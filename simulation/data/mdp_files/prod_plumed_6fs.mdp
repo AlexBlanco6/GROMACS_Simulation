@@ -1,0 +1,37 @@
+; title =  Energy minimization
+               constraints         =  all-bonds   
+               integrator          =  md
+               dt                  =  0.005
+               nsteps              =  60000000 ; 100 ns    x 3
+               nstxout             =  60000000
+               nstvout             =  60000000
+               nstenergy           =  10000
+               nstxtcout           =  10000
+;
+               nstlist             =  20 
+;
+               ns_type             =  grid
+               rlist               =  1.2
+               rcoulomb            =  1.2
+               rvdw                =  1.2
+               coulombtype         =  PME
+               fourierspacing      =  0.15
+               pme_order           =  4
+               ewald_rtol          =  1e-5
+;
+               Tcoupl              =  v-rescale 
+               tau_t               =  1 
+               tc-grps             =  system 
+               ref_t               =  298 
+;
+               Pcoupl              =  C-rescale
+               tau_p               =  5      
+               compressibility     =  4.5e-5  
+               ref_p               =  1.0     
+               pcoupltype          =  isotropic 
+;
+               gen_vel             =  yes
+               gen_temp            =  298
+               gen_seed            =  -1
+               cutoff-scheme = Verlet
+	       energygrps          =  SGX6 ROC  

@@ -1,0 +1,46 @@
+  
+                
+               constraints         =  h-bonds   
+               integrator          =  md
+               dt                  =  0.002
+               nsteps              =  150000000 ; 100 ns    x 3
+
+               nstxout-compressed       = 10000                ; salida a xtc cada 20 ps
+               nstenergy                = 1000                 ; 2 ps
+               nstlog                   = 1000                 ; 2 ps
+               nstcalcenergy            = 100                  ; 0.2 ps
+
+               nstlist             =  20 
+               ns_type             =  grid
+               rlist               =  1.2
+               rcoulomb            =  1.2
+               rvdw                =  1.2
+               coulombtype         =  PME
+               fourierspacing      =  0.15
+               pme_order           =  4
+               ewald_rtol          =  1e-5
+;
+               Tcoupl              =  v-rescale 
+               tau_t               =  1 
+               tc-grps             =  system 
+               ref_t               =  298 
+;
+               Pcoupl              =  C-rescale
+               tau_p               =  5      
+               compressibility     =  4.5e-5  
+               ref_p               =  1.0     
+               pcoupltype          =  isotropic 
+;
+               gen_vel             =  yes
+               gen_temp            =  298
+               gen_seed            =  -1
+               cutoff-scheme = Verlet
+            
+; constraint_algorithm     = lincs
+; lincs_iter               = 2
+; lincs_order              = 4
+; comm-mode                = none
+pbc                      = xyz
+; nstpcouple               = -1 
+vdwtype                  = Cut-off
+DispCorr                 = EnerPres

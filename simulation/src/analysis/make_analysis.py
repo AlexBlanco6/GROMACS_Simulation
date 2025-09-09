@@ -4,7 +4,8 @@
 # script for getting the PMF and the COLVAR of the simulations
 
 import sys
-from analysis_functions import PMF, COLVAR, delta_PMF
+from analysis_functions import PMF, COLVAR, delta_PMF, argparse_plot
+import os
 
 def main():
 
@@ -16,12 +17,12 @@ def main():
         sys.exit(1)
 
     
-    last_fes = True
-    PMF(directory, last_fes = last_fes, d = 500)
-    COLVAR(directory)
+    sim = argparse_plot(directory)
+    sim.PMF(last_fes= False, get_fes= True)
+    sim.PMF(last_fes= True, get_fes= True)
+    sim.delta_PMF(method = "MSE", get_fes= False)
+    sim.COLVAR()
 
-    if last_fes:
-        delta_PMF(directory)
     print("finished")
 
     

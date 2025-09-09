@@ -1,0 +1,12 @@
+#include "../../../../../files/G53a6/G53a6.ff/forcefield.itp" 
+#include "../../../../../input/CD_4/CD_4.itp"
+#include "../../../../../input/ROC_4/ROC_4.itp"
+#include "../../../../../files/G53a6/G53a6.ff/spc.itp"
+#include "../../../../../files/G53a6/G53a6.ff/ions.itp"
+[ system ]
+; Name
+CD + ligand in water
+[ molecules ]
+; Compound  #mols
+CD 1
+ROC 1

@@ -1,0 +1,24 @@
+TITLE     God Rules Over Mankind, Animals, Cosmos and Such
+MODEL        1
+HETATM    1  C1X TZL6    1       6.684  -0.466   2.246  1.00  0.00           C
+HETATM    2  C2X TZL6    1       5.848  -1.736   2.270  1.00  0.00           C
+HETATM    3  C3X TZL6    1       5.749  -2.428   0.908  1.00  0.00           C
+HETATM    4  C4X TZL6    1       5.115  -1.597  -0.212  1.00  0.00           C
+HETATM    5  C5X TZL6    1       3.707  -1.064   0.070  1.00  0.00           C
+HETATM    6  C6X TZL6    1       2.679  -2.169   0.328  1.00  0.00           C
+HETATM    7  C7X TZL6    1       1.272  -1.586   0.496  1.00  0.00           C
+HETATM    8 Cr1X TZL6    1       0.229  -2.661   0.820  1.00  0.00           C
+HETATM    9 Cr2X TZL6    1      -1.176  -2.141   0.922  1.00  0.00           C
+HETATM   10 Hr2X TZL6    1      -1.596  -2.277   1.924  1.00  0.00           H
+HETATM   11  N1X TZL6    1      -1.776  -3.094  -0.036  1.00  0.00           N
+HETATM   12  N2X TZL6    1      -0.892  -2.913  -1.320  1.00  0.00           N
+HETATM   13  N3X TZL6    1       0.017  -3.644  -0.260  1.00  0.00           N
+HETATM   14  C8X TZL6    1      -3.151  -2.660  -0.366  1.00  0.00           C
+HETATM   15  C9X TZL6    1      -3.896  -3.734  -1.170  1.00  0.00           C
+HETATM   16 C10X TZL6    1      -5.318  -3.315  -1.562  1.00  0.00           C
+HETATM   17 C11X TZL6    1      -6.256  -3.153  -0.363  1.00  0.00           C
+HETATM   18 C12X TZL6    1      -7.722  -2.952  -0.765  1.00  0.00           C
+HETATM   19 C13X TZL6    1      -8.009  -1.724  -1.632  1.00  0.00           C
+HETATM   20 C14X TZL6    1      -7.621  -0.410  -0.973  1.00  0.00           C
+TER
+ENDMDL

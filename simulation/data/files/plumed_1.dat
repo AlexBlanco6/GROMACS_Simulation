@@ -1,0 +1,39 @@
+# ENTITY0  for the receptor and ENTITY1 for the ligand
+WHOLEMOLECULES ENTITY0=1-159 ENTITY1=160-183
+
+# Let's define the center of mass of the most rigid atoms in the receptor and the COM of the ligand
+
+tRing_1: COM ATOMS=13,14,15,16,21,22
+tRing_2: COM ATOMS=33,34,35,36,41,42
+tRing_3: COM ATOMS=64,65,66,71,72,73
+
+com_cRings: COM ATOMS=3,4,5,8,25,28,47,48,51,56,59,80
+com_LIG: COM ATOMS=160-183
+
+angle_12: ANGLE ATOMS=tRing_1,com_cRings,tRing_2
+angle_13: ANGLE ATOMS=tRing_1,com_cRings,tRing_3
+angle_23: ANGLE ATOMS=tRing_2,com_cRings,tRing_3
+
+dc: DISTANCE ATOMS=com_cRings,com_LIG
+d1: DISTANCE ATOMS=tRing_2,com_LIG
+
+axis: PROJECTION_ON_AXIS AXIS_ATOMS=com_cRings,tRing_2 ATOM=com_LIG
+
+
+# Relative orientation of the ligand with respect to the axis perpendicular to the CD; we choose Cd4 and Ca1 as the references for the ligand axis
+orientation: ANGLE ATOMS=com_cRings,tRing_2,163,178
+
+# The orientation of the ligand with respect to the CD is restrained. The angle (in radians) is taken from an ideal inclusion complex
+RESTRAINT ARG=axis.ext AT=0 KAPPA=100 
+
+# Lets put a wall to restrict the distance at which the ligand can go from the CD
+uwall: UPPER_WALLS ARG=axis.proj AT=2.5 KAPPA=1000.0 EPS=1.0
+lwall: LOWER_WALLS ARG=axis.proj AT=-1.0 KAPPA=1000.0 EPS=1.0
+
+
+#Change RESTART to YES if you want to extend the simulation
+opes: OPES_METAD ARG=axis.proj PACE=500 SIGMA=0.1 SIGMA_MIN=0.005 BARRIER=100 TEMP=298 FILE=HILLS STATE_WFILE=STATE STATE_WSTRIDE=500*100 STORE_STATES RESTART=NO WALKERS_MPI
+
+#PRINT ARG=axis.proj,d,orientation,opes.bias STRIDE=100 FILE=COLVAR
+
+PRINT ARG=axis.proj,axis.ext,angle_12,angle_13,angle_23,dc,d1,orientation,opes.bias STRIDE=100 FILE=COLVAR

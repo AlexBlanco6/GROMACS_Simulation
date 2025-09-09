@@ -1,18 +1,31 @@
 {
-  "cv": [-0.25, 0, 0.5, 1],
-  "data_dir": "aaa/aaa/data",
-  "dir_name": "TEST_4W_100ns",
+  "cv":   [
+       -0.1,
+        0,
+        0.25,
+        0.5,
+        1,
+        1.5
+    ],
+  "data_dir": "/mnt/lustre/scratch/nlsas/home/empresa/mdu/rga/z/simulation/data",
+  "dir_name": "test_0809_z",
   "host": "MOL_GMX",
   "ligand": "0GB_GMX",
   "plumed": {
         "enabled": true,
         "method": "plumed"
   },
-  "bias": 25,
+  "barrier": 50,
   "height": 0.1,
+  "orientation": 1,
+  "direction": "up",
   "topol": "topol_GMX",
-  "em_file": "minim",
-  "prod_file": "md",
-  "environment": "python",
-  "time": "6:00:00"
+  "em_file": "em",
+  "prod_file": "production",
+  "environment": "/mnt/netapp2/Store_uni/home/empresa/mdu/rga/conda/envs/myenv/bin/python",
+  "time": "6:00:00",
+  "small_run_minimization": {
+        "enabled": false,
+        "file": "minim_inter"
+  }
 }

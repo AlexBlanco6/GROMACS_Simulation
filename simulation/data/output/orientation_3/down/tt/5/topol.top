@@ -1,0 +1,35 @@
+
+#include "amber99sb-ildn.ff/forcefield.itp"
+
+[ atomtypes ]
+;name   bond_type     mass     charge   ptype   sigma         epsilon       Amb
+ c3       c3          0.00000  0.00000   A     3.39967e-01   4.57730e-01 ; 1.91  0.1094
+ ca       ca          0.00000  0.00000   A     3.39967e-01   3.59824e-01 ; 1.91  0.0860
+ n        n           0.00000  0.00000   A     3.25000e-01   7.11280e-01 ; 1.82  0.1700
+ c        c           0.00000  0.00000   A     3.39967e-01   3.59824e-01 ; 1.91  0.0860
+ o        o           0.00000  0.00000   A     2.95992e-01   8.78640e-01 ; 1.66  0.2100
+ hc       hc          0.00000  0.00000   A     2.64953e-01   6.56888e-02 ; 1.49  0.0157
+ hn       hn          0.00000  0.00000   A     1.06908e-01   6.56888e-02 ; 0.60  0.0157
+ ha       ha          0.00000  0.00000   A     2.59964e-01   6.27600e-02 ; 1.46  0.0150
+ h2       h2          0.00000  0.00000   A     2.29317e-01   6.56888e-02 ; 1.29  0.0157
+ os       os          0.00000  0.00000   A     3.00001e-01   7.11280e-01 ; 1.68  0.1700
+ h1       h1          0.00000  0.00000   A     2.47135e-01   6.56888e-02 ; 1.39  0.0157
+ oh       oh          0.00000  0.00000   A     3.06647e-01   8.80314e-01 ; 1.72  0.2104
+ ho       ho          0.00000  0.00000   A     0.00000e+00   0.00000e+00 ; 0.00  0.0000
+
+
+#include "../../../../../input/MOL_GMX/MOL_GMX.itp"
+#include "../../../../../input/MOL_GMX/posre_MOL.itp"
+#include "../../../../../input/0GB_GMX/0GB_GMX.itp"
+#include "../../../../../input/0GB_GMX/posre_0GB.itp"
+#include "amber99sb-ildn.ff/spce.itp"
+#include "amber99sb-ildn.ff/ions.itp"
+
+[ system ]
+; Name
+GMX + ligand in water
+[ molecules ]
+; Compound  #mols
+MOL 1
+0GB 1
+SOL              7439

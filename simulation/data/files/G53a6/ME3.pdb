@@ -1,0 +1,35 @@
+HETATM    1  H07 HP3     0       3.454  -0.062   1.029  1.00  0.00           H  
+HETATM    2  H05 HP3     0       2.301  -1.410   1.176  1.00  0.00           H  
+HETATM    3  H02 HP3     0       2.889  -0.911  -0.429  1.00  0.00           H  
+HETATM    4  C1  HP3     0      -1.606  -1.808   0.179  1.00  0.00           C  
+HETATM    5  O5  HP3     0      -2.478  -0.695  -0.074  1.00  0.00           O  
+HETATM    6  C5  HP3     0      -2.186   0.454   0.729  1.00  0.00           C  
+HETATM    7  C4  HP3     0      -0.770   0.966   0.435  1.00  0.00           C  
+HETATM    8  O4  HP3     0      -0.727   1.384  -0.938  1.00  0.00           O  
+HETATM    9  C2  HP3     0      -0.140  -1.418  -0.122  1.00  0.00           C  
+HETATM   10  O2  HP3     0       0.097  -1.209  -1.508  1.00  0.00           O  
+HETATM   11  H2  HP3     0      -0.237  -0.309  -1.696  1.00  0.00           H  
+HETATM   12  C3  HP3     0       0.232  -0.169   0.712  1.00  0.00           C  
+HETATM   13  O3  HP3     0       1.523   0.353   0.451  1.00  0.00           O  
+HETATM   14  C1X HP3     0       2.604  -0.561   0.563  1.00  0.00           C  
+HETATM   15  C6  HP3     0      -3.300   1.453   0.435  1.00  0.00           C  
+HETATM   16  O6  HP3     0      -4.571   0.883   0.736  1.00  0.00           O  
+HETATM   17  H6  HP3     0      -4.572   0.017   0.292  1.00  0.00           H  
+CONECT    1   14
+CONECT    2   14
+CONECT    3   14
+CONECT    4    5    9
+CONECT    5    4    6
+CONECT    6    5    7   15
+CONECT    7    6    8   12
+CONECT    8    7
+CONECT    9    4   10   12
+CONECT   10    9   11
+CONECT   11   10
+CONECT   12    7    9   13
+CONECT   13   12   14
+CONECT   14   13    1    2    3
+CONECT   15    6   16
+CONECT   16   15   17
+CONECT   17   16
+END

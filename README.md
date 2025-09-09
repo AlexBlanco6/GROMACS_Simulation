@@ -1,6 +1,6 @@
 # Molecular Docking Simulation with Molecular Dynamics
 
-This project automates molecular docking simulations using GROMACS,.
+This project automates molecular docking simulations using GROMACS.
 
 ##  Structure
 

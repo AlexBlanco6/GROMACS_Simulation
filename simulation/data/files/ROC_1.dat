@@ -1,0 +1,43 @@
+RESTART   # This is to extend trajectories
+# The molecules should not be broken by periodic boundary conditions. ENTITY0  for the CD and ENTITY1 for the ligand
+WHOLEMOLECULES ENTITY0=1-144 ENTITY1=145-190
+
+# Let's define the center of mass of the O4 atoms of the CD and of the the whole ligand
+CDO4A: COM ATOMS=5,23,41,59,77,95,113,131
+LIG: COM ATOMS=145-190
+
+# Definition of a ghost atom perpendicular to the plane of the CD
+# A ghost atom from the triangle given by the center of the O4 atoms and two alternate O4 atoms is defined
+# then the average between all the ghost atoms is taken (giving a coordinate just above the center of the ring of the CD)
+GA1: GHOST ATOMS=CDO4A,5,41   COORDINATES=0,0.1,0
+GA2: GHOST ATOMS=CDO4A,23,59  COORDINATES=0,0.1,0
+GA3: GHOST ATOMS=CDO4A,41,77  COORDINATES=0,0.1,0
+GA4: GHOST ATOMS=CDO4A,59,95  COORDINATES=0,0.1,0
+GA5: GHOST ATOMS=CDO4A,77,113 COORDINATES=0,0.1,0
+GA6: GHOST ATOMS=CDO4A,95,131   COORDINATES=0,0.1,0
+GA7: GHOST ATOMS=CDO4A,113,5 COORDINATES=0,0.1,0
+GA8: GHOST ATOMS=CDO4A,131,23 COORDINATES=0,0.1,0
+GA: COM ATOMS=GA1,GA2,GA3,GA4,GA5,GA6,GA7,GA8
+
+# Distance between the center of the CD and the center of ligand
+d1:  DISTANCE ATOMS=CDO4A,LIG
+
+# Location of the ligand along the axis perpendicular to the CD
+axisA: PROJECTION_ON_AXIS AXIS_ATOMS=CDO4A,GA ATOM=LIG
+
+# Relative orientation of the ligand with respect to the axis perpendicular to the CD; we choose Cd4 and Ca1 as the references for the ligand axis
+orientationA: ANGLE ATOMS=CDO4A,GA,153,164
+
+# The orientation of the ligand with respect to the CD is restrained. The angle (in radians) is taken from an ideal inclusion complex
+RESTRAINT ARG=orientationA,axisA.ext AT=0.2,0 KAPPA=500,100 
+
+# Lets put a wall to restrict the distance at which the ligand can go from the CD
+uwall: UPPER_WALLS ARG=d1 AT=2.5 KAPPA=50000 EPS=1.0
+lwall: LOWER_WALLS ARG=d1 AT=-2.5 KAPPA=50000 EPS=1.0
+
+
+
+#ask for metadynamics - remember to change RESTART after one run!
+opes: OPES_METAD ARG=axisA.proj PACE=1000 SIGMA=0.1 SIGMA_MIN=0.005  TEMP=298 FILE=/mnt/netapp2/Store_uni/home/empresa/mdu/rga/gromacs/data/output/UP_BIAS_25_OPES/HILLS_opes STATE_WFILE=/mnt/netapp2/Store_uni/home/empresa/mdu/rga/gromacs/data/output/UP_BIAS_25_OPES/STATE_opes STATE_WSTRIDE=500*100 STORE_STATES BARRIER=100 RESTART=YES WALKERS_MPI
+
+PRINT ARG=axisA.proj,d1,orientationA,opes.bias STRIDE=100 FILE=COLVAR_opes

@@ -1,0 +1,8 @@
+TITLE     Grunge ROck MAChoS
+MODEL        1
+HETATM    1  C1X BUT     0       0.647  -2.450   1.149  1.00  0.00           C
+HETATM    2  C2X BUT     0       1.941  -2.149   1.916  1.00  0.00           C
+HETATM    3  C3X BUT     0       2.714  -0.916   1.415  1.00  0.00           C
+HETATM    4  C4X BUT     0       3.419  -1.118   0.067  1.00  0.00           C
+TER
+ENDMDL

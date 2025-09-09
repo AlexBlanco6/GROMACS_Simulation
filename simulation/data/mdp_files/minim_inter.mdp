@@ -1,0 +1,55 @@
+
+integrator               = md
+dt                       = 0.001                ; 2 fs
+nsteps                   = 100000               ; 100 ps 
+
+
+nstxout-compressed       = 10000                ; salida a xtc cada 20 ps
+nstenergy                = 1000                 ; 2 ps
+nstlog                   = 1000                 ; 2 ps
+nstcalcenergy            = 100                  ; 0.2 ps
+
+cutoff-scheme            = Verlet
+ns_type                  = grid
+nstlist                  = 20                   ; 40 fs
+rlist                    = 1.0                  ; nm
+
+
+coulombtype              = PME
+rcoulomb                 = 1.0                  ; nm
+fourierspacing           = 0.12                 ; nm
+pme_order                = 4
+ewald_rtol               = 1e-5
+vdwtype                  = Cut-off
+rvdw                     = 1.0                  ; nm
+DispCorr                 = EnerPres
+
+
+tcoupl                   = V-rescale
+tc-grps                  = system
+tau_t                    = 0.1              ; ps
+ref_t                    = 298              ; K
+
+
+pcoupl                   = C-rescale         
+pcoupltype               = isotropic         
+tau_p                    = 2.0             ; ps   
+ref_p                    = 1.0              ; bar
+compressibility          = 4.5e-5           ; 1/bar   
+nstpcouple               = -1                 
+
+
+constraints              = h-bonds
+constraint_algorithm     = lincs
+lincs_iter               = 2
+lincs_order              = 4
+
+
+comm-mode                = none
+;comm-grps                = solutes wations
+
+
+pbc                      = xyz
+
+
+gen_vel                  = yes

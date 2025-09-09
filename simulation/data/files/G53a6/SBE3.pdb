@@ -1,0 +1,25 @@
+TITLE     GROningen MAchine for Chemical Simulation
+MODEL        1
+HETATM    1  C1  SBE3    0      -3.415   1.472   0.322  1.00  0.00           C
+HETATM    2  O5  SBE3    0      -4.289   0.345   0.173  1.00  0.00           O
+HETATM    3  C5  SBE3    0      -3.785  -0.838   0.809  1.00  0.00           C
+HETATM    4  C4  SBE3    0      -2.447  -1.258   0.181  1.00  0.00           C
+HETATM    5  O4  SBE3    0      -2.695  -1.616  -1.186  1.00  0.00           O
+HETATM    6  C2  SBE3    0      -2.064   1.184  -0.362  1.00  0.00           C
+HETATM    7  O2  SBE3    0      -2.202   1.049  -1.766  1.00  0.00           O
+HETATM    8  H2  SBE3    0      -2.520   0.136  -1.915  1.00  0.00           H
+HETATM    9  C3  SBE3    0      -1.457  -0.080   0.292  1.00  0.00           C
+HETATM   10  O3  SBE3    0      -0.224  -0.474  -0.281  1.00  0.00           O
+HETATM   11  C1X SBE3    0       0.908   0.298   0.125  1.00  0.00           C
+HETATM   12  C6  SBE3    0      -4.891  -1.882   0.687  1.00  0.00           C
+HETATM   13  O6  SBE3    0      -6.083  -1.438   1.326  1.00  0.00           O
+HETATM   14  H6  SBE3    0      -6.270  -0.561   0.952  1.00  0.00           H
+HETATM   15  C2X SBE3    0       2.160  -0.401  -0.391  1.00  0.00           C
+HETATM   16  C3X SBE3    0       3.456   0.295   0.046  1.00  0.00           C
+HETATM   17  C4X SBE3    0       4.691  -0.438  -0.477  1.00  0.00           C
+HETATM   18  SX  SBE3    0       6.267   0.258   0.097  1.00  0.00           S
+HETATM   19  O1X SBE3    0       6.224   0.176   1.589  1.00  0.00           O
+HETATM   20  O2X SBE3    0       7.309  -0.618  -0.520  1.00  0.00           O
+HETATM   21  O3X SBE3    0       6.320   1.666  -0.408  1.00  0.00           O
+TER
+ENDMDL

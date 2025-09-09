@@ -4,8 +4,8 @@
 ; define                   = -DPOSRES_LIG
 integrator               = md
 dt                       = 0.002 ; time step 2fs , 300 ns
-nsteps                   = 50000000
-nstxout                  = 50000000
+nsteps                   = 150000000
+nstxout                  = 10000
 cutoff-scheme            = verlet
 coulombtype              = PME
 constraints              = h-bonds
@@ -17,6 +17,6 @@ rvdw-switch              = 0.9
 rcoulomb                 = 1.1
 DispCorr                 = EnerPres
 lincs-iter               = 2
-fourierspacing           = 0.25
-gen-vel                  = yes
+fourierspacing           = 0.25      ; gen-vel = yes deleted
+
 ; vmd md.gro md.trr
