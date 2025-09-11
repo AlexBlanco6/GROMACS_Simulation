@@ -19,8 +19,9 @@
 *.chk
 *.tmp
 
-# Exclude all files in any directory named 'up'
+# Exclude all files in up/down directories except .gitkeep
 **/up/*
+!**/up/.gitkeep
 
-# Exclude all files in any directory named 'down'  
 **/down/*
+!**/down/.gitkeep
