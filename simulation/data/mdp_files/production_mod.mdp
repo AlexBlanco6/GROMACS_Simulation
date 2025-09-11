@@ -36,11 +36,11 @@
                gen_seed            =  -1
                cutoff-scheme = Verlet
             
-; constraint_algorithm     = lincs
-; lincs_iter               = 2
-; lincs_order              = 4
-; comm-mode                = none
+constraint_algorithm     = lincs
+lincs_iter               = 2
+lincs_order              = 4
+comm-mode                = none
 pbc                      = xyz
-; nstpcouple               = -1 
+nstpcouple               = -1 
 vdwtype                  = Cut-off
-DispCorr                 = EnerPres
+ DispCorr                 = EnerPres

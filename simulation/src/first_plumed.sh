@@ -88,12 +88,12 @@ awk '
 echo ">>> Clean merged file saved as $output"
 
 # copy topol.top file
-cp ${INPUT_PATH}/files/${TOPOL}.top topol.top
+cp ${INPUT_PATH}/files/${TOPOL}.top topol_t.top
 
 echo ">>> topol.top file copied."
 
 # solvate system
-gmx solvate -cp cleaned_merged.pdb -cs tip4p.gro -o merged_solv.gro -p topol.top 
+gmx solvate -cp cleaned_merged.pdb -cs tip4p.gro -o merged_solv.gro -p topol_t.top
 
 # solvate system  for ROC
 # gmx solvate -cp cleaned_merged.pdb -cs spc216.gro -o merged_solv2.gro -p topol.top 

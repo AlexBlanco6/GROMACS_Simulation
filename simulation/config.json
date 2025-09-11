@@ -8,20 +8,20 @@
         1.5
     ],
   "data_dir": "/mnt/lustre/scratch/nlsas/home/empresa/mdu/rga/z/simulation/data",
-  "dir_name": "test_0809_z",
+  "dir_name": "test_0909_mod_3",
   "host": "MOL_GMX",
   "ligand": "0GB_GMX",
   "plumed": {
         "enabled": true,
         "method": "plumed"
   },
-  "barrier": 50,
+  "barrier": 150,
   "height": 0.1,
   "orientation": 1,
   "direction": "up",
   "topol": "topol_GMX",
   "em_file": "em",
-  "prod_file": "production",
+  "prod_file": "production_mod",
   "environment": "/mnt/netapp2/Store_uni/home/empresa/mdu/rga/conda/envs/myenv/bin/python",
   "time": "6:00:00",
   "small_run_minimization": {

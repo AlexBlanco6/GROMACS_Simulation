@@ -37,7 +37,7 @@ for i,j in enumerate(cv):
 for i, _ in enumerate(cv):
     try:
         meta_name = f"{i}"
-        n_atoms = same_waters(output_dir, dir_name, n, "merged_solv.gro", "topol")  # get the number of total atoms
+        n_atoms = same_waters(output_dir, dir_name, n, "merged_solv.gro", "topol_t")  # get the number of total atoms
         subprocess.run(["sbatch", "src/exec_prod.sh", output_dir, data_dir, dir_name, meta_name, em_file], check = True)
     except subprocess.CalledProcessError as e:
         print(">>> Error adding waters or sending minimization file")
