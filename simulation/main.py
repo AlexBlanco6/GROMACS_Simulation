@@ -11,7 +11,7 @@ from src.modify_gromacs_files import same_waters
 start = time.time()
 
 # Load data from json file
-config, cv, n, dir_name, data_dir, ligand, em_file, prod_file, topology_file, host, orientation, direction, meta_file, barrier, height, time_sim, environment, small_run, plumed_enabled, small_run_file = load_data("config.json")
+config, cv, n, dir_name, data_dir, ligand, em_file, prod_file, topology_file, host, orientation, direction, meta_file, barrier, time_sim, environment, small_run, plumed_enabled, small_run_file = load_data("config.json")
 
 # get molecules structure files (.pdb or .gro)
 host_ext = find_molecules_files(data_dir, host)
@@ -48,7 +48,7 @@ for i, _ in enumerate(cv):
 
 # Create plumed and run.sh files for simulation, two cases: 1 and > 1 walkers.
 if n != 1:
-    plumed_file = add_plumed_file(output_dir, dir_name,  data_dir, barrier, height, meta_file, orientation)
+    plumed_file = add_plumed_file(output_dir, dir_name,  data_dir, barrier, meta_file, orientation)
     create_plumed_run_file(output_dir, n, plumed_file, dir_name, time_sim, environment)
     if small_run == True:
         minim_sim_run_file(output_dir, dir_name, n)
@@ -56,7 +56,7 @@ if n != 1:
         pass
 else:
     if plumed_enabled == True:
-        plumed_file = add_plumed_file(output_dir, dir_name,  data_dir, barrier, height, meta_file, orientation)
+        plumed_file = add_plumed_file(output_dir, dir_name,  data_dir, barrier, meta_file, orientation)
     else:
         pass
     create_run_file(output_dir, dir_name, ["test","test"], plumed_enabled)
@@ -66,12 +66,13 @@ else:
 save_config(output_dir, config, dir_name)
 
 
-# makeindex_command = [
-#     f"echo -e 'a 1-{n_atoms}\\n"
-#     "name 0 System\\n"
-#     "q' | "
-#     "/opt/cesga/2020/software/MPI/gcc/system/openmpi/4.0.5_ft3_cuda/gromacs/2021.4-plumed-2.8.0/bin/gmx make_ndx -f merged_solv_ions2.gro -n newindex.ndx -o newindex.ndx"
-# ]
+makeindex_command = [
+    f"echo -e 'a 1-{n_atoms}\\n"
+    "name 0 System\\n"
+    
+    "q' | "
+    "/opt/cesga/2020/software/MPI/gcc/system/openmpi/4.0.5_ft3_cuda/gromacs/2021.4-plumed-2.8.0/bin/gmx make_ndx -f merged_solv_ions2.gro -n newindex.ndx -o newindex.ndx"
+]
 
 
 
@@ -101,7 +102,7 @@ for i, _ in enumerate(cv):
 
     print(f"Found em.gro file in {dir_name} directory")    
     try:
-        os.chdir(os.path.join(path, f"{i}"))      # when foun, execute production 
+        os.chdir(os.path.join(path, f"{i}"))      # when found, execute production 
 
         if small_run == True: # run small minimization before production
 
@@ -112,6 +113,8 @@ for i, _ in enumerate(cv):
 
             subprocess.run(prod_command, shell=True, executable="/bin/bash") # run production directly when no small run is activated
 
+        subprocess.run(["touch","newindex.ndx"], check = True)
+        subprocess.run(makeindex_command, shell=True, executable="/bin/bash") # create index file with all atoms
     except subprocess.CalledProcessError as e:
         print(">>> Error minimizing")
 

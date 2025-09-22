@@ -54,7 +54,6 @@ def load_data(config_file):
     direction = config.get("direction", "up")
     meta_file = config.get("plumed", {}).get("method", "plumed") # get plumed method file
     barrier = config.get("barrier", 1.0)   # barrier height for metadynamics
-    height = config.get("height", 0.1)     # height of the Gaussians for metadynamics
     time_sim = config.get("time", "6:00:00")  # time for the simulation
     environment = config.get("environment", "python")  # environment to run the analysis script
     small_run = config.get("small_run_minimization", {}).get("enabled", "false") # if we want to run a small minimization before the production
@@ -63,7 +62,7 @@ def load_data(config_file):
 
     assert direction == "up" or direction == "down", "Direction must be up or down"
 
-    return config, cv, n, dir_name, data_dir, ligand, em_file, prod_file, topology_file, host, orientation, direction, meta_file, barrier, height, time_sim, environment, small_run, plumed_enabled, small_run_file
+    return config, cv, n, dir_name, data_dir, ligand, em_file, prod_file, topology_file, host, orientation, direction, meta_file, barrier, time_sim, environment, small_run, plumed_enabled, small_run_file
 
 
 

@@ -5,7 +5,7 @@
 import os 
 
 
-def add_plumed_file(out, output_dir, data_dir, barrier, height, meta_file, orientation):
+def add_plumed_file(out, output_dir, data_dir, barrier, meta_file, orientation):
 
     """ 
     Modify and add plumed file to the simulation from path/data/files
@@ -15,7 +15,6 @@ def add_plumed_file(out, output_dir, data_dir, barrier, height, meta_file, orien
         output_dir (str): The name of the directory we chose.
         data_dir (str): The base directory where the data folder is located.
         barrier (float): Barrier height for metadynamics.
-        height (float): Height of the Gaussians for metadynamics.
         meta_file (str): The plumed method we want to use.
         orientation (str): The orientation we want to use.
     Returns:    
@@ -36,7 +35,6 @@ def add_plumed_file(out, output_dir, data_dir, barrier, height, meta_file, orien
                 "STATE_WFILE=":  f"STATE_WFILE={output_path}/STATE",
                 "RESTART=":      f"RESTART={restart_t}",
                 "BARRIER=":         f"BARRIER={barrier}",
-                "HEIGHT=":       f"HEIGHT={height}"
             }
         script = """"""
         with open(file_path, "r") as file:
@@ -88,11 +86,11 @@ def create_plumed_run_file(out, n_mpi, method_files, dir_name, time, environment
         sbatch_script = f"""#!/bin/bash
 #SBATCH -J  {dir_name}  # Job name
 #SBATCH -t {time}        # Maximum execution time (e.g., 1 hour) - ADJUST
-#SBATCH --mem=2G         # Memory 
-#SBATCH --nodes={int(n_mpi/2)}   
-#SBATCH --ntasks-per-node=2  
-#SBATCH -n {int(n_mpi)}               # Number of MPI tasks (1 is sufficient for this small system)
-#SBATCH -c 32               # Number of cores per task (OpenMP threads)
+#SBATCH --mem=8G         # Memory 
+#SBATCH --nodes= {n_mpi/2}   
+#SBATCH --ntasks-per-node= 4 
+#SBATCH -n   {int(n_mpi)}             # Number of MPI tasks (1 is sufficient for this small system)
+#SBATCH -c 16               # Number of cores per task (OpenMP threads)
 #SBATCH --output=metad_%j.log # Standard output/error file
 #SBATCH --signal=TERM@120
 
@@ -215,3 +213,4 @@ sbatch -d singleton run_restart.sh"
         
         with open(output_file, "w") as f:
             f.write(sbatch_script)
+            

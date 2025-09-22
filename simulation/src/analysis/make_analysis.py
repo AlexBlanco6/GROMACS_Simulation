@@ -4,8 +4,8 @@
 # script for getting the PMF and the COLVAR of the simulations
 
 import sys
-from analysis_functions import PMF, COLVAR, delta_PMF, argparse_plot
-import os
+from analysis_functions import  argparse_plot
+
 
 def main():
 
@@ -18,8 +18,8 @@ def main():
 
     
     sim = argparse_plot(directory)
-    sim.PMF(last_fes= False, get_fes= True)
-    sim.PMF(last_fes= True, get_fes= True)
+    sim.PMF(last_fes= False, get_fes= False)
+    # sim.PMF(last_fes= True, get_fes= False)
     sim.delta_PMF(method = "MSE", get_fes= False)
     sim.COLVAR()
 

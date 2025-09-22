@@ -39,10 +39,10 @@ def format_colvar_ax(dir,directory, fig, ax, w, cv, n):
     """
     Axes format for COLVAR graphs
     """
-    ax.set_title(f"walker {n}, initial distance = {cv[n]}", fontsize = 22)
+    ax.set_title(f"walker {n}" , fontsize = 22) #  initial distance = {cv[n]}", fontsize = 22)
     ax.set_ylabel("Projection", fontsize = 21)
     ax.set_xlabel("Time (ns)", fontsize = 21)
-    ax.set_ylim(-2.5,2.5)
+    ax.set_ylim(-1,8)
     ax.tick_params(direction='in', axis='both', which='major', length=12, width=1.5, labelsize=20)
     ax.tick_params(direction='in', axis='both', which='minor', length=6, width=0.75)
     ax.xaxis.set_ticks_position('both')
@@ -59,7 +59,7 @@ def format_deltapmf_ax(dir, dir_name, fig, ax, method):
     """
     Axes format fro PMF graphs
     """
-    ax.set_title(f"{method} Difference Between PMFs at ~ 5 ns intervals and last PMF", fontsize=30)
+    ax.set_title(f"{method} Difference Between PMFs and last PMF", fontsize=30)
     ax.set_xlabel(" Distance (nm)", fontsize=26)
     ax.set_ylabel(f"{method}  (kJ/mol)", fontsize=26)
     ax.tick_params(direction='in', axis='both', which='major', length=12, width=1.5, labelsize=22)
@@ -89,13 +89,18 @@ class argparse_plot():
         Returns:    
             None
         """
+        try:
+            with open(os.path.join(self.directory, "config.json"), "r") as f:
+                config = json.load(f)
 
-        with open(os.path.join(self.directory, "config.json"), "r") as f:
-            config = json.load(f)
+            dir_name = config.get("dir_name", "test")
+            environment = config.get("environment", "/mnt/netapp2/Store_uni/home/empresa/mdu/rga/conda/envs/myenv/bin/python")
+        except FileNotFoundError:
+            print(">>> ERROR: config.json file not found in the directory")
+            environment = "/mnt/netapp2/Store_uni/home/empresa/mdu/rga/conda/envs/myenv/bin/python"
+            dir_name = "test"
 
-        dir_name = config ["dir_name"]
-        environment = config["environment"]
-
+        
         os.chdir(self.directory)
         
         fig, ax = plt.subplots(1,1 , figsize = (15,10))
@@ -152,35 +157,56 @@ class argparse_plot():
         Returns:    
             None
         """
+        try:
+            with open(os.path.join(self.directory, "config.json"), "r") as f:
+                config = json.load(f)
 
-        with open(os.path.join(self.directory, "config.json"), "r") as f:
-            config = json.load(f)
+            cv = config.get("cv", [0])
+            n_walkers = len(cv)
+            dir_name = config.get("dir_name", "test")
+        except FileNotFoundError:
+            print(">>> ERROR: config.json file not found in the directory")
+            cv = [1,2,3,4,5,6]
+            n_walkers = len(cv)
+            dir_name = "test"
+    
 
-        cv = config["cv"]
-        n_walkers = len(cv)
-        dir_name = config ["dir_name"]
-        
+
         os.chdir(self.directory)
 
         n_rows = int(np.sqrt(n_walkers))
         fig, ax = plt.subplots(n_rows, n_rows + 1, figsize = (15,10))
-
+        a = False
         for n, ax in enumerate(ax.ravel()):
-            colvar_data = np.loadtxt(os.path.join(self.directory, f"{n}", f"COLVAR.{n}"), comments=("#"), usecols=(0,1))  
+            try:
+                colvar_data = np.loadtxt(os.path.join(self.directory, f"w_{n+1}", f"COLVAR.{n}"), comments=("#"), usecols=(0,1))  
+            except OSError:
+                a = True
+                continue
             ax.plot(colvar_data[:,0]/1000,colvar_data[:,1], color = "dodgerblue")
         
-            format_colvar_ax(self.directory, dir_name, fig , ax, n_walkers, cv, n)
+            format_colvar_ax(self.directory, dir_name, fig , ax, n_walkers, cv, n+1)
+            if a:
+                ax[n,n].axis('off')
+            a = False
     
 
 
     def delta_PMF(self, method, get_fes):
 
-    
-        with open(os.path.join(self.directory, "config.json"), "r") as f:
-            config = json.load(f)
+        try:
+            with open(os.path.join(self.directory, "config.json"), "r") as f:
+                config = json.load(f)
 
-        dir_name = config["dir_name"]
-        environment = config["environment"]
+            dir_name = config.get("dir_name", "test")
+            environment = config.get("environment", "/mnt/netapp2/Store_uni/home/empresa/mdu/rga/conda/envs/myenv/bin/python")
+        except FileNotFoundError:
+            print(">>> ERROR: config.json file not found in the directory")
+            environment = "/mnt/netapp2/Store_uni/home/empresa/mdu/rga/conda/envs/myenv/bin/python"
+            dir_name = "test"
+
+
+            
         os.chdir(self.directory)
 
         if get_fes == True:

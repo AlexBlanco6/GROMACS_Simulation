@@ -28,8 +28,10 @@ RESTRAINT ARG=axis.ext AT=0 KAPPA=100
 
 # Lets put a wall to restrict the distance at which the ligand can go from the CD
 uwall: UPPER_WALLS ARG=axis.proj AT=2.5 KAPPA=1000.0 EPS=1.0
-lwall: LOWER_WALLS ARG=axis.proj AT=-1.0 KAPPA=1000.0 EPS=1.0
+lwall: LOWER_WALLS ARG=axis.proj AT=-2.5 KAPPA=1000.0 EPS=1.0
 
+#uwall: UPPER_WALLS ARG=axis.proj AT=2.0 KAPPA=1000.0 EPS=1.0
+#lwall: LOWER_WALLS ARG=axis.proj AT=-1.0 KAPPA=1000.0 EPS=1.0
 
 #Change RESTART to YES if you want to extend the simulation
 opes: OPES_METAD ARG=axis.proj PACE=500 SIGMA=0.1 SIGMA_MIN=0.005 BARRIER=100 TEMP=298 FILE=HILLS STATE_WFILE=STATE STATE_WSTRIDE=500*100 STORE_STATES RESTART=NO WALKERS_MPI
