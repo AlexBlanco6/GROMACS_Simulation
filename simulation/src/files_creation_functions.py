@@ -86,11 +86,11 @@ def create_plumed_run_file(out, n_mpi, method_files, dir_name, time, environment
         sbatch_script = f"""#!/bin/bash
 #SBATCH -J  {dir_name}  # Job name
 #SBATCH -t {time}        # Maximum execution time (e.g., 1 hour) - ADJUST
-#SBATCH --mem=8G         # Memory 
-#SBATCH --nodes= {n_mpi/2}   
-#SBATCH --ntasks-per-node= 4 
+#SBATCH --mem=4G         # Memory 
+#SBATCH --nodes={int(n_mpi/2)}   
+#SBATCH --ntasks-per-node=2 
 #SBATCH -n   {int(n_mpi)}             # Number of MPI tasks (1 is sufficient for this small system)
-#SBATCH -c 16               # Number of cores per task (OpenMP threads)
+#SBATCH -c 32               # Number of cores per task (OpenMP threads)
 #SBATCH --output=metad_%j.log # Standard output/error file
 #SBATCH --signal=TERM@120
 

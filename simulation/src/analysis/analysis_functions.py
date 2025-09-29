@@ -21,8 +21,10 @@ def format_pmf_ax(dir,directory, fig, ax, hills, last_fes):
     ax.set_title(f"{directory} simulation's PMF", fontsize=30)
     ax.set_xlabel(" Distance (nm)", fontsize=26)
     ax.set_ylabel(" Free Energy (kJ/mol)", fontsize=26)
-    ax.set_xlim(np.min(hills), np.max(hills))
-    ax.set_ylim(0)
+    ax.set_xlim(-0.2, 1) 
+    ax.set_ylim(0, 40)
+    # ax.set_xlim(np.min(hills), np.max(hills))
+    # ax.set_ylim(0)
     ax.tick_params(direction='in', axis='both', which='major', length=12, width=1.5, labelsize=22)
     ax.tick_params(direction='in', axis='both', which='minor', length=6, width=0.75)
     ax.xaxis.set_ticks_position('both')
@@ -31,7 +33,7 @@ def format_pmf_ax(dir,directory, fig, ax, hills, last_fes):
 
     plt.tight_layout()
 
-    fig.savefig(os.path.join(dir,f"PMF_{last_fes}_{directory}.png"))
+    fig.savefig(os.path.join(dir,f"40_A_PMF_{last_fes}_{directory}.png"))
 
 
 def format_colvar_ax(dir,directory, fig, ax, w, cv, n):
@@ -42,7 +44,7 @@ def format_colvar_ax(dir,directory, fig, ax, w, cv, n):
     ax.set_title(f"walker {n}" , fontsize = 22) #  initial distance = {cv[n]}", fontsize = 22)
     ax.set_ylabel("Projection", fontsize = 21)
     ax.set_xlabel("Time (ns)", fontsize = 21)
-    ax.set_ylim(-1,8)
+    ax.set_ylim(-2,0.2)
     ax.tick_params(direction='in', axis='both', which='major', length=12, width=1.5, labelsize=20)
     ax.tick_params(direction='in', axis='both', which='minor', length=6, width=0.75)
     ax.xaxis.set_ticks_position('both')
@@ -70,7 +72,7 @@ def format_deltapmf_ax(dir, dir_name, fig, ax, method):
 
     plt.tight_layout()
 
-    fig.savefig(os.path.join(dir,f"DeltaPMF_{dir_name}.png"))
+    fig.savefig(os.path.join(dir,f"B_DeltaPMF_{dir_name}.png"))
 
 
 class argparse_plot():
@@ -118,7 +120,7 @@ class argparse_plot():
                 print(">>> OBTAINING FES FILES...")
 
             HILLS_opes = np.loadtxt(os.path.join(self.directory, "fes.dat"), comments=("#"))  
-            ax.plot(HILLS_opes[:,0],HILLS_opes[:,1], color = "dodgerblue", alpha =1, linewidth = 3)
+            ax.plot(-HILLS_opes[:,0],HILLS_opes[:,1], color = "dodgerblue", alpha =1, linewidth = 3)
             format_pmf_ax(self.directory, dir_name, fig, ax, HILLS_opes[:,0], last_fes)
 
         
@@ -137,13 +139,15 @@ class argparse_plot():
             colors = sns.color_palette("Spectral_r", n_colors=len(files) - 1)
             for i in range(2, len(files)):
                 HILLS_opes = np.loadtxt(files[i], comments=("#"))
-                ax.plot(HILLS_opes[:,0], HILLS_opes[:,1], color=colors[i - 1])
+                ax.plot(-HILLS_opes[:,0], HILLS_opes[:,1], color=colors[i - 1])
+                #print(f">>> PMF {i-1}/{len(files)-1} PLOTTED")
                 
             sm = plt.cm.ScalarMappable(cmap='Spectral_r', norm=plt.Normalize(vmin=0, vmax=len(files)-2))
             cbar = plt.colorbar(sm, ax=ax)
             cbar.set_label("FES INDEX")
 
             format_pmf_ax(self.directory, dir_name, fig, ax, HILLS_opes[:,0], last_fes)
+        print(">>> PMF FIGURE PLOTTED")
 
 
     def COLVAR(self):
@@ -179,7 +183,7 @@ class argparse_plot():
         a = False
         for n, ax in enumerate(ax.ravel()):
             try:
-                colvar_data = np.loadtxt(os.path.join(self.directory, f"w_{n+1}", f"COLVAR.{n}"), comments=("#"), usecols=(0,1))  
+                colvar_data = np.loadtxt(os.path.join(self.directory, f"{n}", f"COLVAR.{n}"), comments=("#"), usecols=(0,1))  
             except OSError:
                 a = True
                 continue
@@ -189,7 +193,7 @@ class argparse_plot():
             if a:
                 ax[n,n].axis('off')
             a = False
-    
+        print(">>> COLVAR FIGURE PLOTTED")
 
 
     def delta_PMF(self, method, get_fes):
@@ -239,4 +243,5 @@ class argparse_plot():
         time_ns = [(n_last_file + 25*i)*(134.6/last_file) for i in range(len(diff_val))]
         ax.plot(time_ns, diff_val, color= "dodgerblue", marker = ".", markersize = 10)
         format_deltapmf_ax(self.directory, dir_name, fig, ax, method)
+        print(">>> DELTA PMF FIGURE PLOTTED")
             

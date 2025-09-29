@@ -102,6 +102,3 @@ gmx solvate -cp cleaned_merged.pdb -cs tip4p.gro -o merged_solv.gro -p topol_t.t
 # gmx grompp -f "${INPUT_PATH}/mdp_files/ions.mdp" -c merged_solv2.gro -p topol.top -o ions.tpr -maxwarn 1
 
 # echo -e "5" | gmx genion -s ions.tpr -o merged_solv.gro -p topol.top -pname NA -nname CL -neutral
-
-# delete .top extra files
-#find . -type f -name '#*' -exec rm -f {} \;

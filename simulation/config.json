@@ -1,27 +1,23 @@
 {
-  "cv":   [-0.10, 
-      0.14, 
-      0.37, 
-      0.61, 
-      0.85, 
-      1.08, 
-      1.32, 
-      1.55, 
-      1.79, 
-      2.03, 
-      2.26, 
-      2.50]
+  "cv":   [
+        0,
+        0.25,
+        0.5,
+        1,
+        1.25,
+        1.5
+    ]
   ,
   "data_dir": "/mnt/lustre/scratch/nlsas/home/empresa/mdu/rga/z/simulation/data",
-  "dir_name": "test_1909_1",
+  "dir_name": "test_2909_3",
   "host": "MOL_GMX",
   "ligand": "0GB_GMX",
   "plumed": {
         "enabled": true,
         "method": "plumed"
   },
-  "barrier": 75,
-  "orientation": 1,
+  "barrier": 100,
+  "orientation": 3,
   "direction": "up",
   "topol": "topol_GMX",
   "em_file": "em",

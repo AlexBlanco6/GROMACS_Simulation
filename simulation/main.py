@@ -7,6 +7,7 @@ import time
 from src.utils import  save_config, load_data, find_molecules_files
 from src.files_creation_functions import add_plumed_file, create_plumed_run_file, create_run_file,  minim_sim_run_file
 from src.modify_gromacs_files import same_waters
+from src.gromacs_functions.production import minim_command, prod_command, makeindex_command, prod_command_min
 
 start = time.time()
 
@@ -28,7 +29,7 @@ path = os.path.join(output_dir, dir_name)
 for i,j in enumerate(cv):
     try:
         meta_name = f"{i}"
-        subprocess.run(["./src/first_plumed.sh", host, ligand, dir_name, meta_name, f"{j}", topology_file, output_dir, data_dir, f"{orientation}", direction, host_ext, ligand_ext], check=True)
+        subprocess.run(["./src/gromacs_functions/first_plumed.sh", host, ligand, dir_name, meta_name, f"{j}", topology_file, output_dir, data_dir, f"{orientation}", direction, host_ext, ligand_ext], check=True)
     except subprocess.CalledProcessError as e:
         print(">>> Error in first process")
 
@@ -38,7 +39,7 @@ for i, _ in enumerate(cv):
     try:
         meta_name = f"{i}"
         n_atoms = same_waters(output_dir, dir_name, n, "merged_solv.gro", "topol_t")  # get the number of total atoms
-        subprocess.run(["sbatch", "src/exec_prod.sh", output_dir, data_dir, dir_name, meta_name, em_file], check = True)
+        subprocess.run(["sbatch", "src/gromacs_functions/exec_prod.sh", output_dir, data_dir, dir_name, meta_name, em_file], check = True)
     except subprocess.CalledProcessError as e:
         print(">>> Error adding waters or sending minimization file")
 
@@ -66,39 +67,24 @@ else:
 save_config(output_dir, config, dir_name)
 
 
-makeindex_command = [
-    f"echo -e 'a 1-{n_atoms}\\n"
-    "name 0 System\\n"
-    
-    "q' | "
-    "/opt/cesga/2020/software/MPI/gcc/system/openmpi/4.0.5_ft3_cuda/gromacs/2021.4-plumed-2.8.0/bin/gmx make_ndx -f merged_solv_ions2.gro -n newindex.ndx -o newindex.ndx"
-]
-
-
 
 ######## PRODUCTION #######
 
 
-# production commnad without small run 
-prod_command = [f"/opt/cesga/2020/software/MPI/gcc/system/openmpi/4.0.5_ft3_cuda/gromacs/2021.4-plumed-2.8.0/bin/gmx \
-     grompp -f {data_dir}/mdp_files/{prod_file}.mdp -c em.gro -p topol2.top -o topol.tpr -maxwarn 2 -r em.gro"]# -n newindex.ndx"]
-
-
-# commands for production with small run minimization
-minim_command = [f"/opt/cesga/2020/software/MPI/gcc/system/openmpi/4.0.5_ft3_cuda/gromacs/2021.4-plumed-2.8.0/bin/gmx \
-     grompp -f {data_dir}/mdp_files/{small_run_file}.mdp -c em.gro -p topol2.top -o topol_min.tpr -maxwarn 2 -r em.gro"] # -n newindex.ndx"]
-
-prod_command_min = [f"/opt/cesga/2020/software/MPI/gcc/system/openmpi/4.0.5_ft3_cuda/gromacs/2021.4-plumed-2.8.0/bin/gmx \
-     grompp -f {data_dir}/mdp_files/{prod_file}.mdp -c topol_min.gro -p topol2.top -o topol.tpr -maxwarn 2 -r topol_min.gro"] # -n newindex.ndx"]
+# commands to run minimization and production
+minim_command = minim_command(data_dir, small_run_file)
+prod_command = prod_command(data_dir, prod_file)
+makeindex_command = makeindex_command(n_atoms)
 
 
 # Send production or/and small run if chosen
+
 for i, _ in enumerate(cv):
     em_path = os.path.join(path, f"{i}", "em.gro")
     while not os.path.isfile(em_path): # wait while the minimization from the second step is not finished for each walker
         print(f"Waiting for em.gro file in directory {i}")
         time.sleep(60)             # wait 1 minute before checking again, you can change to more or less time 
-                                   # depends on CESGAs queues
+                                # depends on CESGAs queues
 
     print(f"Found em.gro file in {dir_name} directory")    
     try:
@@ -108,7 +94,7 @@ for i, _ in enumerate(cv):
 
             subprocess.run(minim_command, shell=True, executable="/bin/bash")
             subprocess.run(["sbatch","minim_sim.sh"], check = True)
-           
+        
         else:
 
             subprocess.run(prod_command, shell=True, executable="/bin/bash") # run production directly when no small run is activated
@@ -121,6 +107,7 @@ for i, _ in enumerate(cv):
 
 # wait until the small run is finished for all walkers and start production
 if small_run == True:
+    prod_command_min = prod_command_min(data_dir, prod_file)
     for i, _ in enumerate(cv):
         topol_path = os.path.join(path, f"{i}", "topol_min.gro")
         while not os.path.isfile(topol_path): # wait while the minimization from the second step is not finished for each walker
